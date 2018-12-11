@@ -1,0 +1,4 @@
+#Wed Dec 12 05:17:29 ICT 2018
+base.0=G\:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

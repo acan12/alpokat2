@@ -1,0 +1,370 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+MERGED from [com.mikepenz:materialdrawer:6.0.8] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\materialdrawer-6.0.8.aar\02cf5f8a0ccffa0391c5c8392ce62db1\AndroidManifest.xml:2:1-11:12
+MERGED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:2:1-32:12
+MERGED from [com.mikepenz:iconics-core:3.0.4] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\iconics-core-3.0.4.aar\6ae673b376d34a54516f36ba21eeb8b7\AndroidManifest.xml:2:1-11:12
+MERGED from [com.mikepenz:fastadapter-extensions-expandable:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-extensions-expandable-3.2.7.aar\5c2951e94e2cccd2978ce6e4ca268f53\AndroidManifest.xml:2:1-11:12
+MERGED from [com.mikepenz:fastadapter-commons:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-commons-3.2.7.aar\4fdef6d218b9c9e6d0cfef06a8986ea4\AndroidManifest.xml:2:1-11:12
+MERGED from [com.mikepenz:fastadapter:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-3.2.7.aar\a3f20882503562d2aeb9db2c09202f7e\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\3af872cabf6e83964eff6b19a4060910\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\4093e27c0799f6f05be143e34c8d5cb2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\3bfb0d4fd6b9498a79123cff8efc396d\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\df5d3461404bf645180c925a0d35ffd7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\68782d82e0b6bd573a49a44702dea3e7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-vision:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-vision-8.4.0.aar\bd2f8a791ca810c3f6bcda0d70fb521b\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-base:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-base-8.4.0.aar\1b4c224ca390fdc81626e0aac6ae7b7c\AndroidManifest.xml:16:1-19:12
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-basement-8.4.0.aar\0198f912eabb0010041525a77b5d62f0\AndroidManifest.xml:16:1-26:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\acbf25e7a348d51080d9501d989e1918\AndroidManifest.xml:17:1-22:12
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\circleimageview-2.1.0.aar\aa8b9498e8b247d9fe0a7316d90f0c85\AndroidManifest.xml:2:1-11:12
+MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\library-aar-1.0.0.aar\75b1a522c7d808452c04d465efa02d77\AndroidManifest.xml:1:70-7:12
+MERGED from [com.github.bumptech.glide:glide:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\glide-4.6.1.aar\36f08983612fc87e5bd4bc60d901ccd3\AndroidManifest.xml:2:1-13:12
+MERGED from [com.github.delight-im:Android-AdvancedWebView:v3.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\Android-AdvancedWebView-v3.0.0.aar\862a81316c4c4392adb6e47269042274\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\af137e5ce518445936875d4cc2d13438\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\776814441a4ef1a4343354846e7a6ff2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\4906113cb7021f643545a139d18e9915\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\6b58f8bdc8a7f4348440f121fc6f070b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\6562ded056ee65bb61dc03ca22655f3d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\1c7afda33bde44b968a9554e63374ba4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\8768795f314ecc03d5b6e6eb0d9b5948\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\5e16210de8aa3f8a0a0be0ffe3dc63df\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.6.1.aar\8ab6c922706e6d52c5256aac475cf094\AndroidManifest.xml:2:1-11:12
+MERGED from [com.mikepenz:google-material-typeface:3.0.1.1.original] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\google-material-typeface-3.0.1.1.original.aar\a8a00dfd6b41c6a4e9825368f24bf3ee\AndroidManifest.xml:17:1-29:12
+MERGED from [com.mikepenz:fontawesome-typeface:5.0.6.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fontawesome-typeface-5.0.6.0.aar\beed481f99018dcf0e496804f59186e8\AndroidManifest.xml:2:1-12:12
+MERGED from [com.mikepenz:octicons-typeface:3.0.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\octicons-typeface-3.0.0.1.aar\307320904b605bf0f287e498b043eb60\AndroidManifest.xml:17:1-29:12
+MERGED from [com.mikepenz:itemanimators:1.0.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\itemanimators-1.0.2.aar\8f96d94d19a77d4b523661ce7570cd8c\AndroidManifest.xml:2:1-11:12
+MERGED from [com.mikepenz:crossfader:1.5.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\crossfader-1.5.1.aar\94e665077ac80b06c72d52dde7c4fda3\AndroidManifest.xml:2:1-12:12
+MERGED from [com.mikepenz:crossfadedrawerlayout:1.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\crossfadedrawerlayout-1.0.1.aar\7e65defcaf8fbcbbd13f8ad86c6f7096\AndroidManifest.xml:2:1-12:12
+MERGED from [com.mikepenz:materialize:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\materialize-1.1.2.aar\79a8fd7e78e271e4cedba6b84284e979\AndroidManifest.xml:2:1-12:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\0a1fe13a0b23318e114a140f1a2603ae\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\2c71483e008964910ff431cb3e27f087\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\4330619cfc21a696400f14c0d743bf3c\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\30e3ae9ec6ab84b3e62b242565b762e6\AndroidManifest.xml:17:1-22:12
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+	package
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:4:5-32
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:1-84:12
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.BLUETOOTH
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:7:5-68
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:7:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:8:5-74
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:8:22-71
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:9:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.WRITE_INTERNAL_STORAGE
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:12:22-78
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:13:5-75
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:13:22-72
+application
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:15:5-82:19
+MERGED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:15:5-30:19
+MERGED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:15:5-30:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\3bfb0d4fd6b9498a79123cff8efc396d\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\3bfb0d4fd6b9498a79123cff8efc396d\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-vision:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-vision-8.4.0.aar\bd2f8a791ca810c3f6bcda0d70fb521b\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-vision:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-vision-8.4.0.aar\bd2f8a791ca810c3f6bcda0d70fb521b\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-basement-8.4.0.aar\0198f912eabb0010041525a77b5d62f0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-basement-8.4.0.aar\0198f912eabb0010041525a77b5d62f0\AndroidManifest.xml:20:5-24:19
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\circleimageview-2.1.0.aar\aa8b9498e8b247d9fe0a7316d90f0c85\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\circleimageview-2.1.0.aar\aa8b9498e8b247d9fe0a7316d90f0c85\AndroidManifest.xml:9:5-20
+MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\library-aar-1.0.0.aar\75b1a522c7d808452c04d465efa02d77\AndroidManifest.xml:5:5-19
+MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\library-aar-1.0.0.aar\75b1a522c7d808452c04d465efa02d77\AndroidManifest.xml:5:5-19
+MERGED from [com.github.bumptech.glide:glide:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\glide-4.6.1.aar\36f08983612fc87e5bd4bc60d901ccd3\AndroidManifest.xml:11:5-20
+MERGED from [com.github.bumptech.glide:glide:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\glide-4.6.1.aar\36f08983612fc87e5bd4bc60d901ccd3\AndroidManifest.xml:11:5-20
+MERGED from [com.github.delight-im:Android-AdvancedWebView:v3.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\Android-AdvancedWebView-v3.0.0.aar\862a81316c4c4392adb6e47269042274\AndroidManifest.xml:9:5-20
+MERGED from [com.github.delight-im:Android-AdvancedWebView:v3.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\Android-AdvancedWebView-v3.0.0.aar\862a81316c4c4392adb6e47269042274\AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.6.1.aar\8ab6c922706e6d52c5256aac475cf094\AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.6.1.aar\8ab6c922706e6d52c5256aac475cf094\AndroidManifest.xml:9:5-20
+MERGED from [com.mikepenz:google-material-typeface:3.0.1.1.original] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\google-material-typeface-3.0.1.1.original.aar\a8a00dfd6b41c6a4e9825368f24bf3ee\AndroidManifest.xml:27:5-20
+MERGED from [com.mikepenz:google-material-typeface:3.0.1.1.original] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\google-material-typeface-3.0.1.1.original.aar\a8a00dfd6b41c6a4e9825368f24bf3ee\AndroidManifest.xml:27:5-20
+MERGED from [com.mikepenz:octicons-typeface:3.0.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\octicons-typeface-3.0.0.1.aar\307320904b605bf0f287e498b043eb60\AndroidManifest.xml:27:5-20
+MERGED from [com.mikepenz:octicons-typeface:3.0.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\octicons-typeface-3.0.0.1.aar\307320904b605bf0f287e498b043eb60\AndroidManifest.xml:27:5-20
+	android:supportsRtl
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:22:9-35
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:19:9-41
+	tools:ignore
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:24:9-48
+	android:roundIcon
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:21:9-54
+	android:largeHeap
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:20:9-33
+	android:icon
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:18:9-43
+	android:allowBackup
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:17:9-35
+	android:theme
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:23:9-40
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:16:9-46
+activity#com.alpokat.kasir.Activity.Splash_Activity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:25:9-33:20
+	android:theme
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:27:13-69
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:26:13-53
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:28:13-32:29
+action#android.intent.action.MAIN
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:31:27-74
+activity#com.alpokat.kasir.Activity.MainActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:34:9-36:76
+	android:theme
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:36:13-73
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:35:13-50
+activity#com.alpokat.kasir.Activity.LoginActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:37:9-41:72
+	android:screenOrientation
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:40:13-49
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:39:13-39
+	android:theme
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:41:13-69
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:38:13-51
+activity#com.alpokat.kasir.Activity.PenjualanActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:42:9-45:72
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:44:13-38
+	android:theme
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:45:13-69
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:43:13-55
+activity#com.alpokat.kasir.Activity.PembayaranActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:46:9-48:36
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:48:13-33
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:47:13-56
+activity#com.alpokat.kasir.Activity.AddPelanggan
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:49:9-51:48
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:51:13-45
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:50:13-50
+activity#com.alpokat.kasir.Activity.DataPelanggan
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:52:9-54:46
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:54:13-43
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:53:13-51
+activity#com.alpokat.kasir.Activity.CariPelanggan
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:55:9-57:46
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:57:13-43
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:56:13-51
+activity#com.alpokat.kasir.Activity.SettingActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:58:9-60:39
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:60:13-36
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:59:13-53
+activity#com.alpokat.kasir.Activity.RefActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:61:9-63:41
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:63:13-38
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:62:13-49
+activity#com.alpokat.kasir.Print.DeviceListActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:64:9-66:73
+	android:theme
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:66:13-70
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:65:13-53
+activity#com.alpokat.kasir.Activity.DataPenjualan
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:67:9-69:44
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:69:13-41
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:68:13-51
+service#com.alpokat.kasir.Activity.MyService
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:71:9-74:39
+	android:enabled
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:73:13-35
+	android:exported
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:74:13-36
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:72:13-47
+activity#com.alpokat.kasir.Activity.Midtrans
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:76:9-55
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:76:19-52
+activity#com.alpokat.kasir.Activity.InputProduk
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:77:9-79:44
+	android:label
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:79:13-41
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:78:13-49
+activity#com.alpokat.kasir.Activity.PenjualanBarcodeBluetooth
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:80:9-72
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:80:19-69
+activity#com.alpokat.kasir.Activity.PembayaranBarcodeActivity
+ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:81:9-81
+	android:name
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml:81:19-69
+uses-sdk
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+MERGED from [com.mikepenz:materialdrawer:6.0.8] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\materialdrawer-6.0.8.aar\02cf5f8a0ccffa0391c5c8392ce62db1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:materialdrawer:6.0.8] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\materialdrawer-6.0.8.aar\02cf5f8a0ccffa0391c5c8392ce62db1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:7:5-9:41
+MERGED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:iconics-core:3.0.4] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\iconics-core-3.0.4.aar\6ae673b376d34a54516f36ba21eeb8b7\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:iconics-core:3.0.4] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\iconics-core-3.0.4.aar\6ae673b376d34a54516f36ba21eeb8b7\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:fastadapter-extensions-expandable:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-extensions-expandable-3.2.7.aar\5c2951e94e2cccd2978ce6e4ca268f53\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:fastadapter-extensions-expandable:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-extensions-expandable-3.2.7.aar\5c2951e94e2cccd2978ce6e4ca268f53\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:fastadapter-commons:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-commons-3.2.7.aar\4fdef6d218b9c9e6d0cfef06a8986ea4\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:fastadapter-commons:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-commons-3.2.7.aar\4fdef6d218b9c9e6d0cfef06a8986ea4\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:fastadapter:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-3.2.7.aar\a3f20882503562d2aeb9db2c09202f7e\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:fastadapter:3.2.7] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fastadapter-3.2.7.aar\a3f20882503562d2aeb9db2c09202f7e\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\3af872cabf6e83964eff6b19a4060910\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\3af872cabf6e83964eff6b19a4060910\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\4093e27c0799f6f05be143e34c8d5cb2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\4093e27c0799f6f05be143e34c8d5cb2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\3bfb0d4fd6b9498a79123cff8efc396d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\3bfb0d4fd6b9498a79123cff8efc396d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\df5d3461404bf645180c925a0d35ffd7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\df5d3461404bf645180c925a0d35ffd7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\68782d82e0b6bd573a49a44702dea3e7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\68782d82e0b6bd573a49a44702dea3e7\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-vision:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-vision-8.4.0.aar\bd2f8a791ca810c3f6bcda0d70fb521b\AndroidManifest.xml:4:5-42
+MERGED from [com.google.android.gms:play-services-vision:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-vision-8.4.0.aar\bd2f8a791ca810c3f6bcda0d70fb521b\AndroidManifest.xml:4:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-base-8.4.0.aar\1b4c224ca390fdc81626e0aac6ae7b7c\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-base-8.4.0.aar\1b4c224ca390fdc81626e0aac6ae7b7c\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-basement-8.4.0.aar\0198f912eabb0010041525a77b5d62f0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-basement-8.4.0.aar\0198f912eabb0010041525a77b5d62f0\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\acbf25e7a348d51080d9501d989e1918\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\acbf25e7a348d51080d9501d989e1918\AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\circleimageview-2.1.0.aar\aa8b9498e8b247d9fe0a7316d90f0c85\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\circleimageview-2.1.0.aar\aa8b9498e8b247d9fe0a7316d90f0c85\AndroidManifest.xml:5:5-7:41
+MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\library-aar-1.0.0.aar\75b1a522c7d808452c04d465efa02d77\AndroidManifest.xml:3:5-72
+MERGED from [com.mcxiaoke.volley:library-aar:1.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\library-aar-1.0.0.aar\75b1a522c7d808452c04d465efa02d77\AndroidManifest.xml:3:5-72
+MERGED from [com.github.bumptech.glide:glide:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\glide-4.6.1.aar\36f08983612fc87e5bd4bc60d901ccd3\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.bumptech.glide:glide:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\glide-4.6.1.aar\36f08983612fc87e5bd4bc60d901ccd3\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.delight-im:Android-AdvancedWebView:v3.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\Android-AdvancedWebView-v3.0.0.aar\862a81316c4c4392adb6e47269042274\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.delight-im:Android-AdvancedWebView:v3.0.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\Android-AdvancedWebView-v3.0.0.aar\862a81316c4c4392adb6e47269042274\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\af137e5ce518445936875d4cc2d13438\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\af137e5ce518445936875d4cc2d13438\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\776814441a4ef1a4343354846e7a6ff2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\776814441a4ef1a4343354846e7a6ff2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\4906113cb7021f643545a139d18e9915\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\4906113cb7021f643545a139d18e9915\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\6b58f8bdc8a7f4348440f121fc6f070b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\6b58f8bdc8a7f4348440f121fc6f070b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\6562ded056ee65bb61dc03ca22655f3d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\6562ded056ee65bb61dc03ca22655f3d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\1c7afda33bde44b968a9554e63374ba4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\1c7afda33bde44b968a9554e63374ba4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\8768795f314ecc03d5b6e6eb0d9b5948\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\8768795f314ecc03d5b6e6eb0d9b5948\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\5e16210de8aa3f8a0a0be0ffe3dc63df\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\5e16210de8aa3f8a0a0be0ffe3dc63df\AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.6.1.aar\8ab6c922706e6d52c5256aac475cf094\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.6.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.6.1.aar\8ab6c922706e6d52c5256aac475cf094\AndroidManifest.xml:5:5-7:41
+MERGED from [com.mikepenz:google-material-typeface:3.0.1.1.original] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\google-material-typeface-3.0.1.1.original.aar\a8a00dfd6b41c6a4e9825368f24bf3ee\AndroidManifest.xml:23:5-25:41
+MERGED from [com.mikepenz:google-material-typeface:3.0.1.1.original] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\google-material-typeface-3.0.1.1.original.aar\a8a00dfd6b41c6a4e9825368f24bf3ee\AndroidManifest.xml:23:5-25:41
+MERGED from [com.mikepenz:fontawesome-typeface:5.0.6.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fontawesome-typeface-5.0.6.0.aar\beed481f99018dcf0e496804f59186e8\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:fontawesome-typeface:5.0.6.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\fontawesome-typeface-5.0.6.0.aar\beed481f99018dcf0e496804f59186e8\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:octicons-typeface:3.0.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\octicons-typeface-3.0.0.1.aar\307320904b605bf0f287e498b043eb60\AndroidManifest.xml:23:5-25:41
+MERGED from [com.mikepenz:octicons-typeface:3.0.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\octicons-typeface-3.0.0.1.aar\307320904b605bf0f287e498b043eb60\AndroidManifest.xml:23:5-25:41
+MERGED from [com.mikepenz:itemanimators:1.0.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\itemanimators-1.0.2.aar\8f96d94d19a77d4b523661ce7570cd8c\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:itemanimators:1.0.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\itemanimators-1.0.2.aar\8f96d94d19a77d4b523661ce7570cd8c\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:crossfader:1.5.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\crossfader-1.5.1.aar\94e665077ac80b06c72d52dde7c4fda3\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:crossfader:1.5.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\crossfader-1.5.1.aar\94e665077ac80b06c72d52dde7c4fda3\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:crossfadedrawerlayout:1.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\crossfadedrawerlayout-1.0.1.aar\7e65defcaf8fbcbbd13f8ad86c6f7096\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:crossfadedrawerlayout:1.0.1] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\crossfadedrawerlayout-1.0.1.aar\7e65defcaf8fbcbbd13f8ad86c6f7096\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:materialize:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\materialize-1.1.2.aar\79a8fd7e78e271e4cedba6b84284e979\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:materialize:1.1.2] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\materialize-1.1.2.aar\79a8fd7e78e271e4cedba6b84284e979\AndroidManifest.xml:8:5-10:41
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\0a1fe13a0b23318e114a140f1a2603ae\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\0a1fe13a0b23318e114a140f1a2603ae\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\2c71483e008964910ff431cb3e27f087\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\2c71483e008964910ff431cb3e27f087\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\4330619cfc21a696400f14c0d743bf3c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\4330619cfc21a696400f14c0d743bf3c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\30e3ae9ec6ab84b3e62b242565b762e6\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\30e3ae9ec6ab84b3e62b242565b762e6\AndroidManifest.xml:20:5-44
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+		ADDED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+		INJECTED from G:\study\Kerja\Portofolio\alpokat\alpokat_retail\app\src\main\AndroidManifest.xml
+uses-feature#android.hardware.camera
+ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:11:5-60
+	android:name
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:11:19-57
+uses-permission#android.permission.CAMERA
+ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:13:5-65
+	android:name
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:13:22-62
+meta-data#com.google.android.gms.version
+ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:18:9-20:69
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-basement-8.4.0.aar\0198f912eabb0010041525a77b5d62f0\AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\play-services-basement-8.4.0.aar\0198f912eabb0010041525a77b5d62f0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:20:13-66
+	android:name
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:19:13-58
+meta-data#com.google.android.gms.vision.DEPENDENCIES
+ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:21:9-23:39
+	android:value
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:23:13-36
+	android:name
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:22:13-70
+activity#com.edwardvanraak.materialbarcodescanner.MaterialBarcodeScannerActivity
+ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:25:9-29:20
+	android:label
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:27:13-49
+	android:theme
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:28:13-56
+	android:name
+		ADDED from [com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA] C:\Users\onesi\.gradle\caches\transforms-1\files-1.1\MaterialBarcodeScanner-0.0.6-ALPHA.aar\4485cb9810f0444bd5cbd645814a7cfb\AndroidManifest.xml:26:13-99

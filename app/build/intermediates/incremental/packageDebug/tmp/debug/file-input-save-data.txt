@@ -1,0 +1,23 @@
+#Internal package file, do not edit.
+#Wed Dec 12 05:17:31 ICT 2018
+2.base=G\:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.path=fonts/octicons.ttf
+2.baseType=DIRECTORY
+3.base=G\:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+2.set=DEX
+1.path=fonts/materialdrawerfont-font-v5.0.0.ttf
+4.base=G\:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+count=5
+2.path=classes.dex
+4.set=ASSET
+3.path=fonts/fontawesome-font-v5.0.6.0.ttf
+3.baseType=DIRECTORY
+1.set=ASSET
+4.path=fonts/google-material-font-v3.0.1.0.original.ttf
+1.baseType=DIRECTORY
+0.base=G\:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+0.baseType=DIRECTORY
+3.set=ASSET
+1.base=G\:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+4.baseType=DIRECTORY
+0.set=ASSET

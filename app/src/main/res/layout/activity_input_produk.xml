@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.alpokat.kasir.Activity.InputProduk">
+
+    <!--  Email Label -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:elevation="5dp"
+                android:paddingBottom="20dp"
+                app:cardElevation="5dp"
+                card_view:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:id="@+id/frame1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView51"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:paddingLeft="3dp"
+                        android:text="Barcode"
+                        android:textSize="12sp"
+                        android:textStyle="bold|italic" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:id="@+id/HasilBarcode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/membayang"
+                            android:padding="10dp"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btn_qr"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            app:srcCompat="@drawable/qr_icon" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_harga"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="3dp"
+                            android:paddingTop="10dp"
+                            android:text="Nama Produk"
+                            android:textSize="12sp"
+                            android:textStyle="bold|italic" />
+
+                        <EditText
+                            android:id="@+id/NamaProduk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/membayang"
+                            android:padding="10dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="3dp"
+                            android:paddingTop="10dp"
+                            android:text="Harga Modal :"
+                            android:textSize="12sp"
+                            android:textStyle="bold|italic" />
+
+                        <EditText
+                            android:id="@+id/HargaModal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/membayang"
+                            android:inputType="number"
+                            android:padding="10dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="3dp"
+                            android:paddingTop="10dp"
+                            android:text="Harga Jual :"
+                            android:textSize="12sp"
+                            android:textStyle="bold|italic" />
+
+                        <EditText
+                            android:id="@+id/HargaJual"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/membayang"
+                            android:inputType="number"
+                            android:padding="10dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/simpan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/sudut_tumpul"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="SIMPAN"
+                            android:textColor="@color/md_white_1000"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
