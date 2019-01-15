@@ -1,0 +1,14 @@
+*.iml
+.gradle
+/app/releases/
+/local.properties
+/.idea/caches
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+
+/app/release
+/build
+gradelw.bat
+/captures
+.externalNativeBuild
