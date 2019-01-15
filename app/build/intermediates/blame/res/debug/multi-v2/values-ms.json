@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ms\\values-ms.xml",
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ms/values-ms.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\4093e27c0799f6f05be143e34c8d5cb2\\res\\values-ms\\values-ms.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,216,321,429,516,620,731,809,888,968,1080,1189,1286,1395,1498,1605,1764,1865",
-                        "endColumns": "110,104,107,86,103,110,77,78,79,111,108,96,108,102,106,158,100,79",
-                        "endOffsets": "211,316,424,511,615,726,804,883,963,1075,1184,1281,1390,1493,1600,1759,1860,1940"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\5e16210de8aa3f8a0a0be0ffe3dc63df\\res\\values-ms\\values-ms.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fd28dfa6c0ed0f826bb3f4320444a578/res/values-ms/values-ms.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -28,6 +18,16 @@
                         "startOffsets": "1945",
                         "endColumns": "100",
                         "endOffsets": "2041"
+                    }
+                },
+                {
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/98ebf21a2eb3bbcc9af05c5326e77c2d/res/values-ms/values-ms.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,216,321,429,516,620,731,809,888,968,1080,1189,1286,1395,1498,1605,1764,1865",
+                        "endColumns": "110,104,107,86,103,110,77,78,79,111,108,96,108,102,106,158,100,79",
+                        "endOffsets": "211,316,424,511,615,726,804,883,963,1075,1184,1281,1390,1493,1600,1759,1860,1940"
                     }
                 }
             ]

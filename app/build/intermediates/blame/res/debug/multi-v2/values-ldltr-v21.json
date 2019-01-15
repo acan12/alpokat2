@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\4093e27c0799f6f05be143e34c8d5cb2\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/98ebf21a2eb3bbcc9af05c5326e77c2d/res/values-ldltr-v21/values-ldltr-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

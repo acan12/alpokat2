@@ -23,7 +23,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		myContext=context;
 	}
-	public void createDataBase() throws IOException {
+	public void createDataBase() {
 		if(DataBaseisExist()){
     		//jika database ada
     	}

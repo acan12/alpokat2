@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.R;
@@ -94,6 +95,7 @@ public class AddPelanggan extends AppCompatActivity {
         pDialog.setMessage("Sedang menyimpan data ...");
         showDialog();
 
+        HttpsTrustManager.allowAllSSL();
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.ADD_PELANGGAN, new Response.Listener<String>() {
 
@@ -110,7 +112,7 @@ public class AddPelanggan extends AppCompatActivity {
                         finish();
                     } else {
                         // Error in login. Get the error message
-                        pesan("Error Boss");
+                        pesan("Update Data Pelanggan Error");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

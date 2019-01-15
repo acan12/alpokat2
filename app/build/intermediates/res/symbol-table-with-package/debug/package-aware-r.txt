@@ -1510,6 +1510,7 @@ id item_touch_helper_previous_elevation
 id jumlah
 id jumlah_bayar
 id jumlah_item
+id keyboard
 id konfirm_pass
 id largeLabel
 id lay_bayar
@@ -1833,6 +1834,7 @@ layout item_belanja
 layout item_kategori
 layout item_pelanggan
 layout item_penjualan
+layout keyboard
 layout material_drawer
 layout material_drawer_compact_header
 layout material_drawer_fits_not
@@ -1870,6 +1872,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout preview
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -2996,6 +2999,7 @@ string library_name
 string material_drawer_close
 string material_drawer_open
 string materialdrawer_lib_version
+string my_keyboard
 string no_camera_permission
 string pass_retur
 string password_toggle_content_description
@@ -3006,6 +3010,7 @@ string path_password_strike_through
 string permission_camera_rationale
 string search_menu_title
 string status_bar_notification_info_overflow
+string sybtype_en_US
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -3509,3 +3514,5 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml method
+xml qwerty

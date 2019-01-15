@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bn-rBD\\values-bn-rBD.xml",
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bn-rBD/values-bn-rBD.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-8.4.0.aar\\0198f912eabb0010041525a77b5d62f0\\res\\values-bn-rBD\\common_strings.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "170",
-                        "endColumns": "269",
-                        "endOffsets": "435"
-                    },
-                    "to": {
-                        "startLines": "19",
-                        "startColumns": "4",
-                        "startOffsets": "2870",
-                        "endColumns": "265",
-                        "endOffsets": "3131"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\1b4c224ca390fdc81626e0aac6ae7b7c\\res\\values-bn-rBD\\base_strings.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-base-8.4.0.aar/d592218ece8891b482f5d70bba78f137/res/values-bn-rBD/base_strings.xml",
                     "from": {
                         "startLines": "24,10,9,8,7,5,6,4,19,18,17,16,3,28,27,26,25,21,20,22,12,11,15,14,13,23,29,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -35,6 +18,23 @@
                         "startOffsets": "105,376,507,698,828,953,1152,1357,1481,1676,1797,1963,2087,2221,2409,2544,2736,3136,3387,3510,3621,3808,3938,4131,4264,4443,4532,4629",
                         "endColumns": "270,130,190,129,124,198,204,123,194,120,165,123,133,187,134,191,133,250,122,110,186,129,192,132,178,88,96,119",
                         "endOffsets": "371,502,693,823,948,1147,1352,1476,1671,1792,1958,2082,2216,2404,2539,2731,2865,3382,3505,3616,3803,3933,4126,4259,4438,4527,4624,4744"
+                    }
+                },
+                {
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-basement-8.4.0.aar/729c3b2abf1141ff023eccaabc2bd8f5/res/values-bn-rBD/common_strings.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "170",
+                        "endColumns": "269",
+                        "endOffsets": "435"
+                    },
+                    "to": {
+                        "startLines": "19",
+                        "startColumns": "4",
+                        "startOffsets": "2870",
+                        "endColumns": "265",
+                        "endOffsets": "3131"
                     }
                 }
             ]

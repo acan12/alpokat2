@@ -4,7 +4,7 @@ package com.alpokat.kasir.Setting;
 public class AppConfig {
 
 
-    public static String HOST = "http://toko.alpokat.com/";
+    public static String HOST = "https://toko.alpokat.com/";
 //    public static String HOST = "http://192.168.1.9:8086/toko/";
     public static String SERVER                 = HOST + "android/";
     public static String ADD_PELANGGAN          = SERVER + "add_pelanggan.php";

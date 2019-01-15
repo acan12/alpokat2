@@ -99,7 +99,7 @@ public class InputProduk extends AppCompatActivity {
     private void simpanProduk() {
         String tag_string_req = "req_login";
 
-        pDialog.setMessage("Sedang menyimpan produk ...");
+        pDialog.setMessage("Sedang menyimpan data produk ...");
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
@@ -113,9 +113,9 @@ public class InputProduk extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        Toast.makeText(getApplicationContext(),  "Produk berhasil disimpan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),  "Data Produk berhasil disimpan", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(),  "Produk gagal disimpan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),  "Data Produk gagal disimpan", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

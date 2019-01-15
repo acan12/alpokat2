@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-lv/values-lv.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-8.4.0.aar\\0198f912eabb0010041525a77b5d62f0\\res\\values-lv\\common_strings.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "170",
-                        "endColumns": "268",
-                        "endOffsets": "434"
-                    },
-                    "to": {
-                        "startLines": "36",
-                        "startColumns": "4",
-                        "startOffsets": "4734",
-                        "endColumns": "264",
-                        "endOffsets": "4994"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\4093e27c0799f6f05be143e34c8d5cb2\\res\\values-lv\\values-lv.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/98ebf21a2eb3bbcc9af05c5326e77c2d/res/values-lv/values-lv.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\1b4c224ca390fdc81626e0aac6ae7b7c\\res\\values-lv\\base_strings.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-base-8.4.0.aar/d592218ece8891b482f5d70bba78f137/res/values-lv/base_strings.xml",
                     "from": {
                         "startLines": "24,10,9,8,7,5,6,4,19,18,17,16,3,28,27,26,25,21,20,22,12,11,15,14,13,23,29,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\5e16210de8aa3f8a0a0be0ffe3dc63df\\res\\values-lv\\values-lv.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-basement-8.4.0.aar/729c3b2abf1141ff023eccaabc2bd8f5/res/values-lv/common_strings.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "170",
+                        "endColumns": "268",
+                        "endOffsets": "434"
+                    },
+                    "to": {
+                        "startLines": "36",
+                        "startColumns": "4",
+                        "startOffsets": "4734",
+                        "endColumns": "264",
+                        "endOffsets": "4994"
+                    }
+                },
+                {
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fd28dfa6c0ed0f826bb3f4320444a578/res/values-lv/values-lv.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

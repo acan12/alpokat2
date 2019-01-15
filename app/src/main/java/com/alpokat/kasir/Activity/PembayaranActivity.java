@@ -806,10 +806,10 @@ public class PembayaranActivity extends AppCompatActivity implements Runnable {
     private void hitung(){
         if (jbayar.length() > 0) {
             double to, by, kb;
-            by = Integer.valueOf(jbayar);
+            by = Double.valueOf(jbayar);
             jumlah_bayar.setText(String.format("%,.0f", by));
 
-            int y = Integer.valueOf(jbayar);
+            double y = Double.valueOf(jbayar);
             if (y >= total) {
                 to = total;
                 kb = by - to;

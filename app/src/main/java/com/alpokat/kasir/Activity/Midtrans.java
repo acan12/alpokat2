@@ -54,7 +54,7 @@ public class Midtrans extends AppCompatActivity{
         @Override
         public void onPageFinished(WebView view, String url) {
             animasi.setVisibility(View.GONE);
-            if(url.equals("http://toko.alpokat.com/close/index.php")){
+            if(url.equals("https://toko.alpokat.com/close/index.php")){
                 finish();
             }
             super.onPageFinished(view, url);

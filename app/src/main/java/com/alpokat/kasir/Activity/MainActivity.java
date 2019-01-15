@@ -269,7 +269,11 @@ public class MainActivity extends AppCompatActivity {
                         if (drawerItem != null) {
                             Intent intent = null;
                             if(drawerItem.getIdentifier() == 98){
-                                intent = new Intent(getApplicationContext(), PenjualanBarcodeBluetooth.class);
+                                if(selisih > 0) {
+                                    intent = new Intent(getApplicationContext(), PenjualanBarcodeBluetooth.class);
+                                }else{
+                                    intent = null;
+                                }
                             }else if (drawerItem.getIdentifier() == 99) {
                                 logoutUser();
                             } else if (drawerItem.getIdentifier() == 1) {
@@ -317,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
         String teks = "";
         if(mode != null && mode.equalsIgnoreCase("trial")){
             if(selisih < 1){
-                teks = "Free trial telah habis\nKlik untuk langgan";
+                teks = "Free trial telah habis\nKlik untuk langganan";
 
                 penjualan.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -345,13 +349,13 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             }else{
-                teks = "Free trial tinggal " + selisih + " hari\nKlik untuk langgan";
+                teks = "Free trial tinggal " + selisih + " hari\nKlik untuk langganan";
                 transaksi();
             }
             trial.setVisibility(View.VISIBLE);
         }else{
             if(selisih < 0){
-                teks = "Masa berlangganan habis\nKlik untuk langgan";
+                teks = "Masa berlangganan habis\nKlik untuk langganan";
                 penjualan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -471,7 +475,7 @@ public class MainActivity extends AppCompatActivity {
                 switch(item)
                 {
                     case 0:
-                        url = "http://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
+                        url = "https://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
                                 "?order_id=" + order_id +
                                 "&dev_id=" + dev_id +
                                 "&id_produk=1_bulan" +
@@ -481,7 +485,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 1:
-                        url = "http://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
+                        url = "https://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
                                 "?order_id=" + order_id +
                                 "&dev_id=" + dev_id +
                                 "&id_produk=3_bulan" +
@@ -491,7 +495,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 2:
-                        url = "http://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
+                        url = "https://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
                                 "?order_id=" + order_id +
                                 "&dev_id=" + dev_id +
                                 "&id_produk=6_bulan" +
@@ -501,7 +505,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 3:
-                        url = "http://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
+                        url = "https://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
                                 "?order_id=" + order_id +
                                 "&dev_id=" + dev_id +
                                 "&id_produk=12_bulan" +
@@ -558,8 +562,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_cloud, menu);
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu_cloud, menu);
         return true;
     }
 
@@ -610,7 +614,8 @@ public class MainActivity extends AppCompatActivity {
                                         obj.getString("harga_indo"),
                                         obj.getString("last_update"),
                                         "no",
-                                        obj.getString("kategori"));
+                                        obj.getString("kategori"),
+                                        obj.getString("barcode"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

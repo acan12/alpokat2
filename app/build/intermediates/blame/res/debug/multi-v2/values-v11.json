@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\materialize-1.1.2.aar\\79a8fd7e78e271e4cedba6b84284e979\\res\\values-v11\\values-v11.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/materialize-1.1.2.aar/1dd1b0d1ad18595054e15b9cbf55f78f/res/values-v11/values-v11.xml",
                     "from": {
                         "startLines": "2,8,12,17,23,27,36,41,45,49",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

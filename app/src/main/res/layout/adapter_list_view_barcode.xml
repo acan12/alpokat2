@@ -23,6 +23,17 @@
         android:textSize="20sp"
         />
     <TextView
+        android:id="@+id/harga_indo"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:width="0dp"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:text="Harga Indo"
+        android:textAlignment="viewEnd"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        />
+    <TextView
         android:id="@+id/harga_jual"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -30,6 +41,6 @@
         android:width="0dp"
         android:layout_weight="1"
         android:textSize="20sp"
-        android:textAlignment="viewEnd"
+        android:visibility="gone"
         />
 </LinearLayout>

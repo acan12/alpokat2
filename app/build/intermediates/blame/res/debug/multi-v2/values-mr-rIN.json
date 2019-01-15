@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mr-rIN\\values-mr-rIN.xml",
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mr-rIN/values-mr-rIN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\1b4c224ca390fdc81626e0aac6ae7b7c\\res\\values-mr-rIN\\base_strings.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-base-8.4.0.aar/d592218ece8891b482f5d70bba78f137/res/values-mr-rIN/base_strings.xml",
                     "from": {
                         "startLines": "24,10,9,8,7,5,6,4,19,18,17,16,3,28,27,26,25,21,20,22,12,11,15,14,13,23,29,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-8.4.0.aar\\0198f912eabb0010041525a77b5d62f0\\res\\values-mr-rIN\\common_strings.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-basement-8.4.0.aar/729c3b2abf1141ff023eccaabc2bd8f5/res/values-mr-rIN/common_strings.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mikepenz:crossfader:1.5.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/crossfader-1.5.1.aar/392c1ab63fda555df371b76ea256f1cd/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/crossfader-1.5.1.aar/392c1ab63fda555df371b76ea256f1cd/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mikepenz/crossfader/1.5.1/d4e2ed11cdbc8dce7a4065825b8956774b12990d/crossfader-1.5.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

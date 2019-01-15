@@ -89,7 +89,7 @@ public class RefActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(no_ref.getText().toString().length() < 4){
-                    Toast.makeText(getApplicationContext(),"Referensi minimal 4 digit\nJika tidak ada isi dengan '1234' ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Masukan No HP/Telp Kasir", Toast.LENGTH_LONG).show();
                 }else {
                     KirimRef(dev_id,
                             no_ref.getText().toString(),
@@ -112,7 +112,7 @@ public class RefActivity extends AppCompatActivity {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
-        pDialog.setMessage("Menyimpan referensi ...");
+        pDialog.setMessage("Menyimpan No HP/Telp Kasir ...");
         showDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alpokat.kasir"
-    android:versionCode="26"
-    android:versionName="2.6" >
+    android:versionCode="27"
+    android:versionName="2.7" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -30,6 +30,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.alpokat.kasir.Activity.Splash_Activity"
@@ -69,7 +70,7 @@
             android:label="Setting" />
         <activity
             android:name="com.alpokat.kasir.Activity.RefActivity"
-            android:label="Referensi" />
+            android:label="No HP/Telp Kasir" />
         <activity
             android:name="com.alpokat.kasir.Print.DeviceListActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog" />
@@ -86,8 +87,23 @@
         <activity
             android:name="com.alpokat.kasir.Activity.InputProduk"
             android:label="Input Produk" />
-        <activity android:name="com.alpokat.kasir.Activity.PenjualanBarcodeBluetooth" />
+        <activity
+            android:name="com.alpokat.kasir.Activity.PenjualanBarcodeBluetooth"
+            android:windowSoftInputMode="stateVisible" />
         <activity android:name="com.alpokat.kasir.Activity.PembayaranBarcodeActivity" />
+
+        <service
+            android:name="com.alpokat.kasir.MyKeyboard"
+            android:label="@string/my_keyboard"
+            android:permission="android.permission.BIND_INPUT_METHOD" >
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
+
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="com.google.android.gms.version"

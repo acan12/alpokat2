@@ -130,11 +130,11 @@ public class BelanjaFragment extends Fragment {
         for (int cc = 0; cc < cursor.getCount(); cc++) {
             cursor.moveToPosition(cc);
             BelanjaModel daftar = new BelanjaModel();
-            daftar.setId_produk(cursor.getString(2).toString());
-            daftar.setNama_produk(cursor.getString(3).toString());
-            daftar.setJumlah(cursor.getString(4).toString());
-            daftar.setHarga(cursor.getString(5).toString());
-            daftar.setTotal(cursor.getString(6).toString());
+            daftar.setId_produk(cursor.getString(2));
+            daftar.setNama_produk(cursor.getString(3));
+            daftar.setJumlah(cursor.getString(4));
+            daftar.setHarga(cursor.getString(5));
+            daftar.setTotal(cursor.getString(6));
             belanja_list.add(daftar);
         }
 

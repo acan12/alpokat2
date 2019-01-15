@@ -1,27 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "G:\\study\\Kerja\\Portofolio\\alpokat\\alpokat_retail\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-am/values-am.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-8.4.0.aar\\1b4c224ca390fdc81626e0aac6ae7b7c\\res\\values-am\\base_strings.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fd28dfa6c0ed0f826bb3f4320444a578/res/values-am/values-am.xml",
                     "from": {
-                        "startLines": "24,10,9,8,7,5,6,4,19,18,17,16,3,28,27,26,25,21,20,22,12,11,15,14,13,23,29,30",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3245,1247,1072,948,822,427,626,302,2560,2443,2288,2167,170,3877,3755,3605,3479,2839,2715,3051,1497,1372,1969,1834,1677,3156,4018,4105",
-                        "endColumns": "233,124,174,123,125,198,195,124,154,116,154,120,131,140,121,149,125,211,123,104,179,124,197,134,156,88,86,100",
-                        "endOffsets": "3474,1367,1242,1067,943,621,817,422,2710,2555,2438,2283,297,4013,3872,3750,3600,3046,2834,3151,1672,1492,2162,1964,1829,3240,4100,4201"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1803,2033,2158,2329,2453,2579,2774,2966,3091,3246,3363,3518,3639,3771,3912,4034,4184,4517,4725,4849,4954,5130,5255,5449,5584,5741,5830,5917",
-                        "endColumns": "229,124,170,123,125,194,191,124,154,116,154,120,131,140,121,149,125,207,123,104,175,124,193,134,156,88,86,100",
-                        "endOffsets": "2028,2153,2324,2448,2574,2769,2961,3086,3241,3358,3513,3634,3766,3907,4029,4179,4305,4720,4844,4949,5125,5250,5444,5579,5736,5825,5912,6013"
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "6097",
+                        "endColumns": "100",
+                        "endOffsets": "6193"
                     }
                 },
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\4093e27c0799f6f05be143e34c8d5cb2\\res\\values-am\\values-am.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/98ebf21a2eb3bbcc9af05c5326e77c2d/res/values-am/values-am.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-8.4.0.aar\\0198f912eabb0010041525a77b5d62f0\\res\\values-am\\common_strings.xml",
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-base-8.4.0.aar/d592218ece8891b482f5d70bba78f137/res/values-am/base_strings.xml",
+                    "from": {
+                        "startLines": "24,10,9,8,7,5,6,4,19,18,17,16,3,28,27,26,25,21,20,22,12,11,15,14,13,23,29,30",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3245,1247,1072,948,822,427,626,302,2560,2443,2288,2167,170,3877,3755,3605,3479,2839,2715,3051,1497,1372,1969,1834,1677,3156,4018,4105",
+                        "endColumns": "233,124,174,123,125,198,195,124,154,116,154,120,131,140,121,149,125,211,123,104,179,124,197,134,156,88,86,100",
+                        "endOffsets": "3474,1367,1242,1067,943,621,817,422,2710,2555,2438,2283,297,4013,3872,3750,3600,3046,2834,3151,1672,1492,2162,1964,1829,3240,4100,4201"
+                    },
+                    "to": {
+                        "startLines": "19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1803,2033,2158,2329,2453,2579,2774,2966,3091,3246,3363,3518,3639,3771,3912,4034,4184,4517,4725,4849,4954,5130,5255,5449,5584,5741,5830,5917",
+                        "endColumns": "229,124,170,123,125,194,191,124,154,116,154,120,131,140,121,149,125,207,123,104,175,124,193,134,156,88,86,100",
+                        "endOffsets": "2028,2153,2324,2448,2574,2769,2961,3086,3241,3358,3513,3634,3766,3907,4029,4179,4305,4720,4844,4949,5125,5250,5444,5579,5736,5825,5912,6013"
+                    }
+                },
+                {
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/play-services-basement-8.4.0.aar/729c3b2abf1141ff023eccaabc2bd8f5/res/values-am/common_strings.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
@@ -52,23 +69,6 @@
                         "startOffsets": "4310",
                         "endColumns": "206",
                         "endOffsets": "4512"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\onesi\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\5e16210de8aa3f8a0a0be0ffe3dc63df\\res\\values-am\\values-am.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "6097",
-                        "endColumns": "100",
-                        "endOffsets": "6193"
                     }
                 }
             ]

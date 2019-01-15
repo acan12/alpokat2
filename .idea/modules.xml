@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/alpokat_retail.iml" filepath="$PROJECT_DIR$/alpokat_retail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alpokat.iml" filepath="$PROJECT_DIR$/alpokat.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

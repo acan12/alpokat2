@@ -98,7 +98,7 @@ public class CariPelanggan extends AppCompatActivity {
         if (id == R.id.mn_singkron) {
             Toast.makeText(getApplicationContext(),"Sinkronkan data...", Toast.LENGTH_SHORT).show();
             LoadPelanggan();
-            Toast.makeText(getApplicationContext(),"Sinkronkan data selesai", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Sinkron data selesai", Toast.LENGTH_SHORT).show();
             return true;
         }
 

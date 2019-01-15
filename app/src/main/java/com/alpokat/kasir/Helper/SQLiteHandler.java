@@ -60,7 +60,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 				+ "harga_indo	TEXT,"
 				+ "last_update	TEXT,"
 				+ "favorit		TEXT DEFAULT '',"
-				+ "kategori		TEXT)";
+				+ "kategori		TEXT,"
+				+ "barcode 		TEXT)";
 		db.execSQL(CREATE_TABLE_4);
 		String CREATE_TABLE_5 = "CREATE TABLE transaksi ("
 				+ "id 			INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -127,7 +128,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 							  String harga_indo,
 							  String last_update,
 							  String favorit,
-							  String kategori)
+							  String kategori,
+							  String barcode)
 	{
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -139,6 +141,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 		values.put("last_update", last_update);
 		values.put("favorit", favorit);
 		values.put("kategori", kategori);
+		values.put("barcode", barcode);
+
 		db.delete("produk", "id_produk='" + id_produk+"'", null);
 		db.insert("produk", null, values);
 		db.close();
@@ -350,8 +354,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 		Cursor cursor = db.rawQuery(query,null);
 		while (cursor.moveToNext()){
 			HashMap<String,String> produk = new HashMap<>();
-			produk.put("barcode",cursor.getString(1));
+			produk.put("barcode",cursor.getString(9));
 			produk.put("description",cursor.getString(2));
+			produk.put("price_show",cursor.getString(4));
 			produk.put("price",cursor.getString(5));
 			productList.add(produk);
 		}

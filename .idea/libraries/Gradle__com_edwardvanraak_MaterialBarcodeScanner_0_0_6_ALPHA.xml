@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.edwardvanraak:MaterialBarcodeScanner-0.0.6-ALPHA">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/c946aeb2a75f601c399ce3b39f834f8f/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/fea5a95daf64e8076bb2b75620e70702/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/c946aeb2a75f601c399ce3b39f834f8f/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/c946aeb2a75f601c399ce3b39f834f8f/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/fea5a95daf64e8076bb2b75620e70702/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/fea5a95daf64e8076bb2b75620e70702/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

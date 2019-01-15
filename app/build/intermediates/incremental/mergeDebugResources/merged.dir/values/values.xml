@@ -2408,6 +2408,7 @@
     <string name="material_drawer_close">Close</string>
     <string name="material_drawer_open">Open</string>
     <string name="materialdrawer_lib_version" translatable="false">6.0.8</string>
+    <string name="my_keyboard">Alpokat Keyboard</string>
     <string name="no_camera_permission">Cannot start the barcode reader because the camera permission was not granted.</string>
     <string name="pass_retur">Masukkan Password Retur</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
@@ -2418,6 +2419,7 @@
     <string name="permission_camera_rationale">Access to the camera is needed for barcode detection.</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="sybtype_en_US">English (US)</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

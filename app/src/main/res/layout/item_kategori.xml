@@ -14,14 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Pestisida" />
+        android:text="kategori" />
 
     <TextView
         android:id="@+id/id_kategori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Pestisida"
+        android:text="kategori"
         android:visibility="gone" />
 
     <View

@@ -60,7 +60,7 @@
             android:label="Setting" />
         <activity
             android:name=".Activity.RefActivity"
-            android:label="Referensi" />
+            android:label="No HP/Telp Kasir" />
         <activity
             android:name=".Print.DeviceListActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog" />
@@ -77,8 +77,24 @@
         <activity
             android:name=".Activity.InputProduk"
             android:label="Input Produk" />
-        <activity android:name=".Activity.PenjualanBarcodeBluetooth" />
-        <activity android:name=".Activity.PembayaranBarcodeActivity"></activity>
+        <activity
+            android:name=".Activity.PenjualanBarcodeBluetooth"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".Activity.PembayaranBarcodeActivity" />
+
+
+        <service
+            android:name=".MyKeyboard"
+            android:label="@string/my_keyboard"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
+
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
