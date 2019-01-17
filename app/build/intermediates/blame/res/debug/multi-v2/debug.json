@@ -446,38 +446,6 @@
             ]
         },
         {
-            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/res/merged/debug/values-si_values-si.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/98ebf21a2eb3bbcc9af05c5326e77c2d/res/values-si/values-si.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,215,322,429,517,622,738,827,914,998,1107,1212,1310,1420,1519,1625,1784,1883",
-                        "endColumns": "109,106,106,87,104,115,88,86,83,108,104,97,109,98,105,158,98,81",
-                        "endOffsets": "210,317,424,512,617,733,822,909,993,1102,1207,1305,1415,1514,1620,1779,1878,1960"
-                    }
-                },
-                {
-                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fd28dfa6c0ed0f826bb3f4320444a578/res/values-si/values-si.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "1965",
-                        "endColumns": "100",
-                        "endOffsets": "2061"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/res/merged/debug/values-ka-rGE_values-ka-rGE.arsc.flat",
             "map": [
                 {
@@ -512,6 +480,38 @@
                         "startOffsets": "105,379,510,691,821,958,1173,1388,1524,1712,1836,2009,2130,2268,2440,2569,2743,3120,3400,3524,3634,3821,3951,4171,4307,4476,4571,4662",
                         "endColumns": "273,130,180,129,136,214,214,135,187,123,172,120,137,171,128,173,126,279,123,109,186,129,219,135,168,94,90,105",
                         "endOffsets": "374,505,686,816,953,1168,1383,1519,1707,1831,2004,2125,2263,2435,2564,2738,2865,3395,3519,3629,3816,3946,4166,4302,4471,4566,4657,4763"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/ary/myfolder/development/labs/mine/android/alpokat/app/build/intermediates/res/merged/debug/values-si_values-si.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/98ebf21a2eb3bbcc9af05c5326e77c2d/res/values-si/values-si.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,215,322,429,517,622,738,827,914,998,1107,1212,1310,1420,1519,1625,1784,1883",
+                        "endColumns": "109,106,106,87,104,115,88,86,83,108,104,97,109,98,105,158,98,81",
+                        "endOffsets": "210,317,424,512,617,733,822,909,993,1102,1207,1305,1415,1514,1620,1779,1878,1960"
+                    }
+                },
+                {
+                    "source": "/Users/ary/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fd28dfa6c0ed0f826bb3f4320444a578/res/values-si/values-si.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1965",
+                        "endColumns": "100",
+                        "endOffsets": "2061"
                     }
                 }
             ]

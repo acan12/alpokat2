@@ -62,6 +62,9 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
     private BelanjaAdapter adapter;
     private List<BelanjaModel> belanja_list;
     private RecyclerView recyclerView;
+    private ArrayList<HashMap<String, String>> listProduct;
+    private boolean isScannerActive = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,7 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         db = new SQLiteHandler(this);
-        final ArrayList<HashMap<String, String>> listProduct = db.GetProductForListView();
+        listProduct = db.GetProductForListView();
 
         listView = findViewById(R.id.ListView);
         total_belanja = findViewById(R.id.total_belanja);
@@ -108,7 +111,7 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
 
         PA = this;
 
-        viewProduct();
+        showProduct(listProduct);
         LoadTotalBelanja();
 
         belanja_list = new ArrayList<>();
@@ -127,6 +130,8 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (listProduct.get(i).values().size() == 0) return;
+
                 String id_product = listProduct.get(i).values().toArray()[0].toString();
                 String description = listProduct.get(i).values().toArray()[3].toString();
                 String price = listProduct.get(i).values().toArray()[1].toString();
@@ -197,10 +202,18 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
+
+            case R.id.item_scanner:
+                if (isScannerActive) item.setIcon(R.drawable.scanner_off);
+                else item.setIcon(R.drawable.scanner_on);
+                isScannerActive = !isScannerActive;
+
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) { // search fitur
@@ -213,7 +226,7 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 ArrayList<HashMap<String, String>> tempList = new ArrayList<>();
-                ArrayList<HashMap<String, String>> listProduct = db.GetProductForListView();
+                listProduct = db.searchProductByBarcode(s.toLowerCase());
 
                 for (HashMap<String, String> temp : listProduct) {
                     // prepare data from list to put
@@ -230,7 +243,7 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
                         addToChart(id_product, description, price);
 
                         Toast.makeText(PenjualanBarcodeBluetooth.this, "Product Added", Toast.LENGTH_SHORT).show();
-                        searchView.setQuery("", false); // reset search
+//                        searchView.setQuery("", false); // reset search
                         ListAdapter mAdapter = new SimpleAdapter(PenjualanBarcodeBluetooth.this, listProduct, R.layout.adapter_list_view_barcode, new String[]{"barcode", "description", "price", "price_show"}, new int[]{R.id.id_produk, R.id.nama_produk, R.id.harga_jual, R.id.harga_indo});
                         listView.setAdapter(mAdapter);
                     } else if (temp.get("description").toLowerCase().contains(s.toLowerCase()) || temp.get("barcode").toLowerCase().contains(s.toLowerCase())) {
@@ -249,7 +262,8 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
                 ArrayList<HashMap<String, String>> tempList = new ArrayList<>();
-                ArrayList<HashMap<String, String>> listProduct = db.GetProductForListView();
+//                ArrayList<HashMap<String, String>> listProduct = db.GetProductForListView();
+                listProduct = db.searchProductByBarcode(s.toLowerCase());
 
                 if (s.equals("")) { // reset list product
                     ListAdapter mAdapter = new SimpleAdapter(PenjualanBarcodeBluetooth.this, listProduct, R.layout.adapter_list_view_barcode, new String[]{"barcode", "description", "price", "price_show"}, new int[]{R.id.id_produk, R.id.nama_produk, R.id.harga_jual, R.id.harga_indo});
@@ -271,7 +285,7 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
                         addToChart(id_product, description, price);
 
                         Toast.makeText(PenjualanBarcodeBluetooth.this, "Product Added", Toast.LENGTH_SHORT).show();
-                        searchView.setQuery("", false); // reset search
+//                        searchView.setQuery("", false); // reset search
                         ListAdapter mAdapter = new SimpleAdapter(PenjualanBarcodeBluetooth.this, listProduct, R.layout.adapter_list_view_barcode, new String[]{"barcode", "description", "price", "price_show"}, new int[]{R.id.id_produk, R.id.nama_produk, R.id.harga_jual, R.id.harga_indo});
                         listView.setAdapter(mAdapter);
                     } else if (temp.get("description").toLowerCase().contains(s.toLowerCase()) || temp.get("barcode").toLowerCase().contains(s.toLowerCase())) {
@@ -304,8 +318,8 @@ public class PenjualanBarcodeBluetooth extends AppCompatActivity {
         finish();
     }
 
-    private void viewProduct() {
-        ArrayList<HashMap<String, String>> listProduct = db.GetProductForListView();
+    private void showProduct(ArrayList<HashMap<String, String>> listProduct) {
+//        ArrayList<HashMap<String, String>> listProduct = db.GetProductForListView();
         ListAdapter mAdapter = new SimpleAdapter(PenjualanBarcodeBluetooth.this, listProduct, R.layout.adapter_list_view_barcode, new String[]{"barcode", "description", "price", "price_show"}, new int[]{R.id.id_produk, R.id.nama_produk, R.id.harga_jual, R.id.harga_indo});
         listView.setAdapter(mAdapter);
     }
