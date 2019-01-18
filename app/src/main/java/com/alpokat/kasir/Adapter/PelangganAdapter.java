@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.Setting.AppConfig;
-import com.alpokat.kasir.Activity.DataPelanggan;
+import com.alpokat.kasir.Activity.DataPelangganActivity;
 import com.alpokat.kasir.Model.PelangganModel;
 import com.alpokat.kasir.R;
 import com.alpokat.kasir.Setting.AppController;
@@ -80,6 +81,7 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
 
         // Tag used to cancel the request
         String tag_string_req = "req_login";
+        HttpsTrustManager.allowAllSSL(mContext);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.HAPUS_PELANGGAN, new Response.Listener<String>() {
 
@@ -90,7 +92,7 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        DataPelanggan.DP.LoadPelanggan();
+                        DataPelangganActivity.DP.LoadPelanggan();
                     } else {
                         // Error in login. Get the error message
                         pesan("Error Boss");
@@ -150,7 +152,7 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
                 @Override
                 public void onClick(View v) {
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(DataPelanggan.DP);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(DataPelangganActivity.DP);
                     builder.setTitle("Peringatan");
                     builder.setMessage("Anda yakin menghapus belanja ini ?");
 
@@ -159,7 +161,7 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
                         public void onClick(DialogInterface dialog, int which) {
                             // Do nothing but resetCart the dialog
                             hapusPelanggan(id_pelanggan.getText().toString());
-                            DataPelanggan.DP.LoadPelanggan();
+                            DataPelangganActivity.DP.LoadPelanggan();
                             dialog.dismiss();
                         }
                     });

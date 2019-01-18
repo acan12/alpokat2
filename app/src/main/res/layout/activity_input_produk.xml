@@ -66,10 +66,9 @@
                             android:textStyle="bold" />
 
                         <ImageView
-                            android:id="@+id/btn_qr"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            app:srcCompat="@drawable/qr_icon" />
+                            app:srcCompat="@drawable/barcode" />
                     </LinearLayout>
 
                     <LinearLayout

@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         pelanggan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), DataPelanggan.class);
+                Intent i = new Intent(getApplicationContext(), DataPelangganActivity.class);
                 startActivity(i);
             }
         });
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = null;
                             if(drawerItem.getIdentifier() == 98){
                                 if(selisih > 0) {
-                                    intent = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
+                                    intent = new Intent(MainActivity.this, PenjualanBarcodeBluetoothActivity.class);
                                 }else{
                                     intent = null;
                                 }
@@ -264,22 +264,22 @@ public class MainActivity extends AppCompatActivity {
                             } else if (drawerItem.getIdentifier() == 1) {
 
                             } else if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(getApplicationContext(), DataPenjualan.class);
+                                intent = new Intent(MainActivity.this, DataPenjualan.class);
                             } else if (drawerItem.getIdentifier() == 3) {
-                                Toast.makeText(getApplicationContext(),"Sinkron data", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,"Sinkron data", Toast.LENGTH_SHORT).show();
                                 SingkronProduk();
                             }else if (drawerItem.getIdentifier() == 4) {
                                 if(selisih > 0) {
-                                    intent = new Intent(getApplicationContext(), PenjualanActivity.class);
+                                    intent = new Intent(MainActivity.this, PenjualanActivity.class);
                                 }else{
                                     intent = null;
                                 }
                             }else if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(getApplicationContext(), DataPelanggan.class);
+                                intent = new Intent(MainActivity.this, DataPelangganActivity.class);
                             }else if (drawerItem.getIdentifier() == 6) {
-                                intent = new Intent(getApplicationContext(), SettingActivity.class);
+                                intent = new Intent(MainActivity.this, SettingActivity.class);
                             }else if (drawerItem.getIdentifier() == 7) {
-                                intent = new Intent(getApplicationContext(), InputProduk.class);
+                                intent = new Intent(MainActivity.this, InputProduk.class);
                             }
                             if (intent != null) {
                                 MainActivity.this.startActivity(intent);

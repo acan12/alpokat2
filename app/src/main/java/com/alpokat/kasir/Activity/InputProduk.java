@@ -49,6 +49,7 @@ public class InputProduk extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_produk);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         result = findViewById(R.id.HasilBarcode);
         nama_produk = findViewById(R.id.NamaProduk);
 
@@ -62,13 +63,13 @@ public class InputProduk extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-        ImageView btn_barcode = findViewById(R.id.btn_qr);
-        btn_barcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startScan();
-            }
-        });
+//        ImageView btn_barcode = findViewById(R.id.btn_qr);
+//        btn_barcode.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startScan();
+//            }
+//        });
 
         if(savedInstanceState != null){
             Barcode restoredBarcode = savedInstanceState.getParcelable(BARCODE_KEY);
@@ -272,5 +273,10 @@ public class InputProduk extends AppCompatActivity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

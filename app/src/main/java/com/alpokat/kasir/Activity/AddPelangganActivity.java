@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddPelanggan extends AppCompatActivity {
+public class AddPelangganActivity extends AppCompatActivity {
 
     private EditText nama, hp, alamat;
     private ProgressDialog pDialog;
@@ -108,7 +108,7 @@ public class AddPelanggan extends AppCompatActivity {
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
                         pesan("Data pelanggan telah disimpan");
-                        DataPelanggan.DP.LoadPelanggan();
+                        DataPelangganActivity.DP.LoadPelanggan();
                         finish();
                     } else {
                         // Error in login. Get the error message

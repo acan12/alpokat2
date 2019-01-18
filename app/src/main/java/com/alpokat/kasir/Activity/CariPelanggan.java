@@ -61,7 +61,7 @@ public class CariPelanggan extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddPelanggan.class);
+                Intent i = new Intent(getApplicationContext(), AddPelangganActivity.class);
                 startActivity(i);
             }
         });

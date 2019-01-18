@@ -18,12 +18,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
+import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import com.alpokat.kasir.Adapter.PelangganAdapter;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.PelangganModel;
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.R;
@@ -40,9 +41,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DataPelanggan extends AppCompatActivity {
+public class DataPelangganActivity extends AppCompatActivity {
 
-    public static DataPelanggan DP;
+    public static DataPelangganActivity DP;
     private PelangganAdapter adapter;
     private List<PelangganModel> pelanggan_list;
     private String id_toko;
@@ -61,7 +62,7 @@ public class DataPelanggan extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddPelanggan.class);
+                Intent i = new Intent(getApplicationContext(), AddPelangganActivity.class);
                 startActivity(i);
             }
         });
@@ -72,9 +73,9 @@ public class DataPelanggan extends AppCompatActivity {
         adapter = new PelangganAdapter(getApplicationContext(), pelanggan_list);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(getApplicationContext(), 1);
+        RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager2);
-        recyclerView.addItemDecoration(new DataPelanggan.GridSpacingItemDecoration(1, dpToPx(), true));
+        recyclerView.addItemDecoration(new DataPelangganActivity.GridSpacingItemDecoration(1, dpToPx(), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
@@ -185,9 +186,7 @@ public class DataPelanggan extends AppCompatActivity {
 
     public void LoadPelanggan() {
 
-
-
-
+        HttpsTrustManager.allowAllSSL(this);
         // Creating volley request obj
         JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.LIST_PELANGGAN + id_toko,
                 new Response.Listener<JSONArray>() {

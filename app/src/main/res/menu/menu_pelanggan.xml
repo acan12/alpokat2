@@ -5,10 +5,11 @@
     <item
         android:id="@+id/menuSearch"
         android:orderInCategory="0"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/search_magnify"
         android:title="@string/cari_pelanggan"
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always" />
+
     <item
         android:id="@+id/mn_singkron"
         android:orderInCategory="1"
