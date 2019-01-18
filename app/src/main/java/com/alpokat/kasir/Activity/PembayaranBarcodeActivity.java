@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Print.DeviceListActivity;
@@ -44,7 +45,13 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PembayaranBarcodeActivity extends AppCompatActivity implements Runnable {
+
+    @BindView(R.id.bayar)
+    Button bayar;
 
     private float total;
     private TextView total_belanja;
@@ -55,11 +62,10 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
     private EditText pembayaran;
     private SqlHelper dbcenter;
     private Cursor cursor;
-    private Button bayar;
     private String id_kasir, id_toko, nama_kasir, nama_toko, alamat, hp, tanggal;
-    private String[] header,footer;
+    private String[] header, footer;
     private CheckBox cek_struk, copy_struk;
-    private TextView t1,t2,t3,t4,t5,t6,t7,t8,t9,t0,t000,hapus;
+    private TextView t1, t2, t3, t4, t5, t6, t7, t8, t9, t0, t000, hapus;
 
     private String[] id_produk;
     private String[] jumlah;
@@ -85,11 +91,14 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembayaran_barcode);
+
+        ButterKnife.bind(this);
+
         total_belanja = findViewById(R.id.total_belanja);
         jumlah_item = findViewById(R.id.jumlah_item);
         uang_kembali = findViewById(R.id.uang_kembali);
         pembayaran = findViewById(R.id.pembayaran);
-        bayar = findViewById(R.id.bayar);
+
         jumlah_bayar = findViewById(R.id.jumlah_bayar);
         LinearLayout layPelanggan = findViewById(R.id.LayPilPel);
         nama_pelanggan = findViewById(R.id.nama_pelanggan);
@@ -150,7 +159,6 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View view) {
 
 
-
                 dbcenter = new SqlHelper(getApplicationContext());
                 SQLiteDatabase dbp = dbcenter.getReadableDatabase();
                 cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
@@ -168,8 +176,7 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
                 char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
                 StringBuilder sb1 = new StringBuilder();
                 Random random1 = new Random();
-                for (int i = 0; i < 5; i++)
-                {
+                for (int i = 0; i < 5; i++) {
                     char c1 = chars1[random1.nextInt(chars1.length)];
                     sb1.append(c1);
                 }
@@ -188,12 +195,13 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
                     Log.e("Tag", "Exe ", e);
                 }
 
-                if(cek_struk.isChecked()) {
+                if (cek_struk.isChecked()) {
                     autoConnect();
-                }else{
+                } else {
+
+
                     ProsesBayar(Arrays.toString(id_produk), Arrays.toString(jumlah), faktur, tanggal);
                 }
-
 
 
             }
@@ -223,14 +231,14 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             @Override
             public void onClick(View v) {
 
-                if(cek_struk.isChecked()){
+                if (cek_struk.isChecked()) {
                     try {
                         mBluetoothSocket.close();
                     } catch (Exception e) {
                         Log.e("Tag", "Exe ", e);
                     }
 
-                }else{
+                } else {
                     try {
                         if (mBluetoothSocket != null)
                             mBluetoothSocket.close();
@@ -246,9 +254,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "1";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = "1";
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -261,9 +269,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "2";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -277,9 +285,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "3";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -293,9 +301,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "4";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -308,9 +316,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "5";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -323,9 +331,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "6";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -339,9 +347,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "7";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -354,9 +362,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "8";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -369,9 +377,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "9";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -384,9 +392,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "0";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = w;
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -399,9 +407,9 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
             public void onClick(View v) {
                 String x = jbayar;
                 String w = "000";
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = "0";
-                }else{
+                } else {
                     String y = x + w;
                     jbayar = y;
                 }
@@ -410,17 +418,16 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
         });
 
 
-
         hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String x = jbayar;
-                int j = x.length()-1;
+                int j = x.length() - 1;
 
-                if(x.equalsIgnoreCase("") || x.equalsIgnoreCase("0") ){
+                if (x.equalsIgnoreCase("") || x.equalsIgnoreCase("0")) {
                     jbayar = "0";
-                }else{
-                    String y = x.substring(0,j);
+                } else {
+                    String y = x.substring(0, j);
                     jbayar = y;
                 }
                 hitung();
@@ -430,7 +437,7 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
 
     }
 
-    private void autoConnect(){
+    private void autoConnect() {
 
         try {
             mBluetoothSocket = null;
@@ -518,7 +525,7 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
         SQLiteHandler db = new SQLiteHandler(getApplicationContext());
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
         finish();
-        Toast.makeText(getApplicationContext(),"Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
         PenjualanBarcodeBluetoothActivity.PA.resetCart();
         Intent i = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
         startActivity(i);
@@ -537,7 +544,7 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
                     String mDeviceAddress = mExtra.getString("DeviceAddress");
                     Log.v(TAG, "Coming incoming address " + mDeviceAddress);
                     mBluetoothDevice = mBluetoothAdapter.getRemoteDevice(mDeviceAddress);
-                    mBluetoothConnectProgressDialog = ProgressDialog.show(this, "Connecting...", mBluetoothDevice.getName() + " : "+ mBluetoothDevice.getAddress(), false, true);
+                    mBluetoothConnectProgressDialog = ProgressDialog.show(this, "Connecting...", mBluetoothDevice.getName() + " : " + mBluetoothDevice.getAddress(), false, true);
                     Thread mBlutoothConnectThread = new Thread(this);
                     mBlutoothConnectThread.start();
                     // pairToDevice(mBluetoothDevice); This method is replaced by
@@ -612,15 +619,15 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
     }
 
 
-    private void print(){
+    private void print() {
         Thread t = new Thread() {
             public void run() {
                 try {
                     OutputStream os = mBluetoothSocket.getOutputStream();
                     String BILL;
                     BILL = "";
-                    for(int i = 0; i < header.length; i++){
-                        BILL += "\n" +  StringUtils.center(header[i], 31);
+                    for (int i = 0; i < header.length; i++) {
+                        BILL += "\n" + StringUtils.center(header[i], 31);
                     }
                     BILL += "\n===============================";
 
@@ -631,13 +638,13 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
                     SimpleDateFormat jf = new SimpleDateFormat("HH:mm:ss");
                     String jam = jf.format(c);
 
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s","No Faktur",":",faktur);
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s","Tanggal",":",tanggal);
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s","Pukul",":",jam);
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s","Kasir",":",nama_kasir);
+                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "No Faktur", ":", faktur);
+                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Tanggal", ":", tanggal);
+                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pukul", ":", jam);
+                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Kasir", ":", nama_kasir);
 
-                    if(!id_pelanggan.equalsIgnoreCase("0")) {
-                        BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s","Pelanggan",":",nama_pelanggan.getText().toString());
+                    if (!id_pelanggan.equalsIgnoreCase("0")) {
+                        BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pelanggan", ":", nama_pelanggan.getText().toString());
                     }
 
 
@@ -661,17 +668,17 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
                         total = String.format("%,.0f", ttl);
 
                         BILL += "\n- " + nama + "\n";
-                        BILL += String.format("%1$-1s %2$-15s %3$13s","", jumlah + " x " + harga, total);
+                        BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
 
                     }
                     BILL += "\n-------------------------------";
-                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s","Total Belanja",": Rp.",total_belanja.getText());
-                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s","Jumlah Bayar",": Rp.",jumlah_bayar.getText());
-                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s","Uang Kembali",": Rp.",uang_kembali.getText());
+                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Total Belanja", ": Rp.", total_belanja.getText());
+                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Jumlah Bayar", ": Rp.", jumlah_bayar.getText());
+                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Uang Kembali", ": Rp.", uang_kembali.getText());
                     BILL += "\n\n";
 
-                    for(int i = 0; i < footer.length; i++){
-                        BILL += "\n" +  StringUtils.center(footer[i], 31);
+                    for (int i = 0; i < footer.length; i++) {
+                        BILL += "\n" + StringUtils.center(footer[i], 31);
                     }
 
                     BILL += "\n\n\n\n";
@@ -695,8 +702,6 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
                     os.write(intToByteArray(n_width));
 
 
-
-
                 } catch (Exception e) {
                     Log.e("MainActivity", "Exe ", e);
                 }
@@ -704,7 +709,7 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
         };
         t.start();
 
-        if(copy_struk.isChecked()) {
+        if (copy_struk.isChecked()) {
             Thread t2 = new Thread() {
                 public void run() {
                     try {
@@ -797,7 +802,7 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
 
     }
 
-    private void hitung(){
+    private void hitung() {
         if (jbayar.length() > 0) {
             double to, by, kb;
             by = Integer.valueOf(jbayar);
@@ -810,11 +815,13 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
 
                 uang_kembali.setText(String.format("%,.0f", kb));
                 bayar.setText("Bayar");
+                bayar.setEnabled(true);
                 bayar.setTextColor(Color.parseColor("#ffffff"));
                 bayar.setBackgroundResource(R.drawable.bg_bayar);
             } else {
                 uang_kembali.setText("0");
                 bayar.setText("Uang belum cukup");
+                bayar.setEnabled(false);
                 bayar.setTextColor(Color.parseColor("#309A42"));
                 bayar.setBackgroundResource(R.drawable.bg_outline);
             }
