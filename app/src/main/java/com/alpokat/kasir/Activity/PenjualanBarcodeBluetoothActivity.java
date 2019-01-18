@@ -147,9 +147,9 @@ public class PenjualanBarcodeBluetoothActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (listProduct.size() == 0 || listProduct.get(i).values().size() == 0) return;
 
-                String id_product = listProduct.get(i).values().toArray()[0].toString();
-                String description = listProduct.get(i).values().toArray()[3].toString();
-                String price = listProduct.get(i).values().toArray()[1].toString();
+                String id_product = listProduct.get(i).get("barcode");
+                String description = listProduct.get(i).get("description");
+                String price = listProduct.get(i).get("price");
 
                 addToChart(id_product, description, price);
             }
