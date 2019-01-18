@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alpokat.kasir.Helper.SqlHelper;
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -388,6 +389,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void SinExp() {
         String tag_string_req = "req_login";
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.ADD_REF, new Response.Listener<String>() {
 

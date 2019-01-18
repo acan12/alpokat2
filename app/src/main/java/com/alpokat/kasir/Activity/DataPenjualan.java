@@ -6,8 +6,8 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,12 +23,13 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Adapter.PenjualanAdapter;
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.PenjualanModel;
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.R;
+import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Setting.AppController;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -44,7 +45,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class DataPenjualan extends AppCompatActivity {
 
@@ -56,7 +56,7 @@ public class DataPenjualan extends AppCompatActivity {
     private FrameLayout dialog_retur;
 
 
-    private Button batal,retur;
+    private Button batal, retur;
     private RecyclerView recyclerView;
     private TextView txt_faktur;
     private EditText password;
@@ -119,7 +119,7 @@ public class DataPenjualan extends AppCompatActivity {
 
     }
 
-    public void no_retur(final String no){
+    public void no_retur(final String no) {
         txt_faktur.setText(no);
         dialog_retur.setVisibility(View.VISIBLE);
 
@@ -128,7 +128,7 @@ public class DataPenjualan extends AppCompatActivity {
         retur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReturPassword(xidtoko,password.getText().toString(), no);
+                ReturPassword(xidtoko, password.getText().toString(), no);
             }
         });
     }
@@ -140,6 +140,7 @@ public class DataPenjualan extends AppCompatActivity {
         pDialog.setMessage("Mengkonfirmasi password retur ...");
         showDialog();
 
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.KONFIRMASI_RETUR, new Response.Listener<String>() {
 
@@ -155,13 +156,13 @@ public class DataPenjualan extends AppCompatActivity {
                         db.ReturTransaksi(xfaktur);
                         dialog_retur.setVisibility(View.GONE);
                         TampilPenjualan();
-                        Toast.makeText(getApplicationContext(),"Penjualan berhasil diretur", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Penjualan berhasil diretur", Toast.LENGTH_SHORT).show();
                     } else {
                         // Error in login. Get the error message
-                        Toast.makeText(getApplicationContext(),"Maaf password retur salah !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Maaf password retur salah !", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(),"Maaf server tidak bisa diakses !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Maaf server tidak bisa diakses !", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -169,7 +170,7 @@ public class DataPenjualan extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.getMessage() + "zzzz", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage() + "zzzz", Toast.LENGTH_SHORT).show();
                 hideDialog();
             }
         }) {
@@ -178,7 +179,7 @@ public class DataPenjualan extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
-                params.put("id_toko",id_toko);
+                params.put("id_toko", id_toko);
                 params.put("pass_retur", pass_retur);
                 params.put("faktur", xfaktur);
                 return params;
@@ -235,8 +236,7 @@ public class DataPenjualan extends AppCompatActivity {
         cursor.moveToFirst();
 
 
-
-        for (int cc=0; cc < cursor.getCount(); cc++){
+        for (int cc = 0; cc < cursor.getCount(); cc++) {
             cursor.moveToPosition(cc);
             PenjualanModel daftar = new PenjualanModel();
             daftar.setNo_faktur(cursor.getString(6));
@@ -266,7 +266,7 @@ public class DataPenjualan extends AppCompatActivity {
 
                         }
 
-                        if(response.length() == 0){
+                        if (response.length() == 0) {
                             Toast.makeText(getApplicationContext(), "Faktur tidak ditemukan", Toast.LENGTH_LONG).show();
                         }
 

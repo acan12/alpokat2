@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SessionManager;
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.R;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Setting.AppController;
@@ -115,6 +116,7 @@ public class RefActivity extends AppCompatActivity {
         pDialog.setMessage("Menyimpan No HP/Telp Kasir ...");
         showDialog();
 
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.ADD_REF, new Response.Listener<String>() {
 

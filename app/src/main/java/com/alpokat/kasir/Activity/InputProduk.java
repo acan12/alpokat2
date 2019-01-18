@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alpokat.kasir.Helper.SQLiteHandler;
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.R;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Setting.AppController;
@@ -103,6 +104,7 @@ public class InputProduk extends AppCompatActivity {
         pDialog.setMessage("Sedang menyimpan data produk ...");
         showDialog();
 
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.SIMPAN_PRODUK, new Response.Listener<String>() {
 
@@ -160,6 +162,7 @@ public class InputProduk extends AppCompatActivity {
         pDialog.setMessage("Sedang mencari produk ...");
         showDialog();
 
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.CEK_PRODUK, new Response.Listener<String>() {
 

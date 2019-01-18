@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.alpokat.kasir.Helper.SQLiteHandler;
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.R;
 import com.alpokat.kasir.Setting.AppController;
@@ -106,6 +107,7 @@ public class SettingActivity extends AppCompatActivity {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.DATA_KASIR, new Response.Listener<String>() {
 
@@ -163,6 +165,7 @@ public class SettingActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang mengirim data ...");
         showDialog();
 
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.UPDATE_KASIR, new Response.Listener<String>() {
 
@@ -221,6 +224,7 @@ public class SettingActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang mengirim data ...");
         showDialog();
 
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.UPDATE_PASSWORD, new Response.Listener<String>() {
 
