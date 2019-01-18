@@ -1245,6 +1245,8 @@ drawable abc_vector_test
 drawable alpokat
 drawable avd_hide_password
 drawable avd_show_password
+drawable barcode_off
+drawable barcode_on
 drawable bg_bayar
 drawable bg_border
 drawable bg_jumlah
@@ -1357,8 +1359,6 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable pelanggan
 drawable qr_icon
-drawable scanner_off
-drawable scanner_on
 drawable setting
 drawable sudut_tumpul
 drawable sudut_tumpul_transparan

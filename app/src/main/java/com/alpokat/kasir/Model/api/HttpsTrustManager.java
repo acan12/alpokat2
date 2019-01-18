@@ -1,5 +1,11 @@
 package com.alpokat.kasir.Model.api;
 
+import android.content.Context;
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.security.ProviderInstaller;
+
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -44,7 +50,16 @@ public class HttpsTrustManager implements X509TrustManager {
         return _AcceptedIssuers;
     }
 
-    public static void allowAllSSL() {
+    private static void updateAndroidSecurityProvider(Context context) {
+        try {
+            ProviderInstaller.installIfNeeded(context);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public static void allowAllSSL(Context context) {
+//        updateAndroidSecurityProvider(context);
         HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
 
             @Override
@@ -54,22 +69,26 @@ public class HttpsTrustManager implements X509TrustManager {
 
         });
 
-        SSLContext context = null;
         if (trustManagers == null) {
             trustManagers = new TrustManager[]{new HttpsTrustManager()};
         }
 
         try {
-            context = SSLContext.getInstance("TLS");
-            context.init(null, trustManagers, new SecureRandom());
+            ProviderInstaller.installIfNeeded(context);
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, trustManagers, new SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (KeyManagementException e) {
             e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
         }
 
-        HttpsURLConnection.setDefaultSSLSocketFactory(context
-                .getSocketFactory());
+
     }
 
 }

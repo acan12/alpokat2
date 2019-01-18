@@ -9,9 +9,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,43 +19,20 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Adapter.BelanjaAdapter;
 import com.alpokat.kasir.Adapter.SlidingPenjualanAdapter;
-import com.alpokat.kasir.Fragment.BarangFragment;
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.BelanjaModel;
 import com.alpokat.kasir.R;
-import com.alpokat.kasir.Setting.AppController;
 import com.alpokat.kasir.Tab.SlidingTabLayout;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,9 +68,8 @@ public class PenjualanActivity extends AppCompatActivity {
         daftar_barang = findViewById(R.id.daftar_barang);
 
 
-
         int orientation = this.getResources().getConfiguration().orientation;
-        LinearLayout.LayoutParams param_belanja,param_barang;
+        LinearLayout.LayoutParams param_belanja, param_barang;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             param_belanja = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -105,7 +79,7 @@ public class PenjualanActivity extends AppCompatActivity {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     4.0f);
-        }else{
+        } else {
             param_belanja = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -131,7 +105,7 @@ public class PenjualanActivity extends AppCompatActivity {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
+                        // Do nothing but resetCart the dialog
                         SqlHelper dbcenter = new SqlHelper(PenjualanActivity.this);
                         SQLiteDatabase db = dbcenter.getWritableDatabase();
                         db.execSQL("DELETE FROM keranjang");
@@ -186,7 +160,7 @@ public class PenjualanActivity extends AppCompatActivity {
             }
         });
 
-        if(getSupportActionBar()!=null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setElevation(5);
         }
 
@@ -218,8 +192,7 @@ public class PenjualanActivity extends AppCompatActivity {
     }
 
 
-
-    public void tutup() {
+    public void resetCart() {
         SqlHelper dbcenter = new SqlHelper(getApplicationContext());
         SQLiteDatabase db = dbcenter.getWritableDatabase();
         db.execSQL("DELETE FROM keranjang");
@@ -228,28 +201,32 @@ public class PenjualanActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     public void LoadTotalBelanja() {
-        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-        @SuppressLint("Recycle")
-        Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-        int total = 0;
-        int jitem = 0;
-        if (cursor.getCount() > 0) {
-            for (int cc = 0; cc < cursor.getCount(); cc++) {
-                cursor.moveToPosition(cc);
-                total = total + Integer.valueOf(cursor.getString(6));
-                jitem = jitem + Integer.valueOf(cursor.getString(4));
+        try {
+            SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+            SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+            @SuppressLint("Recycle")
+            Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+            int total = 0;
+            int jitem = 0;
+            if (cursor.getCount() > 0) {
+                for (int cc = 0; cc < cursor.getCount(); cc++) {
+                    cursor.moveToPosition(cc);
+                    total = total + Integer.valueOf(cursor.getString(6));
+                    jitem = jitem + Integer.valueOf(cursor.getString(4));
+                }
             }
+
+            Locale localeID = new Locale("in", "ID");
+            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+            String x = formatRupiah.format(total);
+
+            total_belanja.setText(String.valueOf(x));
+            jumlah_item.setText(jitem + "");
+        } catch (Exception e) {
+            resetCart();
+            Log.e("Penjualan Barcode:", e.getMessage());
         }
-
-        Locale localeID = new Locale("in", "ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-        String x = formatRupiah.format(total);
-
-        total_belanja.setText(String.valueOf(x));
-        jumlah_item.setText(jitem + "");
     }
-
 
 
     public void LoadKeranjang() {
@@ -270,7 +247,7 @@ public class PenjualanActivity extends AppCompatActivity {
         }
 
         adapter.notifyDataSetChanged();
-        if(cursor.getCount()>1) {
+        if (cursor.getCount() > 1) {
             recyclerView.smoothScrollToPosition(cursor.getCount() - 1);
         }
     }

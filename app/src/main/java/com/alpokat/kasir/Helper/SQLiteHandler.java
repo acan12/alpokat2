@@ -347,7 +347,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 	}
 
 
-	public ArrayList<HashMap<String, String>> GetProductForListView(){
+	public ArrayList<HashMap<String, String>> getAllProduct(){
 		SQLiteDatabase db = this.getReadableDatabase();
 		ArrayList<HashMap<String, String>> productList = new ArrayList<>();
 		String query = "SELECT  * FROM produk WHERE nama_produk IS NOT NULL AND nama_produk != '' ORDER BY LOWER(nama_produk) ASC";
@@ -368,6 +368,22 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		ArrayList<HashMap<String, String>> productList = new ArrayList<>();
 		String query = "SELECT  * FROM produk WHERE nama_produk IS NOT NULL AND nama_produk != '' AND barcode == '"+barcode+"'ORDER BY LOWER(nama_produk) ASC";
+		Cursor cursor = db.rawQuery(query,null);
+		while (cursor.moveToNext()){
+			HashMap<String,String> produk = new HashMap<>();
+			produk.put("barcode",cursor.getString(9));
+			produk.put("description",cursor.getString(2));
+			produk.put("price_show",cursor.getString(4));
+			produk.put("price",cursor.getString(5));
+			productList.add(produk);
+		}
+		return  productList;
+	}
+
+	public ArrayList<HashMap<String, String>> searchProductByText(String input){
+		SQLiteDatabase db = this.getReadableDatabase();
+		ArrayList<HashMap<String, String>> productList = new ArrayList<>();
+		String query = "SELECT  * FROM produk WHERE nama_produk IS NOT NULL AND nama_produk != '' AND nama_produk LIKE '%"+input+"%' ORDER BY LOWER(nama_produk) ASC";
 		Cursor cursor = db.rawQuery(query,null);
 		while (cursor.moveToNext()){
 			HashMap<String,String> produk = new HashMap<>();

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 import com.alpokat.kasir.Activity.PenjualanActivity;
-import com.alpokat.kasir.Activity.PenjualanBarcodeBluetooth;
+import com.alpokat.kasir.Activity.PenjualanBarcodeBluetoothActivity;
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.BelanjaModel;
@@ -122,8 +122,8 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                         PenjualanActivity.PA.LoadTotalBelanja();
                         PenjualanActivity.PA.LoadKeranjang();
                     }catch (Exception e){
-                        PenjualanBarcodeBluetooth.PA.LoadTotalBelanja();
-                        PenjualanBarcodeBluetooth.PA.LoadKeranjang();
+                        PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
+                        PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
                     }
 
 
@@ -156,12 +156,12 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                             PenjualanActivity.PA.LoadTotalBelanja();
                             PenjualanActivity.PA.LoadKeranjang();
                         }catch (Exception e){
-                            PenjualanBarcodeBluetooth.PA.LoadTotalBelanja();
-                            PenjualanBarcodeBluetooth.PA.LoadKeranjang();
+                            PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
+                            PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
                         }
                     } else {
 
-                        // Do nothing but close the dialog
+                        // Do nothing but resetCart the dialog
                         SqlHelper dbcenter = new SqlHelper(mContext);
                         SQLiteDatabase db2 = dbcenter.getWritableDatabase();
                         db2.execSQL("DELETE FROM keranjang WHERE id_produk='" + id_produk.getText().toString() + "'");
@@ -169,8 +169,8 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                             PenjualanActivity.PA.LoadTotalBelanja();
                             PenjualanActivity.PA.LoadKeranjang();
                         }catch (Exception e){
-                            PenjualanBarcodeBluetooth.PA.LoadTotalBelanja();
-                            PenjualanBarcodeBluetooth.PA.LoadKeranjang();
+                            PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
+                            PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
                         }
 
                     }

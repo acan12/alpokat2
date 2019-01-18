@@ -9,11 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +19,6 @@ import android.support.v7.widget.Toolbar;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -40,28 +36,17 @@ import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Setting.AppController;
 import com.alpokat.kasir.R;
 import com.android.volley.toolbox.StringRequest;
-import com.anjlab.android.iab.v3.BillingProcessor;
-import com.anjlab.android.iab.v3.TransactionDetails;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.itemanimators.AlphaCrossFadeAnimator;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.holder.BadgeStyle;
-import com.mikepenz.materialdrawer.holder.StringHolder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.ExpandableBadgeDrawerItem;
-import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -270,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = null;
                             if(drawerItem.getIdentifier() == 98){
                                 if(selisih > 0) {
-                                    intent = new Intent(getApplicationContext(), PenjualanBarcodeBluetooth.class);
+                                    intent = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
                                 }else{
                                     intent = null;
                                 }

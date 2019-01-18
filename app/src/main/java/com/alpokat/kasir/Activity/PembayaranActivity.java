@@ -504,7 +504,7 @@ public class PembayaranActivity extends AppCompatActivity implements Runnable {
             }
         }
 
-        total_belanja.setText(String.format("%,.0f", total));
+        total_belanja.setText(String.format("%,.0l", total));
         jumlah_item.setText(jitem + "");
     }
 
@@ -520,12 +520,12 @@ public class PembayaranActivity extends AppCompatActivity implements Runnable {
         finish();
         Toast.makeText(getApplicationContext(),"Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
         try {
-            PenjualanActivity.PA.tutup();
+            PenjualanActivity.PA.resetCart();
             Intent i = new Intent(getApplicationContext(), PenjualanActivity.class);
             startActivity(i);
         }catch (Exception e){
-            PenjualanBarcodeBluetooth.PA.tutup();
-            Intent i = new Intent(getApplicationContext(), PenjualanBarcodeBluetooth.class);
+            PenjualanBarcodeBluetoothActivity.PA.resetCart();
+            Intent i = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
             startActivity(i);
         }
     }

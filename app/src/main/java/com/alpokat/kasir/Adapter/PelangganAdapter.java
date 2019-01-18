@@ -157,7 +157,7 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
                     builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int which) {
-                            // Do nothing but close the dialog
+                            // Do nothing but resetCart the dialog
                             hapusPelanggan(id_pelanggan.getText().toString());
                             DataPelanggan.DP.LoadPelanggan();
                             dialog.dismiss();

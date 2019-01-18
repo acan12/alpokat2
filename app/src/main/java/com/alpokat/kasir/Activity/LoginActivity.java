@@ -29,6 +29,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.security.ProviderInstaller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -169,6 +170,8 @@ public class LoginActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
+
+
     private void ProsesLogin(final String email, final String password) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
@@ -176,7 +179,7 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang Login ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL();
+        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.LOGIN, new Response.Listener<String>() {
 

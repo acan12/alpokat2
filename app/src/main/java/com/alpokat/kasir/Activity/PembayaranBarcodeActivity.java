@@ -46,7 +46,7 @@ import java.util.UUID;
 
 public class PembayaranBarcodeActivity extends AppCompatActivity implements Runnable {
 
-    private double total;
+    private float total;
     private TextView total_belanja;
     private TextView jumlah_item;
     private TextView uang_kembali;
@@ -499,7 +499,7 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
         if (cursor.getCount() > 0) {
             for (int cc = 0; cc < cursor.getCount(); cc++) {
                 cursor.moveToPosition(cc);
-                total = total + Integer.valueOf(cursor.getString(6));
+                total = total + Float.valueOf(cursor.getString(6));
                 jitem = jitem + Integer.valueOf(cursor.getString(4));
             }
         }
@@ -519,8 +519,8 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
         finish();
         Toast.makeText(getApplicationContext(),"Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
-        PenjualanBarcodeBluetooth.PA.tutup();
-        Intent i = new Intent(getApplicationContext(), PenjualanBarcodeBluetooth.class);
+        PenjualanBarcodeBluetoothActivity.PA.resetCart();
+        Intent i = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
         startActivity(i);
     }
 

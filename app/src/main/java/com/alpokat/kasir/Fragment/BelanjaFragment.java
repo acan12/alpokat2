@@ -82,7 +82,7 @@ public class BelanjaFragment extends Fragment {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
+                        // Do nothing but resetCart the dialog
                         SqlHelper dbcenter = new SqlHelper(v.getContext());
                         SQLiteDatabase db = dbcenter.getWritableDatabase();
                         db.execSQL("DELETE FROM keranjang");

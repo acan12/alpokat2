@@ -31,70 +31,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activity.MainActivity"
-            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar" />
-        <activity
-            android:name=".Activity.LoginActivity"
-            android:label="Login Form"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".Activity.PenjualanActivity"
-            android:label="Penjualan"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".Activity.PembayaranActivity"
-            android:label="Cash" />
-        <activity
-            android:name=".Activity.AddPelanggan"
-            android:label="Tambah Pelanggan" />
-        <activity
-            android:name=".Activity.DataPelanggan"
-            android:label="Data Pelanggan" />
-        <activity
-            android:name=".Activity.CariPelanggan"
-            android:label="Cari Pelanggan" />
-        <activity
-            android:name=".Activity.SettingActivity"
-            android:label="Setting" />
-        <activity
-            android:name=".Activity.RefActivity"
-            android:label="No HP/Telp Kasir" />
-        <activity
-            android:name=".Print.DeviceListActivity"
-            android:theme="@android:style/Theme.DeviceDefault.Dialog" />
-        <activity
-            android:name=".Activity.DataPenjualan"
-            android:label="Retur Produk" />
-
-        <service
-            android:name=".Activity.MyService"
-            android:enabled="true"
-            android:exported="true" />
-
+        <activity android:name=".Activity.MainActivity" android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar" />
+        <activity android:name=".Activity.LoginActivity" android:label="Login Form" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Activity.PenjualanActivity" android:label="Penjualan" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Activity.PembayaranActivity" android:label="Cash" />
+        <activity android:name=".Activity.AddPelanggan" android:label="Tambah Pelanggan" />
+        <activity android:name=".Activity.DataPelanggan" android:label="Data Pelanggan" />
+        <activity android:name=".Activity.CariPelanggan" android:label="Cari Pelanggan" />
+        <activity android:name=".Activity.SettingActivity" android:label="Setting" />
+        <activity android:name=".Activity.RefActivity" android:label="No HP/Telp Kasir" />
+        <activity android:name=".Print.DeviceListActivity" android:theme="@android:style/Theme.DeviceDefault.Dialog" />
+        <activity android:name=".Activity.DataPenjualan" android:label="Retur Produk" />
         <activity android:name=".Activity.Midtrans" />
-        <activity
-            android:name=".Activity.InputProduk"
-            android:label="Input Produk" />
-        <activity
-            android:name=".Activity.PenjualanBarcodeBluetooth"
-            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".Activity.InputProduk" android:label="Input Produk" />
+        <activity android:name=".Activity.PenjualanBarcodeBluetoothActivity" android:windowSoftInputMode="adjustNothing" android:isScrollContainer="false" />
         <activity android:name=".Activity.PembayaranBarcodeActivity" />
 
 
-        <service
-            android:name=".MyKeyboard"
-            android:label="@string/my_keyboard"
-            android:permission="android.permission.BIND_INPUT_METHOD">
-            <meta-data
-                android:name="android.view.im"
-                android:resource="@xml/method" />
+        <service android:name=".Activity.MyService" android:enabled="true" android:exported="true" />
+        <!--<service-->
+            <!--android:name=".MyKeyboard"-->
+            <!--android:label="@string/my_keyboard"-->
+            <!--android:permission="android.permission.BIND_INPUT_METHOD">-->
+            <!--<meta-data-->
+                <!--android:name="android.view.im"-->
+                <!--android:resource="@xml/method" />-->
 
-            <intent-filter>
-                <action android:name="android.view.InputMethod" />
-            </intent-filter>
-        </service>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.view.InputMethod" />-->
+            <!--</intent-filter>-->
+        <!--</service>-->
     </application>
 
 </manifest>
