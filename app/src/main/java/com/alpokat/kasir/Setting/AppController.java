@@ -1,6 +1,5 @@
 package com.alpokat.kasir.Setting;
 
-import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 
@@ -15,64 +14,64 @@ import app.beelabs.com.codebase.di.component.DaggerAppComponent;
 
 public class AppController extends BaseApp {
 
-	public static final String TAG = AppController.class.getSimpleName();
+    public static final String TAG = AppController.class.getSimpleName();
 
-	private RequestQueue mRequestQueue;
-	private ImageLoader mImageLoader;
-	private static Context context;
+    private RequestQueue mRequestQueue;
+    private ImageLoader mImageLoader;
+    private static Context context;
 
-	private static AppController mInstance;
+    private static AppController mInstance;
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		mInstance = this;
-		context = getApplicationContext();
-		setupBuilder(DaggerAppComponent.builder(), this);
-		// optional setup custom font path,
-		// make sure put font file under main/assets/fonts/
-		setupDefaultFont("fonts/OpenSans-Regular.ttf");
-	}
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mInstance = this;
+        context = getApplicationContext();
+        setupBuilder(DaggerAppComponent.builder(), this);
+        // optional setup custom font path,
+        // make sure put font file under main/assets/fonts/
+        setupDefaultFont("fonts/OpenSans-Regular.ttf");
+    }
 
-	public static AppComponent getAppComponent() {
-		if(context == null) return null;
-		return getComponent();
-	}
+    public static AppComponent getAppComponent() {
+        if (context == null) return null;
+        return getComponent();
+    }
 
-	public static synchronized AppController getInstance() {
-		return mInstance;
-	}
+    public static synchronized AppController getInstance() {
+        return mInstance;
+    }
 
-	public RequestQueue getRequestQueue() {
-		if (mRequestQueue == null) {
-			mRequestQueue = Volley.newRequestQueue(getApplicationContext());
-		}
+    public RequestQueue getRequestQueue() {
+        if (mRequestQueue == null) {
+            mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
 
-		return mRequestQueue;
-	}
+        return mRequestQueue;
+    }
 
-	public ImageLoader getImageLoader() {
-		getRequestQueue();
-		if (mImageLoader == null) {
-			mImageLoader = new ImageLoader(this.mRequestQueue,
-					new LruBitmapCache());
-		}
-		return this.mImageLoader;
-	}
+    public ImageLoader getImageLoader() {
+        getRequestQueue();
+        if (mImageLoader == null) {
+            mImageLoader = new ImageLoader(this.mRequestQueue,
+                    new LruBitmapCache());
+        }
+        return this.mImageLoader;
+    }
 
-	public <T> void addToRequestQueue(Request<T> req, String tag) {
-		req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
-		getRequestQueue().add(req);
-	}
+    public <T> void addToRequestQueue(Request<T> req, String tag) {
+        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
+        getRequestQueue().add(req);
+    }
 
-	public <T> void addToRequestQueue(Request<T> req) {
-		req.setTag(TAG);
-		getRequestQueue().add(req);
-	}
+    public <T> void addToRequestQueue(Request<T> req) {
+        req.setTag(TAG);
+        getRequestQueue().add(req);
+    }
 
-	public void cancelPendingRequests(Object tag) {
-		if (mRequestQueue != null) {
-			mRequestQueue.cancelAll(tag);
-		}
-	}
+    public void cancelPendingRequests(Object tag) {
+        if (mRequestQueue != null) {
+            mRequestQueue.cancelAll(tag);
+        }
+    }
 }

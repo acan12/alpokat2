@@ -49,10 +49,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import app.beelabs.com.codebase.base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PenjualanBarcodeBluetoothActivity extends AppCompatActivity {
+public class PenjualanBarcodeBluetoothActivity extends BaseActivity {
     @BindView(R.id.ListView)
     ListView listView;
     @BindView(R.id.total_belanja)
