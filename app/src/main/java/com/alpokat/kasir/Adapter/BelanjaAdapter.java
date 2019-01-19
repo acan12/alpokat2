@@ -58,14 +58,14 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
 
-        String hargax = formatRupiah.format(Double.parseDouble(obj.getHarga()));
-        String totalx = formatRupiah.format(Double.parseDouble(obj.getTotal()));
+        String harga = formatRupiah.format(Double.parseDouble(obj.getHarga()));
+        String total = formatRupiah.format(Double.parseDouble(obj.getTotal()));
 
         holder.id_produk.setText(obj.getId_produk());
         holder.nama_produk.setText(obj.getNama_produk());
-        holder.harga.setText(hargax);
+        holder.harga.setText(harga);
         holder.jumlah.setText(obj.getJumlah());
-        holder.total.setText(totalx);
+        holder.total.setText(total);
 
     }
 

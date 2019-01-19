@@ -65,8 +65,8 @@ public class PenjualanBarcodeBluetoothActivity extends AppCompatActivity {
     @BindView(R.id.selesai)
     ImageButton selesai;
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    @BindView(R.id.cart_list)
+    RecyclerView cartList;
 
     SQLiteHandler db;
 
@@ -131,10 +131,10 @@ public class PenjualanBarcodeBluetoothActivity extends AppCompatActivity {
         adapter = new BelanjaAdapter(getApplicationContext(), belanja_list);
 
         RecyclerView.LayoutManager mLayoutManager2 = new GridLayoutManager(getApplicationContext(), 1);
-        recyclerView.setLayoutManager(mLayoutManager2);
-        recyclerView.addItemDecoration(new PenjualanBarcodeBluetoothActivity.GridSpacingItemDecoration(1, dpToPx(), true));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
+        cartList.setLayoutManager(mLayoutManager2);
+        cartList.addItemDecoration(new PenjualanBarcodeBluetoothActivity.GridSpacingItemDecoration(1, dpToPx(), true));
+        cartList.setItemAnimator(new DefaultItemAnimator());
+        cartList.setAdapter(adapter);
 
         LoadKeranjang();
 

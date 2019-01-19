@@ -1,6 +1,7 @@
 package com.alpokat.kasir.Setting;
 
 import android.app.Application;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -8,12 +9,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-public class AppController extends Application {
+import app.beelabs.com.codebase.base.BaseApp;
+import app.beelabs.com.codebase.di.component.AppComponent;
+import app.beelabs.com.codebase.di.component.DaggerAppComponent;
+
+public class AppController extends BaseApp {
 
 	public static final String TAG = AppController.class.getSimpleName();
 
 	private RequestQueue mRequestQueue;
 	private ImageLoader mImageLoader;
+	private static Context context;
 
 	private static AppController mInstance;
 
@@ -21,6 +27,16 @@ public class AppController extends Application {
 	public void onCreate() {
 		super.onCreate();
 		mInstance = this;
+		context = getApplicationContext();
+		setupBuilder(DaggerAppComponent.builder(), this);
+		// optional setup custom font path,
+		// make sure put font file under main/assets/fonts/
+		setupDefaultFont("fonts/OpenSans-Regular.ttf");
+	}
+
+	public static AppComponent getAppComponent() {
+		if(context == null) return null;
+		return getComponent();
 	}
 
 	public static synchronized AppController getInstance() {
