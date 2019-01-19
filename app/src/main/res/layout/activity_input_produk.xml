@@ -61,7 +61,9 @@
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/membayang"
+                            android:maxLines="1"
                             android:padding="10dp"
+                            android:singleLine="true"
                             android:textSize="30sp"
                             android:textStyle="bold" />
 
