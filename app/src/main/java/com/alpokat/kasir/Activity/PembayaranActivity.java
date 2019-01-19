@@ -504,7 +504,7 @@ public class PembayaranActivity extends AppCompatActivity implements Runnable {
             }
         }
 
-        total_belanja.setText(String.format("%,.0l", total));
+        total_belanja.setText(String.format("%,.0f", total));
         jumlah_item.setText(jitem + "");
     }
 
