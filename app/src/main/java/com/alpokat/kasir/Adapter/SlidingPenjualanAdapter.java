@@ -14,6 +14,10 @@ import com.alpokat.kasir.Fragment.FavoritFragment;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.ProdukModel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 /**
  * Created by MacBookPro on 10/5/17.
@@ -33,11 +37,15 @@ public class SlidingPenjualanAdapter extends FragmentPagerAdapter {
         SQLiteDatabase db = dbcenter.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT DISTINCT kategori FROM produk ORDER BY kategori", null);
         cursor.moveToFirst();
-        kategori = new String[cursor.getCount()];
+
+        List<String> values = new ArrayList<>();
         for (int i = 0; i < cursor.getCount(); i++){
             cursor.moveToPosition(i);
-            kategori[i] = cursor.getString(0);
+            String value = cursor.getString(0);
+            if(value.equals("")) continue;
+            values.add(value);
         }
+        kategori = Arrays.copyOf(values.toArray(), values.size(), String[].class);
 
     }
 

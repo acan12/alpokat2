@@ -53,6 +53,7 @@ public class PenjualanActivity extends AppCompatActivity {
     private BelanjaAdapter adapter;
     private List<BelanjaModel> belanja_list;
     private RecyclerView recyclerView;
+    private SlidingTabLayout mSlidingTabLayout;
 
 
     @Override
@@ -169,12 +170,30 @@ public class PenjualanActivity extends AppCompatActivity {
 
         ViewPager mViewPager = findViewById(R.id.vp_tabs);
         mViewPager.setAdapter(new SlidingPenjualanAdapter(getSupportFragmentManager(), this));
-        SlidingTabLayout mSlidingTabLayout = findViewById(R.id.stl_tabs);
+        mSlidingTabLayout = findViewById(R.id.stl_tabs);
+
         mSlidingTabLayout.setDistributeEvenly(true);
         mSlidingTabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-        mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.black));
+        mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.color_yellow));
         mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
         mSlidingTabLayout.setViewPager(mViewPager);
+        mSlidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
 
         LoadTotalBelanja();
 
