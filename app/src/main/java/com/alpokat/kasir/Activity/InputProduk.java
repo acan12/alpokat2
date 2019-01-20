@@ -6,13 +6,11 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,8 +33,15 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class InputProduk extends AppCompatActivity {
+    @BindView(R.id.btn_qr)
+    ImageView btnQR;
+    @BindView(R.id.simpan)
+    Button simpan;
 
     public static final String BARCODE_KEY = "BARCODE";
     private Barcode barcodeResult;
@@ -49,6 +54,7 @@ public class InputProduk extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_produk);
+        ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         result = findViewById(R.id.HasilBarcode);
@@ -64,33 +70,32 @@ public class InputProduk extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-//        ImageView btn_barcode = findViewById(R.id.btn_qr);
-//        btn_barcode.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startScan();
-//            }
-//        });
+        btnQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startScan();
+            }
+        });
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             Barcode restoredBarcode = savedInstanceState.getParcelable(BARCODE_KEY);
-            if(restoredBarcode != null){
+            if (restoredBarcode != null) {
                 result.setText(restoredBarcode.rawValue);
                 barcodeResult = restoredBarcode;
 
             }
         }
 
-        Button simpan = findViewById(R.id.simpan);
+
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(result.getText().toString().equalsIgnoreCase("") ||
+                if (result.getText().toString().equalsIgnoreCase("") ||
                         nama_produk.getText().toString().equalsIgnoreCase("") ||
                         modal.getText().toString().equalsIgnoreCase("") ||
-                        jual.getText().toString().equalsIgnoreCase("")){
-                    Toast.makeText(getApplicationContext(),"Data belum lengkap !", Toast.LENGTH_SHORT).show();
-                }else {
+                        jual.getText().toString().equalsIgnoreCase("")) {
+                    Toast.makeText(getApplicationContext(), "Data belum lengkap !", Toast.LENGTH_SHORT).show();
+                } else {
                     simpanProduk();
                 }
             }
@@ -116,13 +121,13 @@ public class InputProduk extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        Toast.makeText(getApplicationContext(),  "Data Produk berhasil disimpan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Data Produk berhasil disimpan", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(),  "Data Produk gagal disimpan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Data Produk gagal disimpan", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),  e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 nama_produk.setText("");
@@ -132,7 +137,7 @@ public class InputProduk extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.getMessage() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 hideDialog();
             }
         }) {
@@ -183,11 +188,11 @@ public class InputProduk extends AppCompatActivity {
                         // Error in login. Get the error message
                         nama_produk.setText("Produk tidak ditemukan");
                         String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(),  errorMsg, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),  e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -195,7 +200,7 @@ public class InputProduk extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.getMessage() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 hideDialog();
             }
         }) {

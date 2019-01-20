@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -135,44 +136,48 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                 @Override
                 public void onClick(View view) {
 
-                    SQLiteHandler db = new SQLiteHandler(mContext);
-                    HashMap<String, Integer> hitung = db.HitungItemBelanja(id_produk.getText().toString());
-                    int m = hitung.get("harga_jual");
+                    try {
+                        SQLiteHandler db = new SQLiteHandler(mContext);
+                        HashMap<String, Integer> hitung = db.HitungItemBelanja(id_produk.getText().toString());
+                        int m = hitung.get("harga_jual");
 
 
-                    int x = Integer.valueOf(jumlah.getText().toString());
-                    if (x > 1) {
-                        int y = x - 1;
-                        jumlah.setText(y + "");
-                        int t = y * m;
+                        int x = Integer.valueOf(jumlah.getText().toString());
+                        if (x > 1) {
+                            int y = x - 1;
+                            jumlah.setText(y + "");
+                            int t = y * m;
 
-                        dbcenter = new SqlHelper(mContext);
-                        SQLiteDatabase db1 = dbcenter.getWritableDatabase();
-                        db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
-                                " total='" + t + "' " +
-                                " WHERE id_produk='" + id_produk.getText().toString() + "'");
+                            dbcenter = new SqlHelper(mContext);
+                            SQLiteDatabase db1 = dbcenter.getWritableDatabase();
+                            db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
+                                    " total='" + t + "' " +
+                                    " WHERE id_produk='" + id_produk.getText().toString() + "'");
 
-                        try {
-                            PenjualanActivity.PA.LoadTotalBelanja();
-                            PenjualanActivity.PA.LoadKeranjang();
-                        }catch (Exception e){
-                            PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
-                            PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
+                            try {
+                                PenjualanActivity.PA.LoadTotalBelanja();
+                                PenjualanActivity.PA.LoadKeranjang();
+                            } catch (Exception e) {
+                                PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
+                                PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
+                            }
+                        } else {
+
+                            // Do nothing but resetCart the dialog
+                            SqlHelper dbcenter = new SqlHelper(mContext);
+                            SQLiteDatabase db2 = dbcenter.getWritableDatabase();
+                            db2.execSQL("DELETE FROM keranjang WHERE id_produk='" + id_produk.getText().toString() + "'");
+                            try {
+                                PenjualanActivity.PA.LoadTotalBelanja();
+                                PenjualanActivity.PA.LoadKeranjang();
+                            } catch (Exception e) {
+                                PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
+                                PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
+                            }
+
                         }
-                    } else {
-
-                        // Do nothing but resetCart the dialog
-                        SqlHelper dbcenter = new SqlHelper(mContext);
-                        SQLiteDatabase db2 = dbcenter.getWritableDatabase();
-                        db2.execSQL("DELETE FROM keranjang WHERE id_produk='" + id_produk.getText().toString() + "'");
-                        try {
-                            PenjualanActivity.PA.LoadTotalBelanja();
-                            PenjualanActivity.PA.LoadKeranjang();
-                        }catch (Exception e){
-                            PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
-                            PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
-                        }
-
+                    }catch (Exception e){
+                        Log.e("ERROR", "error");
                     }
 
                 }
