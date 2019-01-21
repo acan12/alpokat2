@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -40,8 +41,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PenjualanActivity extends AppCompatActivity {
 
+    @BindView(R.id.stl_tabs)
+    TabLayout stlTabs;
     @SuppressLint("StaticFieldLeak")
     public static PenjualanActivity PA;
     private TextView total_belanja, jumlah_item;
@@ -53,13 +59,14 @@ public class PenjualanActivity extends AppCompatActivity {
     private BelanjaAdapter adapter;
     private List<BelanjaModel> belanja_list;
     private RecyclerView recyclerView;
-    private SlidingTabLayout mSlidingTabLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penjualan_lanscape);
+
+        ButterKnife.bind(this);
 
         total_belanja = findViewById(R.id.total_belanja);
         jumlah_item = findViewById(R.id.jumlah_item);
@@ -170,29 +177,30 @@ public class PenjualanActivity extends AppCompatActivity {
 
         ViewPager mViewPager = findViewById(R.id.vp_tabs);
         mViewPager.setAdapter(new SlidingPenjualanAdapter(getSupportFragmentManager(), this));
-        mSlidingTabLayout = findViewById(R.id.stl_tabs);
+        mViewPager.setClipToPadding(false);
 
-        mSlidingTabLayout.setDistributeEvenly(true);
-        mSlidingTabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-        mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.color_yellow));
-        mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
-        mSlidingTabLayout.setViewPager(mViewPager);
-        mSlidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        stlTabs.setupWithViewPager(mViewPager);
 
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+//        mSlidingTabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+//        mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.color_yellow));
+//        mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
+//        mSlidingTabLayout.setViewPager(mViewPager);
+//        mSlidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
 
 
         LoadTotalBelanja();

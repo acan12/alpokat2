@@ -7,4 +7,5 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="toolbarStyle" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar" />
+
 </resources>
