@@ -245,8 +245,6 @@ public class MyService extends Service {
                     if (!error) {
                         SQLiteHandler db1 = new SQLiteHandler(getApplicationContext());
                         db1.HapusTransaksi();
-                    } else {
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
