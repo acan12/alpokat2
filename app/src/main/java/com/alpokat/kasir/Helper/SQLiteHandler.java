@@ -354,6 +354,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 		Cursor cursor = db.rawQuery(query,null);
 		while (cursor.moveToNext()){
 			HashMap<String,String> produk = new HashMap<>();
+			produk.put("id_product", cursor.getString(1));
 			produk.put("barcode",cursor.getString(9));
 			produk.put("description",cursor.getString(2));
 			produk.put("price_show",cursor.getString(4));

@@ -583,6 +583,7 @@ public class MainActivity extends AppActivity {
         showDialog();
 
         // Creating volley request obj
+        HttpsTrustManager.allowAllSSL(this);
         JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.LIST_PRODUK + id_toko,
                 new Response.Listener<JSONArray>() {
 

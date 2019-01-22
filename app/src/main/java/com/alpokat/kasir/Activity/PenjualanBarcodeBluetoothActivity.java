@@ -145,7 +145,7 @@ public class PenjualanBarcodeBluetoothActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (listProduct.size() == 0 || listProduct.get(i).values().size() == 0) return;
 
-                String id_product = listProduct.get(i).get("barcode");
+                String id_product = listProduct.get(i).get("id_product");
                 String description = listProduct.get(i).get("description");
                 String price = listProduct.get(i).get("price");
 
@@ -270,7 +270,7 @@ public class PenjualanBarcodeBluetoothActivity extends BaseActivity {
                     produk.put("price", temp.get("price"));
 
                     if (temp.get("description").toLowerCase().equals(s.toLowerCase()) || temp.get("barcode").toLowerCase().equals(s.toLowerCase())) {
-                        String id_product = temp.get("barcode");
+                        String id_product = temp.get("id_product");
                         String description = temp.get("description");
                         String price = temp.get("price");
                         String price_show = temp.get("price_show");
