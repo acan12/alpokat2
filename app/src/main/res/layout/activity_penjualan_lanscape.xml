@@ -165,6 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
+                android:background="@color/colorPrimaryDark"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                 app:tabBackground="@color/colorPrimaryDark"
                 app:tabIndicatorColor="@color/color_yellow"

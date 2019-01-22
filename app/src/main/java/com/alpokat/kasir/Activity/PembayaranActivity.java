@@ -45,7 +45,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
-public class PembayaranActivity extends AppCompatActivity implements Runnable {
+public class PembayaranActivity extends AppActivity implements Runnable {
 
     private double total;
     private TextView total_belanja;
@@ -516,6 +516,13 @@ public class PembayaranActivity extends AppCompatActivity implements Runnable {
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
         finish();
         Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
+
+        boolean s = isMyServiceRunning(MyService.class);
+        if(!s){
+            Intent intent = new Intent(getApplicationContext(),MyService.class);
+            startService(intent);
+        }
+
         try {
             PenjualanActivity.PA.resetCart();
             Intent i = new Intent(getApplicationContext(), PenjualanActivity.class);

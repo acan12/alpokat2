@@ -48,7 +48,7 @@ import java.util.UUID;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PembayaranBarcodeActivity extends AppCompatActivity implements Runnable {
+public class PembayaranBarcodeActivity extends AppActivity implements Runnable {
 
     @BindView(R.id.bayar)
     Button bayar;
@@ -526,6 +526,13 @@ public class PembayaranBarcodeActivity extends AppCompatActivity implements Runn
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
         finish();
         Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
+
+        boolean s = isMyServiceRunning(MyService.class);
+        if(!s){
+            Intent intent = new Intent(getApplicationContext(),MyService.class);
+            startService(intent);
+        }
+
         PenjualanBarcodeBluetoothActivity.PA.resetCart();
         Intent i = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
         startActivity(i);

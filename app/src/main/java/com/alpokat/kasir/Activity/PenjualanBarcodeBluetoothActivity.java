@@ -96,6 +96,7 @@ public class PenjualanBarcodeBluetoothActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+
         db = new SQLiteHandler(this);
         listProduct = db.getAllProduct();
         belanja_list = new ArrayList<>();

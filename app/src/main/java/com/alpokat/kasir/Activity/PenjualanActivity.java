@@ -181,28 +181,6 @@ public class PenjualanActivity extends AppCompatActivity {
 
         stlTabs.setupWithViewPager(mViewPager);
 
-//        mSlidingTabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-//        mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.color_yellow));
-//        mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
-//        mSlidingTabLayout.setViewPager(mViewPager);
-//        mSlidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
-
-
         LoadTotalBelanja();
 
         belanja_list = new ArrayList<>();
