@@ -11,6 +11,8 @@ import com.android.volley.toolbox.Volley;
 import app.beelabs.com.codebase.base.BaseApp;
 import app.beelabs.com.codebase.di.component.AppComponent;
 import app.beelabs.com.codebase.di.component.DaggerAppComponent;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class AppController extends BaseApp {
 
@@ -25,6 +27,7 @@ public class AppController extends BaseApp {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         mInstance = this;
         context = getApplicationContext();
         setupBuilder(DaggerAppComponent.builder(), this);

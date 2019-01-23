@@ -62,6 +62,9 @@
                 <!--<action android:name="android.view.InputMethod" />-->
             <!--</intent-filter>-->
         <!--</service>-->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="3fe0571ed0dae567857bad9f16a5046204fd005e" />
     </application>
 
 </manifest>
