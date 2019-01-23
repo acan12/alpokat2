@@ -14,7 +14,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -528,8 +527,8 @@ public class PembayaranBarcodeActivity extends AppActivity implements Runnable {
         Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
 
         boolean s = isMyServiceRunning(MyService.class);
-        if(!s){
-            Intent intent = new Intent(getApplicationContext(),MyService.class);
+        if (!s) {
+            Intent intent = new Intent(getApplicationContext(), MyService.class);
             startService(intent);
         }
 
@@ -812,7 +811,7 @@ public class PembayaranBarcodeActivity extends AppActivity implements Runnable {
     private void hitung() {
         if (jbayar.length() > 0) {
             double to, by, kb;
-            by = Integer.valueOf(jbayar);
+            by = Double.valueOf(jbayar);
             jumlah_bayar.setText(String.format("%,.0f", by));
 
             int y = Integer.valueOf(jbayar);
