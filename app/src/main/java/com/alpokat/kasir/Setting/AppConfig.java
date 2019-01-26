@@ -20,7 +20,7 @@ public class AppConfig {
     public static String KONFIRMASI_RETUR       = SERVER + "retur_password.php";
     public static String DEVID                  = SERVER + "devid.php";
     public static String ADD_REF                = SERVER + "add_ref.php";
-    public static String URL_FAKTUR             = SERVER + "list_faktur.php?id_toko=";
+    public static String FAKTUR                 = SERVER + "list_faktur.php?id_toko=";
     public static String LISENSI                = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyHBsY0XQ85WL5HfuI/N9rbnZgp3Sm8prtAtXA133mQqRyOpn+bJ2O33gTLxAdn3qpbyjnPenRojjGeVzj0DkAtDpGd/XFKODaDPRZBkP32LDSAFKoopBAyY1WClLVQYgIOodEq/+2x7uafdtfzYzlY21WBzGqYlQ4jruG2RpP3eJtfZUtrsCHiBmOBlbpQvNaD1sAudHvjW57cYOBh/ifXBPLQ+V2NsJmHKQCO6Lt3+Bc+g86m8192dfEwFwH3COepQuSeDDLvRVz36a2IGvoHXRDmDuBPQhUthudDKveWbgEKolGTo5TXODudspEZCvAzdJVJv/fSLJVSI93Q6b2QIDAQAB";
     public static String CEK_PRODUK             = SERVER + "cek_produk.php";
     public static String SIMPAN_PRODUK          = SERVER + "add_produk.php";

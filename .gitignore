@@ -3,6 +3,7 @@
 /app/releases/
 /app/build/
 /local.properties
+/.idea/
 /.idea/caches
 /.idea/workspace.xml
 /.idea/libraries

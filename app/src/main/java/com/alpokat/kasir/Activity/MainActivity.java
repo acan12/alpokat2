@@ -25,8 +25,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alpokat.kasir.Dialog.TransactionReportTodayDialog;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.api.HttpsTrustManager;
+import com.alpokat.kasir.Model.api.TransaksiModel;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -66,6 +68,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -294,8 +297,6 @@ public class MainActivity extends AppActivity {
                 .build();
 
     }
-
-
 
     private void tampilText(){
         HashMap<String, String> ref = db.BacaRef();

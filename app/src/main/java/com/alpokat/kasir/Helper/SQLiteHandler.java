@@ -10,6 +10,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
 
@@ -338,12 +339,20 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Cursor getProduct() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT  * FROM produk ORDER BY last_update DESC";
-        Cursor cursor = db.rawQuery(query, null);
-        return cursor;
-    }
+//    public List<HashMap<String, String>> simpanTransaksi(int idToko, String tanggal) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("faktur", id_pelanggan);
+//        values.put("id_toko", nama);
+//        values.put("jumlah", hp);
+//        values.put("alamat", alamat);
+//        values.put("poin", poin);
+//        db.delete("pelanggan", "id_pelanggan='" + id_pelanggan + "'", null);
+//        db.insert("pelanggan", null, values);
+//        db.close();
+//
+//        return fakturList;
+//    }
 
 
     public ArrayList<HashMap<String, String>> getAllProduct() {

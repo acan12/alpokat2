@@ -37,9 +37,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alpokat.kasir.Adapter.BelanjaAdapter;
+import com.alpokat.kasir.Dialog.TransactionReportTodayDialog;
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.BelanjaModel;
+import com.alpokat.kasir.Model.api.TransaksiModel;
 import com.alpokat.kasir.R;
 import com.alpokat.kasir.support.UiUtil;
 
@@ -53,7 +55,7 @@ import app.beelabs.com.codebase.base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PenjualanBarcodeBluetoothActivity extends BaseActivity {
+public class PenjualanBarcodeBluetoothActivity extends AppActivity {
     @BindView(R.id.ListView)
     ListView listView;
     @BindView(R.id.total_belanja)
@@ -203,11 +205,25 @@ public class PenjualanBarcodeBluetoothActivity extends BaseActivity {
     }
 
     @Override
+    protected void getFakturTokoToday(List<TransaksiModel> models) {
+        Log.e("DEBUG", "");
+        TransactionReportTodayDialog dialog = new TransactionReportTodayDialog(this, R.style.CoconutDialogFullScreen);
+        dialog.show();
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
+
+            case R.id.item_report:
+
+                callFakturPenjualanToko(40);
+                return true;
+
 
             case R.id.item_scanner:
                 if (isBarcodeOff) {
