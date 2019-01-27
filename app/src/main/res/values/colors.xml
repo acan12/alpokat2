@@ -14,6 +14,7 @@
     <color name="putih_50">#99FFFFFF</color>
 
     <color name="colorCoconut_background_dialog">#CC000000</color>
+    <color name="colorCoconut_text_dialog">#fff</color>
 
     <color name="color_blue">#072367</color>
     <color name="color_yellow">#f8cf2d</color>

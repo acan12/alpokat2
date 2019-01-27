@@ -207,14 +207,7 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
         pDialog.setCancelable(false);
     }
 
-    @Override
-    protected void getFakturTokoToday(List<TransaksiModel> dataTransaksi) {
-        if (loadingDialog != null) loadingDialog.dismiss();
-        Log.e("DEBUG", "");
-        dialogReport = new TransactionReportTodayDialog(dataTransaksi, this, R.style.CoconutDialogFullScreen);
-        dialogReport.show();
 
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -222,14 +215,6 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
-            case R.id.item_report:
-                loadingDialog = new LoadingDialogComponent("Show Laporan", this, R.style.CoconutDialogFullScreen);
-                loadingDialog.show();
-                int idToko = CacheUtil.getPreferenceInteger(AppConfig.IDTOKO_KEY, this);
-                callFakturPenjualanToko(idToko);
-                return true;
-
 
             case R.id.item_scanner:
                 if (isBarcodeOff) {

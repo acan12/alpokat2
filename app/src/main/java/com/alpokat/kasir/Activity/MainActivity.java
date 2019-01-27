@@ -23,10 +23,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alpokat.kasir.Dialog.TransactionReportTodayDialog;
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SessionManager;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.api.HttpsTrustManager;
+import com.alpokat.kasir.Model.api.TransaksiModel;
 import com.alpokat.kasir.R;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Setting.AppController;
@@ -64,40 +66,49 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import app.beelabs.com.codebase.component.LoadingDialogComponent;
 import app.beelabs.com.codebase.support.util.CacheUtil;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppActivity {
+
+    @BindView(R.id.penjualan)
+    RelativeLayout penjualan;
 
     private SessionManager session;
     private SQLiteHandler db;
     private ProgressDialog pDialog;
     private String id_toko, nama_t, nama_k;
     private TextView trial;
-    private RelativeLayout penjualan;
     AlertDialog alertDialog1;
-    CharSequence[] values = {" 1 Bulan "," 3 Bulan "," 6 Bulan ", " 12 Bulan "};
+    CharSequence[] values = {" 1 Bulan ", " 3 Bulan ", " 6 Bulan ", " 12 Bulan "};
     private long selisih;
     private int add;
-    private String exp,devid,sinkron;
+    private String exp, devid, sinkron;
     private String id_kasir;
     private String lx;
     private String mode;
-    private String dev_id,url;
+    private String dev_id, url;
     private String order_id;
 
     private static final int PROFILE_SETTING = 100000;
     private AccountHeader headerResult = null;
     private Drawer result = null;
+    private LoadingDialogComponent loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
 
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
@@ -107,13 +118,11 @@ public class MainActivity extends AppActivity {
                 Manifest.permission.READ_PHONE_STATE
         };
 
-        if(!hasPermissions(this, PERMISSIONS)){
+        if (!hasPermissions(this, PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
 
 
-
-        penjualan = findViewById(R.id.penjualan);
         RelativeLayout pelanggan = findViewById(R.id.pelanggan);
         RelativeLayout setting = findViewById(R.id.setting);
         RelativeLayout logout = findViewById(R.id.logout);
@@ -122,8 +131,8 @@ public class MainActivity extends AppActivity {
         trial = findViewById(R.id.trial);
 
         boolean s = isMyServiceRunning(MyService.class);
-        if(!s){
-            Intent intent = new Intent(getApplicationContext(),MyService.class);
+        if (!s) {
+            Intent intent = new Intent(getApplicationContext(), MyService.class);
             startService(intent);
         }
 
@@ -144,9 +153,6 @@ public class MainActivity extends AppActivity {
         id_toko = p.get("id_toko");
         id_kasir = p.get("id_kasir");
 
-        CacheUtil.putPreferenceInteger(AppConfig.IDTOKO_KEY, Integer.valueOf(id_toko), this);
-
-
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String sekarang = dateFormat.format(date);
@@ -160,9 +166,9 @@ public class MainActivity extends AppActivity {
         sinkron = ref.get("sinkron");
         try {
             tglAwal = dateFormat.parse(sekarang);
-            if(exp == null){
+            if (exp == null) {
                 tglAkhir = dateFormat.parse(sekarang);
-            }else{
+            } else {
                 tglAkhir = dateFormat.parse(exp);
             }
             System.out.println(tglAkhir);
@@ -177,12 +183,11 @@ public class MainActivity extends AppActivity {
         tampilText();
 
 
-        if(p.isEmpty()){
+        if (p.isEmpty()) {
             session.setLogin(false);
             Intent i = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(i);
         }
-
 
 
         pelanggan.setOnClickListener(new View.OnClickListener() {
@@ -255,32 +260,32 @@ public class MainActivity extends AppActivity {
 
                         if (drawerItem != null) {
                             Intent intent = null;
-                            if(drawerItem.getIdentifier() == 98){
-                                if(selisih > 0) {
+                            if (drawerItem.getIdentifier() == 98) {
+                                if (selisih > 0) {
                                     intent = new Intent(MainActivity.this, PenjualanBarcodeBluetoothActivity.class);
-                                }else{
+                                } else {
                                     intent = null;
                                 }
-                            }else if (drawerItem.getIdentifier() == 99) {
+                            } else if (drawerItem.getIdentifier() == 99) {
                                 logoutUser();
                             } else if (drawerItem.getIdentifier() == 1) {
 
                             } else if (drawerItem.getIdentifier() == 2) {
                                 intent = new Intent(MainActivity.this, DataPenjualan.class);
                             } else if (drawerItem.getIdentifier() == 3) {
-                                Toast.makeText(MainActivity.this,"Sinkron data", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Sinkron data", Toast.LENGTH_SHORT).show();
                                 SingkronProduk();
-                            }else if (drawerItem.getIdentifier() == 4) {
-                                if(selisih > 0) {
+                            } else if (drawerItem.getIdentifier() == 4) {
+                                if (selisih > 0) {
                                     intent = new Intent(MainActivity.this, PenjualanActivity.class);
-                                }else{
+                                } else {
                                     intent = null;
                                 }
-                            }else if (drawerItem.getIdentifier() == 5) {
+                            } else if (drawerItem.getIdentifier() == 5) {
                                 intent = new Intent(MainActivity.this, DataPelangganActivity.class);
-                            }else if (drawerItem.getIdentifier() == 6) {
+                            } else if (drawerItem.getIdentifier() == 6) {
                                 intent = new Intent(MainActivity.this, SettingActivity.class);
-                            }else if (drawerItem.getIdentifier() == 7) {
+                            } else if (drawerItem.getIdentifier() == 7) {
                                 intent = new Intent(MainActivity.this, InputProduk.class);
                             }
                             if (intent != null) {
@@ -296,7 +301,7 @@ public class MainActivity extends AppActivity {
 
     }
 
-    private void tampilText(){
+    private void tampilText() {
         HashMap<String, String> ref = db.BacaRef();
         exp = ref.get("exp");
         mode = ref.get("mode");
@@ -304,8 +309,8 @@ public class MainActivity extends AppActivity {
         sinkron = ref.get("sinkron");
 
         String teks = "";
-        if(mode != null && mode.equalsIgnoreCase("trial")){
-            if(selisih < 1){
+        if (mode != null && mode.equalsIgnoreCase("trial")) {
+            if (selisih < 1) {
                 teks = "Free trial telah habis\nKlik untuk langganan";
 
                 penjualan.setOnClickListener(new View.OnClickListener() {
@@ -333,13 +338,13 @@ public class MainActivity extends AppActivity {
                     }
                 });
 
-            }else{
+            } else {
                 teks = "Free trial tinggal " + selisih + " hari\nKlik untuk langganan";
                 transaksi();
             }
             trial.setVisibility(View.VISIBLE);
-        }else{
-            if(selisih < 0){
+        } else {
+            if (selisih < 0) {
                 teks = "Masa berlangganan habis\nKlik untuk langganan";
                 penjualan.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -366,10 +371,10 @@ public class MainActivity extends AppActivity {
                     }
                 });
 
-            }else if(selisih > 0 && selisih < 4){
+            } else if (selisih > 0 && selisih < 4) {
                 teks = "Masa berlangganan\ntinggal " + selisih + " hari lagi\nKlik untuk memperpanjang";
                 transaksi();
-            }else if(selisih > 3){
+            } else if (selisih > 3) {
                 trial.setVisibility(View.GONE);
                 transaksi();
             }
@@ -378,10 +383,20 @@ public class MainActivity extends AppActivity {
         trial.setText(teks);
     }
 
+
+    @Override
+    protected void getFakturTokoToday(List<TransaksiModel> dataTransaksi) {
+        if (loadingDialog != null) loadingDialog.dismiss();
+        Log.e("DEBUG", "");
+        TransactionReportTodayDialog dialogReport = new TransactionReportTodayDialog(dataTransaksi, this, R.style.CoconutDialogFullScreen);
+        dialogReport.show();
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        if(sinkron != null && sinkron.equalsIgnoreCase("tidak")){
+        if (sinkron != null && sinkron.equalsIgnoreCase("tidak")) {
             SinExp();
         }
     }
@@ -416,7 +431,7 @@ public class MainActivity extends AppActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.getMessage() + "zzzz", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage() + "zzzz", Toast.LENGTH_SHORT).show();
             }
         }) {
 
@@ -435,12 +450,10 @@ public class MainActivity extends AppActivity {
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
-    public void PilihLanggan(){
+    public void PilihLanggan() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Pilih lama berlangganan");
         builder.setSingleChoiceItems(values, -1, new DialogInterface.OnClickListener() {
-
-
 
 
             public void onClick(DialogInterface dialog, int item) {
@@ -448,8 +461,7 @@ public class MainActivity extends AppActivity {
                 char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
                 StringBuilder sb1 = new StringBuilder();
                 Random random1 = new Random();
-                for (int i = 0; i < 5; i++)
-                {
+                for (int i = 0; i < 5; i++) {
                     char c1 = chars1[random1.nextInt(chars1.length)];
                     sb1.append(c1);
                 }
@@ -458,8 +470,7 @@ public class MainActivity extends AppActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
                 order_id = df.format(c) + "-" + random_string;
                 Intent i;
-                switch(item)
-                {
+                switch (item) {
                     case 0:
                         url = "https://toko.alpokat.com/midtrans/examples/vt-web/process.php" +
                                 "?order_id=" + order_id +
@@ -508,12 +519,14 @@ public class MainActivity extends AppActivity {
         alertDialog1.show();
     }
 
-    private void transaksi(){
+    private void transaksi() {
         penjualan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), PenjualanActivity.class);
-                startActivity(i);
+                loadingDialog = new LoadingDialogComponent("Loading", MainActivity.this, R.style.CoconutDialogFullScreen);
+                loadingDialog.show();
+
+                callFakturPenjualanToko(Integer.valueOf(id_toko));
             }
         });
     }
@@ -567,7 +580,7 @@ public class MainActivity extends AppActivity {
             return true;
         }
         if (id == R.id.data) {
-            Toast.makeText(getApplicationContext(),"Sinkron data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Sinkron data", Toast.LENGTH_SHORT).show();
             SingkronProduk();
             return true;
         }
@@ -619,15 +632,15 @@ public class MainActivity extends AppActivity {
         });
         AppController.getInstance().addToRequestQueue(MasukReq);
         hideDialog();
-        Toast.makeText(getApplicationContext(),"Sinkron data selesai", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Sinkron data selesai", Toast.LENGTH_SHORT).show();
     }
 
-    private void DownloadFoto(final  String foto){
+    private void DownloadFoto(final String foto) {
 
         String path = Environment.getExternalStorageDirectory() + "/alpokat/" + foto;
         File imgFile = new File(path);
-        if(!imgFile.exists()){
-            new MainActivity.DownloadFileFoto().execute(AppConfig.HOST+"foto_produk/"+foto,foto);
+        if (!imgFile.exists()) {
+            new MainActivity.DownloadFileFoto().execute(AppConfig.HOST + "foto_produk/" + foto, foto);
         }
     }
 
@@ -652,7 +665,7 @@ public class MainActivity extends AppActivity {
 
                 if (!mediaStorageDir.exists()) {
                     if (!mediaStorageDir.mkdirs()) {
-                        Toast.makeText(getApplicationContext(),"tidak bisa membuat folder", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "tidak bisa membuat folder", Toast.LENGTH_LONG).show();
                         return null;
                     }
                 }
@@ -721,7 +734,7 @@ public class MainActivity extends AppActivity {
             tmSerial = "" + tm.getSimSerialNumber();
             androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
-            UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+            UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
             dev_id = deviceUuid.toString();
         }
         return true;

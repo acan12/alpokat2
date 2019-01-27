@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/color_white"
-        android:text="Total sekarang"/>
+        android:text="Total Hari ini"/>
     <TextView
         android:id="@+id/totalTransaksi"
         android:layout_width="wrap_content"
