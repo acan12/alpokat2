@@ -4,6 +4,7 @@ package com.alpokat.kasir.Setting;
 public class AppConfig {
 
 
+    public static final String IDTOKO_KEY = "id_toko";
     public static String HOST = "https://toko.alpokat.com/";
 //    public static String HOST = "http://192.168.1.9:8086/toko/";
     public static String SERVER                 = HOST + "android/";

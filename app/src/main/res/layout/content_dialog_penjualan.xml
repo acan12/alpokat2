@@ -7,8 +7,14 @@
     android:paddingRight="50dp"
     android:gravity="center"
     android:orientation="vertical">
-    
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:text="Total sekarang"/>
+    <TextView
+        android:id="@+id/totalTransaksi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rp 1.000.000"
@@ -30,6 +36,7 @@
             android:textColor="@color/color_white"/>
 
         <TextView
+            android:id="@+id/jumlahTransaksi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -38,70 +45,70 @@
             android:textColor="@color/color_white"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Credit Card:"
-            android:textColor="@color/color_white"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Credit Card:"-->
+            <!--android:textColor="@color/color_white"/>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Rp 500.000"
-            android:textAlignment="textEnd"
-            android:textColor="@color/color_white"/>
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Rp 500.000"-->
+            <!--android:textAlignment="textEnd"-->
+            <!--android:textColor="@color/color_white"/>-->
+    <!--</LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Debit Card:"
-            android:textColor="@color/color_white"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Debit Card:"-->
+            <!--android:textColor="@color/color_white"/>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Rp 450.000"
-            android:textAlignment="textEnd"
-            android:textColor="@color/color_white"/>
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Rp 450.000"-->
+            <!--android:textAlignment="textEnd"-->
+            <!--android:textColor="@color/color_white"/>-->
+    <!--</LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jumlah Retur:"
-            android:textColor="@color/color_white"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Jumlah Retur:"-->
+            <!--android:textColor="@color/color_white"/>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Rp 120.000"
-            android:textAlignment="textEnd"
-            android:textColor="@color/color_white"/>
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Rp 120.000"-->
+            <!--android:textAlignment="textEnd"-->
+            <!--android:textColor="@color/color_white"/>-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

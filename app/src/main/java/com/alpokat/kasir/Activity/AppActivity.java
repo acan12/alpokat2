@@ -39,9 +39,7 @@ public class AppActivity extends BaseActivity {
         return false;
     }
 
-    protected void callFakturPenjualanToko(int idToko) {
-//        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
-//        db.getTransaction(idToko, tgl);
+    protected void callFakturPenjualanToko(int idToko) { ;
         HttpsTrustManager.allowAllSSL(this);
         JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.FAKTUR + idToko,
                 new com.android.volley.Response.Listener<JSONArray>() {
@@ -58,7 +56,7 @@ public class AppActivity extends BaseActivity {
                                 trx.setIdToko(Integer.valueOf(obj.getString("id_toko")));
                                 trx.setJumlah(Integer.valueOf(obj.getString("jumlah")));
                                 trx.setTotal(Long.valueOf(obj.getString("total")));
-
+                                trx.setTanggal(obj.getString("tanggal"));
                                 models.add(trx);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -68,11 +66,6 @@ public class AppActivity extends BaseActivity {
 
                         getFakturTokoToday(models);
 
-
-//
-//                        if (response.length() == 0) {
-//                            Toast.makeText(getApplicationContext(), "Faktur tidak ditemukan", Toast.LENGTH_LONG).show();
-//                        }
                     }
                 }, new com.android.volley.Response.ErrorListener() {
             @Override

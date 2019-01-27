@@ -6,6 +6,7 @@ public class TransaksiModel {
     private int idToko;
     private int jumlah;
     private long total;
+    private String tanggal;
 
     public String getFaktur() {
         return faktur;
@@ -37,5 +38,13 @@ public class TransaksiModel {
 
     public void setTotal(long total) {
         this.total = total;
+    }
+
+    public String getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 }

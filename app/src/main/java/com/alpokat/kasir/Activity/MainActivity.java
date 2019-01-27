@@ -2,7 +2,6 @@ package com.alpokat.kasir.Activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,11 +9,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -25,19 +23,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alpokat.kasir.Dialog.TransactionReportTodayDialog;
+import com.alpokat.kasir.Helper.SQLiteHandler;
+import com.alpokat.kasir.Helper.SessionManager;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.api.HttpsTrustManager;
-import com.alpokat.kasir.Model.api.TransaksiModel;
+import com.alpokat.kasir.R;
+import com.alpokat.kasir.Setting.AppConfig;
+import com.alpokat.kasir.Setting.AppController;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.alpokat.kasir.Helper.SessionManager;
-import com.alpokat.kasir.Helper.SQLiteHandler;
-import com.alpokat.kasir.Setting.AppConfig;
-import com.alpokat.kasir.Setting.AppController;
-import com.alpokat.kasir.R;
 import com.android.volley.toolbox.StringRequest;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -68,11 +64,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+
+import app.beelabs.com.codebase.support.util.CacheUtil;
 
 public class MainActivity extends AppActivity {
 
@@ -147,6 +144,7 @@ public class MainActivity extends AppActivity {
         id_toko = p.get("id_toko");
         id_kasir = p.get("id_kasir");
 
+        CacheUtil.putPreferenceInteger(AppConfig.IDTOKO_KEY, Integer.valueOf(id_toko), this);
 
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

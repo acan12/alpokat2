@@ -42,6 +42,7 @@ import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.BelanjaModel;
 import com.alpokat.kasir.Model.api.TransaksiModel;
 import com.alpokat.kasir.R;
+import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.support.UiUtil;
 
 import java.text.NumberFormat;
@@ -51,6 +52,7 @@ import java.util.List;
 import java.util.Locale;
 
 import app.beelabs.com.codebase.component.LoadingDialogComponent;
+import app.beelabs.com.codebase.support.util.CacheUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -87,6 +89,7 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
     private MenuItem menuItem;
     private SearchView searchView;
     private LoadingDialogComponent loadingDialog;
+    private TransactionReportTodayDialog dialogReport;
 
 
     @Override
@@ -205,11 +208,11 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
     }
 
     @Override
-    protected void getFakturTokoToday(List<TransaksiModel> models) {
+    protected void getFakturTokoToday(List<TransaksiModel> dataTransaksi) {
         if (loadingDialog != null) loadingDialog.dismiss();
         Log.e("DEBUG", "");
-        TransactionReportTodayDialog dialog = new TransactionReportTodayDialog(this, R.style.CoconutDialogFullScreen);
-        dialog.show();
+        dialogReport = new TransactionReportTodayDialog(dataTransaksi, this, R.style.CoconutDialogFullScreen);
+        dialogReport.show();
 
     }
 
@@ -223,7 +226,8 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
             case R.id.item_report:
                 loadingDialog = new LoadingDialogComponent("Show Laporan", this, R.style.CoconutDialogFullScreen);
                 loadingDialog.show();
-                callFakturPenjualanToko(40);
+                int idToko = CacheUtil.getPreferenceInteger(AppConfig.IDTOKO_KEY, this);
+                callFakturPenjualanToko(idToko);
                 return true;
 
 
