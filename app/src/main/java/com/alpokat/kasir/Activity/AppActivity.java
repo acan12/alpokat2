@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Model.PenjualanModel;
+import com.alpokat.kasir.Model.api.HttpsTrustManager;
 import com.alpokat.kasir.Model.api.TransaksiModel;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Setting.AppController;
@@ -39,12 +40,9 @@ public class AppActivity extends BaseActivity {
     }
 
     protected void callFakturPenjualanToko(int idToko) {
-        Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-        String tgl = df.format(c);
-
 //        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
 //        db.getTransaction(idToko, tgl);
+        HttpsTrustManager.allowAllSSL(this);
         JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.FAKTUR + idToko,
                 new com.android.volley.Response.Listener<JSONArray>() {
                     @Override

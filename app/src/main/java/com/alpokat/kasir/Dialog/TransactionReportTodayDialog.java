@@ -25,11 +25,9 @@ public class TransactionReportTodayDialog extends BaseDialog {
 
     }
 
-    @OnClick(R.id.doneBtn)
+    @OnClick({R.id.dialog_root, R.id.doneBtn})
     public void onDone(View view){
         dismiss();
     }
-
-
 
 }

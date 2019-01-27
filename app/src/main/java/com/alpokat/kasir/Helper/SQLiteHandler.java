@@ -339,22 +339,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-//    public List<HashMap<String, String>> simpanTransaksi(int idToko, String tanggal) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put("faktur", id_pelanggan);
-//        values.put("id_toko", nama);
-//        values.put("jumlah", hp);
-//        values.put("alamat", alamat);
-//        values.put("poin", poin);
-//        db.delete("pelanggan", "id_pelanggan='" + id_pelanggan + "'", null);
-//        db.insert("pelanggan", null, values);
-//        db.close();
-//
-//        return fakturList;
-//    }
-
-
     public ArrayList<HashMap<String, String>> getAllProduct() {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<HashMap<String, String>> productList = new ArrayList<>();

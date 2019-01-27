@@ -67,7 +67,6 @@ public class DataPenjualan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_penjualan);
 
-
         DJ = this;
         password = findViewById(R.id.password);
         txt_faktur = findViewById(R.id.txt_faktur);
@@ -249,7 +248,7 @@ public class DataPenjualan extends AppCompatActivity {
 
     public void CariPenjualan(String faktur) {
 
-        JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.URL_FAKTUR + xidtoko + "&cari=" + faktur,
+        JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.FAKTUR + xidtoko + "&cari=" + faktur,
                 new com.android.volley.Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

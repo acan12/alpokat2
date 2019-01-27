@@ -13,7 +13,6 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,7 +50,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import app.beelabs.com.codebase.base.BaseActivity;
+import app.beelabs.com.codebase.component.LoadingDialogComponent;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -87,6 +86,7 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
     private boolean isBarcodeOff = true;
     private MenuItem menuItem;
     private SearchView searchView;
+    private LoadingDialogComponent loadingDialog;
 
 
     @Override
@@ -206,6 +206,7 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
 
     @Override
     protected void getFakturTokoToday(List<TransaksiModel> models) {
+        if (loadingDialog != null) loadingDialog.dismiss();
         Log.e("DEBUG", "");
         TransactionReportTodayDialog dialog = new TransactionReportTodayDialog(this, R.style.CoconutDialogFullScreen);
         dialog.show();
@@ -220,7 +221,8 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
                 return true;
 
             case R.id.item_report:
-
+                loadingDialog = new LoadingDialogComponent("Show Laporan", this, R.style.CoconutDialogFullScreen);
+                loadingDialog.show();
                 callFakturPenjualanToko(40);
                 return true;
 

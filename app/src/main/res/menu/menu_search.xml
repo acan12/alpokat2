@@ -19,8 +19,8 @@
 
     <item android:id="@+id/item_report"
         android:icon="@drawable/report"
-        android:orderInCategory="2"
-        app:showAsAction="always"
+        android:orderInCategory="3"
+        app:showAsAction="ifRoom"
         android:title="Laporan Penjualan" />
 
 </menu>

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/rounded_fill_green"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
         android:paddingTop="20dp"
-        android:paddingRight="20dp"
         android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,21 +29,24 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="4sp"
-            android:text="Merchant ID sudah terdaftar di OttoPay. Lanjutkan aktivasi dengan merchant id ini?"
+            android:text="Penjualan Hari Ini"
             android:textColor="@color/color_white"
             android:textSize="12sp" />
+
+
+        <include layout="@layout/content_dialog_penjualan" />
 
         <TextView
             android:id="@+id/doneBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_gravity="center"
             android:letterSpacing="0.04"
             android:paddingTop="20dp"
-            android:layout_gravity="center"
-            android:textAlignment="center"
             android:paddingBottom="8dp"
             android:text="Lanjutkan"
+            android:textAlignment="center"
             android:textColor="@color/color_white"
             android:textSize="14sp"
             android:textStyle="bold" />
