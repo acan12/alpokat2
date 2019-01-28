@@ -3,12 +3,9 @@ package com.alpokat.kasir.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.alpokat.kasir.Helper.SQLiteHandler;
-import com.alpokat.kasir.Model.PenjualanModel;
+import com.alpokat.kasir.Model.StatsModel;
 import com.alpokat.kasir.Model.api.HttpsTrustManager;
-import com.alpokat.kasir.Model.api.TransaksiModel;
 import com.alpokat.kasir.Setting.AppConfig;
 import com.alpokat.kasir.Setting.AppController;
 import com.android.volley.VolleyError;
@@ -18,9 +15,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -39,25 +36,35 @@ public class AppActivity extends BaseActivity {
         return false;
     }
 
-    protected void callFakturPenjualanToko(int idToko) { ;
+    protected void callStatsPenjualanToko(int idToko) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String today = dateFormat.format(date);
+
+        String endpoint = AppConfig.STATS.replaceAll("idtoko", "" + idToko).replaceAll("tgl", today);
+//        endpoint = endpoint.replaceAll("tanggal", today);
+
         HttpsTrustManager.allowAllSSL(this);
-        JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.FAKTUR + idToko,
+        JsonArrayRequest MasukReq = new JsonArrayRequest(endpoint,
                 new com.android.volley.Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.e("DEBUG", "testing");
 
-                        List<TransaksiModel> models = new ArrayList();
+                        List<StatsModel> models = new ArrayList();
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
-                                TransaksiModel trx = new TransaksiModel();
-                                trx.setFaktur(obj.getString("faktur"));
-                                trx.setIdToko(Integer.valueOf(obj.getString("id_toko")));
-                                trx.setJumlah(Integer.valueOf(obj.getString("jumlah")));
-                                trx.setTotal(Long.valueOf(obj.getString("total")));
-                                trx.setTanggal(obj.getString("tanggal"));
-                                models.add(trx);
+
+
+                                StatsModel stats = new StatsModel(
+                                        Integer.parseInt(obj.getString("count")),
+                                        Integer.parseInt(obj.getString("jumlah")),
+                                        Long.parseLong(obj.getString("total")),
+                                        obj.getString("tanggal")
+                                );
+
+                                models.add(stats);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -77,6 +84,6 @@ public class AppActivity extends BaseActivity {
 
     }
 
-    protected void getFakturTokoToday(List<TransaksiModel> models) {
+    protected void getFakturTokoToday(List models) {
     }
 }

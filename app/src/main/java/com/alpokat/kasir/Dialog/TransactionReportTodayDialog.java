@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alpokat.kasir.Model.api.TransaksiModel;
+import com.alpokat.kasir.Model.StatsModel;
 import com.alpokat.kasir.R;
 import com.alpokat.kasir.support.ReportUtil;
 
@@ -28,9 +28,9 @@ public class TransactionReportTodayDialog extends BaseDialog {
     TextView jumlahTransaksi;
 
 
-    private List<TransaksiModel> dataTransaksi;
+    private List<StatsModel> dataTransaksi;
 
-    public TransactionReportTodayDialog(List<TransaksiModel> dataTransaksi, @NonNull Context context, int style) {
+    public TransactionReportTodayDialog(List<StatsModel> dataTransaksi, @NonNull Context context, int style) {
         super(context, style);
         this.dataTransaksi = dataTransaksi;
     }
@@ -54,7 +54,7 @@ public class TransactionReportTodayDialog extends BaseDialog {
     }
 
     @OnClick(R.id.main_content_dialog)
-    public void onDone(View view){
+    public void onDone(View view) {
         dismiss();
     }
 

@@ -385,7 +385,7 @@ public class MainActivity extends AppActivity {
 
 
     @Override
-    protected void getFakturTokoToday(List<TransaksiModel> dataTransaksi) {
+    protected void getFakturTokoToday(List dataTransaksi) {
         if (loadingDialog != null) loadingDialog.dismiss();
         Log.e("DEBUG", "");
         TransactionReportTodayDialog dialogReport = new TransactionReportTodayDialog(dataTransaksi, this, R.style.CoconutDialogFullScreen);
@@ -526,7 +526,7 @@ public class MainActivity extends AppActivity {
                 loadingDialog = new LoadingDialogComponent("Loading", MainActivity.this, R.style.CoconutDialogFullScreen);
                 loadingDialog.show();
 
-                callFakturPenjualanToko(Integer.valueOf(id_toko));
+                callStatsPenjualanToko(Integer.valueOf(id_toko));
             }
         });
     }

@@ -32,7 +32,6 @@ import com.alpokat.kasir.Helper.SQLiteHandler;
 import com.alpokat.kasir.Helper.SqlHelper;
 import com.alpokat.kasir.Model.BelanjaModel;
 import com.alpokat.kasir.R;
-import com.alpokat.kasir.Tab.SlidingTabLayout;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
