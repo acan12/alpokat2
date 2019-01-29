@@ -145,7 +145,7 @@ public class MainActivity extends AppActivity {
         db = new SQLiteHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         nama_k = p.get("nama_kasir");
-        nama_t = p.get("nama_kasir");
+        nama_t = p.get("nama_toko");
         nama.setText(nama_k);
         toko.setText(nama_t);
         id_toko = p.get("id_toko");
