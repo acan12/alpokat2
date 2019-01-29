@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:gravity="center"
-    tools:context="com.alpokat.kasir.Activity.AddPelangganActivity"
+    tools:context="com.alpokat.toko.Activity.AddPelangganActivity"
     tools:ignore="ContentDescription">
 
     <LinearLayout

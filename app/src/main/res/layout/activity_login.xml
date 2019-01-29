@@ -12,7 +12,7 @@
         android:background="@color/bg"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context="com.alpokat.kasir.Activity.LoginActivity"
+        tools:context="com.alpokat.toko.Activity.LoginActivity"
         tools:ignore="ContentDescription">
 
         <ImageView

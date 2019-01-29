@@ -7,7 +7,7 @@
     android:background="@color/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.alpokat.kasir.Activity.AddPelangganActivity"
+    tools:context="com.alpokat.toko.Activity.AddPelangganActivity"
     tools:ignore="ContentDescription">
 
 
