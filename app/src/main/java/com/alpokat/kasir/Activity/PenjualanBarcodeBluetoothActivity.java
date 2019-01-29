@@ -243,6 +243,7 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
                         String price = listProduct.get(0).get("price");
 
                         addToChart(id_product, description, price);
+                        clearListProduct(); // reset list product
                     }
                 } else {
                     listProduct = db.searchProductByText(s);
