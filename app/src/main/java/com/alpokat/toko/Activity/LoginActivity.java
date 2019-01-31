@@ -117,8 +117,9 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(String response) {
-                hideDialog();
+
                 try {
+                    hideDialog();
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     cek = error;
@@ -137,10 +138,11 @@ public class LoginActivity extends AppCompatActivity {
                         db.AddRef(devid, no_ref, mode, exp, "ya");
                         session.setLogin(true);
                     }
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                     finish();
 
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "ERROR 1: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -152,7 +154,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(),error.getMessage() + " ERROR 2", Toast.LENGTH_SHORT).show();
                 back_office.setText(error.getMessage());
-                hideDialog();
+                try {
+                    hideDialog();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }) {
 
@@ -185,9 +191,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(String response) {
-                hideDialog();
-
                 try {
+                    hideDialog();
                     JSONObject jObj = new JSONObject(response);
                     System.out.println(jObj);
                     boolean error = jObj.getBoolean("error");
@@ -205,8 +210,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         db.LoginUser(id_kasir,nama_kasir,id_toko,nama_toko,alamat,hp,header,footer);
                         cek_dev_id(dev_id);
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
+//                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                        startActivity(i);
 
 
 
@@ -215,7 +220,7 @@ public class LoginActivity extends AppCompatActivity {
                         String errorMsg = jObj.getString("error_msg");
                         Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_SHORT).show();
                     }
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(),  "error 2", Toast.LENGTH_SHORT).show();
                 }
@@ -225,7 +230,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(),error.toString() , Toast.LENGTH_SHORT).show();
-                hideDialog();
+                try {
+                    hideDialog();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }) {
 
@@ -251,7 +260,7 @@ public class LoginActivity extends AppCompatActivity {
             pDialog.show();
     }
 
-    private void hideDialog() {
+    private void hideDialog() throws Exception{
         if (pDialog.isShowing())
             pDialog.dismiss();
     }

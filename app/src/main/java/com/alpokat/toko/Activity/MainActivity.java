@@ -135,7 +135,7 @@ public class MainActivity extends AppActivity {
         }
 
         // Progress dialog
-        pDialog = new ProgressDialog(MainActivity.this);
+        pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
         // Session manager
@@ -285,9 +285,6 @@ public class MainActivity extends AppActivity {
                                 intent = new Intent(MainActivity.this, SettingActivity.class);
                             } else if (drawerItem.getIdentifier() == 7) {
                                 intent = new Intent(MainActivity.this, InputProduk.class);
-                            }
-                            if (intent != null) {
-                                MainActivity.this.startActivity(intent);
                             }
                         }
 
@@ -539,8 +536,11 @@ public class MainActivity extends AppActivity {
                 stopService(new Intent(getApplicationContext(), MyService.class));
                 session.setLogin(false);
                 db.HapusUser();
-                finish();
                 dialog.dismiss();
+
+                finish();
+
+
             }
         });
 
