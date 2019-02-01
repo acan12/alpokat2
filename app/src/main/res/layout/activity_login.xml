@@ -73,6 +73,7 @@
                             android:layout_marginLeft="5dp"
                             android:backgroundTint="@android:color/white"
                             android:hint="No Handphone"
+                            android:maxLength="16"
                             android:inputType="phone"
                             android:padding="6dp" />
 

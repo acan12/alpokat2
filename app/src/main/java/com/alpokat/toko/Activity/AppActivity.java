@@ -42,7 +42,6 @@ public class AppActivity extends BaseActivity {
         String today = dateFormat.format(date);
 
         String endpoint = AppConfig.STATS.replaceAll("idtoko", "" + idToko).replaceAll("tgl", today);
-//        endpoint = endpoint.replaceAll("tanggal", today);
 
         HttpsTrustManager.allowAllSSL(this);
         JsonArrayRequest MasukReq = new JsonArrayRequest(endpoint,

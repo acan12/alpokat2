@@ -516,9 +516,9 @@ public class PembayaranActivity extends AppActivity implements Runnable {
         finish();
         Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
 
-        boolean s = isMyServiceRunning(MyService.class);
+        boolean s = isMyServiceRunning(DataService.class);
         if(!s){
-            Intent intent = new Intent(getApplicationContext(),MyService.class);
+            Intent intent = new Intent(getApplicationContext(), DataService.class);
             startService(intent);
         }
 
@@ -705,7 +705,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
 
                 } catch (Exception e) {
-                    Log.e("MainActivity", "Exe ", e);
+                    Log.e("MainActivity2", "Exe ", e);
                 }
             }
         };
@@ -795,7 +795,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
 
                     } catch (Exception e) {
-                        Log.e("MainActivity", "Exe ", e);
+                        Log.e("MainActivity2", "Exe ", e);
                     }
                 }
             };

@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyService extends Service {
+public class DataService extends Service {
 
     private SQLiteHandler db;
     private String exp,mode,devid,sinkron;
@@ -40,7 +40,7 @@ public class MyService extends Service {
     private String xkasir;
     private String noref;
 
-    public MyService() {
+    public DataService() {
     }
 
     @Override

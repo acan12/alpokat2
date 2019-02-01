@@ -30,7 +30,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -104,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void cek_dev_id(final String id_def) {
+    private void checkDeviceID(final String id_def) {
         // Tag used to cancel the request
         String tag_string_req = "req_aktif";
 
@@ -127,8 +126,9 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i;
                     if(cek){
                         i = new Intent(getApplicationContext(),RefActivity.class);
+                        startActivity(i);
+                        finish();
                     }else{
-                        i = new Intent(getApplicationContext(),MainActivity.class);
 
                         JSONObject aktif = jObj.getJSONObject("aktif");
                         String devid = aktif.getString("devid");
@@ -137,10 +137,12 @@ public class LoginActivity extends AppCompatActivity {
                         String exp = aktif.getString("exp");
                         db.AddRef(devid, no_ref, mode, exp, "ya");
                         session.setLogin(true);
+
+                        i = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i);
+                        finish();
                     }
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
-                    finish();
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -209,11 +211,7 @@ public class LoginActivity extends AppCompatActivity {
                         String footer = kasir.getString("footer");
 
                         db.LoginUser(id_kasir,nama_kasir,id_toko,nama_toko,alamat,hp,header,footer);
-                        cek_dev_id(dev_id);
-//                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                        startActivity(i);
-
-
+                        checkDeviceID(dev_id);
 
                     } else {
                         // Error in login. Get the error message
@@ -287,4 +285,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 }

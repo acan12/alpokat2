@@ -1,16 +1,16 @@
 package com.alpokat.toko.Activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.alpokat.toko.Helper.SessionManager;
 import com.alpokat.toko.R;
 import com.bumptech.glide.Glide;
 
-public class Splash_Activity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
 
     private SessionManager session;
@@ -29,19 +29,19 @@ public class Splash_Activity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(session.isLoggedIn()) {
+                if (session.isLoggedIn()) {
                     Intent in = new Intent(getApplicationContext(), MainActivity.class);
+                    in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(in);
                     finish();
-                }else{
+                } else {
                     Intent in = new Intent(getApplicationContext(), LoginActivity.class);
+                    in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(in);
                     finish();
                 }
             }
         }, 4000);
-
-
 
 
     }

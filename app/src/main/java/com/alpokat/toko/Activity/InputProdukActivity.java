@@ -37,7 +37,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class InputProduk extends AppCompatActivity {
+public class InputProdukActivity extends AppCompatActivity {
     @BindView(R.id.btn_qr)
     ImageView btnQR;
     @BindView(R.id.simpan)
@@ -225,7 +225,7 @@ public class InputProduk extends AppCompatActivity {
          * Build a new MaterialBarcodeScanner
          */
         final MaterialBarcodeScanner materialBarcodeScanner = new MaterialBarcodeScannerBuilder()
-                .withActivity(InputProduk.this)
+                .withActivity(InputProdukActivity.this)
                 .withEnableAutoFocus(true)
                 .withBleepEnabled(true)
                 .withBackfacingCamera()

@@ -128,7 +128,7 @@ public class RefActivity extends AppCompatActivity {
                         session.setLogin(true);
 
                         db.AddRef(devid, noref, "trial", exp, "ya");
-                        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                         finish();
 
