@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("Memeriksa Perangkat");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.DEVID, new Response.Listener<String>() {
 
@@ -187,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang Login ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.LOGIN, new Response.Listener<String>() {
 

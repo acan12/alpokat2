@@ -107,7 +107,7 @@ public class SettingActivity extends AppCompatActivity {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.DATA_KASIR, new Response.Listener<String>() {
 
@@ -165,7 +165,7 @@ public class SettingActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang mengirim data ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.UPDATE_KASIR, new Response.Listener<String>() {
 
@@ -224,7 +224,7 @@ public class SettingActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang mengirim data ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.UPDATE_PASSWORD, new Response.Listener<String>() {
 

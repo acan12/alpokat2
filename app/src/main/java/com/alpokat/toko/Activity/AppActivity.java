@@ -43,7 +43,7 @@ public class AppActivity extends BaseActivity {
 
         String endpoint = AppConfig.STATS.replaceAll("idtoko", "" + idToko).replaceAll("tgl", today);
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         JsonArrayRequest MasukReq = new JsonArrayRequest(endpoint,
                 new com.android.volley.Response.Listener<JSONArray>() {
                     @Override

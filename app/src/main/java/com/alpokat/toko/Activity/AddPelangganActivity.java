@@ -95,7 +95,7 @@ public class AddPelangganActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang menyimpan data ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.ADD_PELANGGAN, new Response.Listener<String>() {
 

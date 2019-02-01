@@ -113,7 +113,7 @@ public class RefActivity extends AppCompatActivity {
         pDialog.setMessage("Menyimpan No HP/Telp Kasir ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.ADD_REF, new Response.Listener<String>() {
 

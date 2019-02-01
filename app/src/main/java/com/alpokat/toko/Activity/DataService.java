@@ -93,7 +93,7 @@ public class DataService extends Service {
 
     private void SinExp() {
         String tag_string_req = "req_login";
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.ADD_REF, new Response.Listener<String>() {
 
@@ -228,7 +228,7 @@ public class DataService extends Service {
         String tag_string_req = "req_login";
 
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.BAYAR, new Response.Listener<String>() {
 

@@ -81,7 +81,7 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
 
         // Tag used to cancel the request
         String tag_string_req = "req_login";
-        HttpsTrustManager.allowAllSSL(mContext);
+//        HttpsTrustManager.allowAllSSL(mContext);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.HAPUS_PELANGGAN, new Response.Listener<String>() {
 

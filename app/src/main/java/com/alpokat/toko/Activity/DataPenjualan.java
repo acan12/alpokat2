@@ -139,7 +139,7 @@ public class DataPenjualan extends AppCompatActivity {
         pDialog.setMessage("Mengkonfirmasi password retur ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.KONFIRMASI_RETUR, new Response.Listener<String>() {
 

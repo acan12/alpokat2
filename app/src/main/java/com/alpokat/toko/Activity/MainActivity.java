@@ -244,7 +244,7 @@ public class MainActivity extends AppActivity {
     private void SynchronizeProduct() {
 
         // Creating volley request obj
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.LIST_PRODUK + idToko,
                 new Response.Listener<JSONArray>() {
 

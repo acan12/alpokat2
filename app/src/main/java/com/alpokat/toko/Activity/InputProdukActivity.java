@@ -109,7 +109,7 @@ public class InputProdukActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang menyimpan data produk ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.SIMPAN_PRODUK, new Response.Listener<String>() {
 
@@ -167,7 +167,7 @@ public class InputProdukActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang mencari produk ...");
         showDialog();
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.CEK_PRODUK, new Response.Listener<String>() {
 

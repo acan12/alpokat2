@@ -186,7 +186,7 @@ public class DataPelangganActivity extends AppCompatActivity {
 
     public void LoadPelanggan() {
 
-        HttpsTrustManager.allowAllSSL(this);
+//        HttpsTrustManager.allowAllSSL(this);
         // Creating volley request obj
         JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.LIST_PELANGGAN + id_toko,
                 new Response.Listener<JSONArray>() {
