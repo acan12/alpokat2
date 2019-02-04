@@ -18,12 +18,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.alpokat.toko.Helper.SessionManager;
-import com.alpokat.toko.Model.api.HttpsTrustManager;
-import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.SessionManager;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -62,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 Manifest.permission.READ_PHONE_STATE
         };
 
-        if(!hasPermissions(this, PERMISSIONS)){
+        if (!hasPermissions(this, PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
 
@@ -90,15 +88,12 @@ public class LoginActivity extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
 
 
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ProsesLogin(email.getText().toString(), password.getText().toString());
             }
         });
-
-
 
 
     }
@@ -124,11 +119,11 @@ public class LoginActivity extends AppCompatActivity {
                     cek = error;
 
                     Intent i;
-                    if(cek){
-                        i = new Intent(getApplicationContext(),RefActivity.class);
+                    if (cek) {
+                        i = new Intent(getApplicationContext(), RefActivity.class);
                         startActivity(i);
                         finish();
-                    }else{
+                    } else {
 
                         JSONObject aktif = jObj.getJSONObject("aktif");
                         String devid = aktif.getString("devid");
@@ -154,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.getMessage() + " ERROR 2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage() + " ERROR 2", Toast.LENGTH_SHORT).show();
                 back_office.setText(error.getMessage());
                 try {
                     hideDialog();
@@ -168,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
-                params.put("dev_id",id_def);
+                params.put("dev_id", id_def);
                 return params;
             }
 
@@ -177,7 +172,6 @@ public class LoginActivity extends AppCompatActivity {
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
-
 
 
     private void ProsesLogin(final String email, final String password) {
@@ -210,7 +204,7 @@ public class LoginActivity extends AppCompatActivity {
                         String header = kasir.getString("header");
                         String footer = kasir.getString("footer");
 
-                        db.LoginUser(id_kasir,nama_kasir,id_toko,nama_toko,alamat,hp,header,footer);
+                        db.LoginUser(id_kasir, nama_kasir, id_toko, nama_toko, alamat, hp, header, footer);
                         checkDeviceID(dev_id);
 
                     } else {
@@ -220,14 +214,14 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),  "error 2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "error 2", Toast.LENGTH_SHORT).show();
                 }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.toString() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                 try {
                     hideDialog();
                 } catch (Exception e) {
@@ -240,7 +234,7 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
-                params.put("email",email);
+                params.put("email", email);
                 params.put("password", password);
 
                 return params;
@@ -254,12 +248,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void showDialog() {
-        if (!pDialog.isShowing())
+        if (pDialog != null && !pDialog.isShowing())
             pDialog.show();
     }
 
-    private void hideDialog() throws Exception{
-        if (pDialog.isShowing())
+    private void hideDialog() throws Exception {
+        if (pDialog != null && pDialog.isShowing())
             pDialog.dismiss();
     }
 
@@ -278,7 +272,7 @@ public class LoginActivity extends AppCompatActivity {
             tmSerial = "" + tm.getSimSerialNumber();
             androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
-            UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+            UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
             dev_id = deviceUuid.toString();
         }
         return true;
