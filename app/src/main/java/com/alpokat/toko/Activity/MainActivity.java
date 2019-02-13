@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.alpokat.toko.Dialog.TransactionReportTodayDialog;
 import com.alpokat.toko.Helper.SQLiteHandler;
 import com.alpokat.toko.Helper.SessionManager;
-import com.alpokat.toko.Model.api.HttpsTrustManager;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
@@ -108,6 +107,8 @@ public class MainActivity extends AppActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -133,6 +134,16 @@ public class MainActivity extends AppActivity {
         setupMenuDrawer(savedInstanceState);
 
         startServiceSyncProduct();
+
+        boolean fromLogin = getIntent().getBooleanExtra(AppConfig.FROM_LOGIN, false);
+        if (fromLogin) {
+            checkDeviceID(new ScanDeviceCallback(){
+                @Override
+                public void call() {
+                    tampilText();
+                }
+            });
+        }
 
     }
 
@@ -244,7 +255,6 @@ public class MainActivity extends AppActivity {
     private void SynchronizeProduct() {
 
         // Creating volley request obj
-//        HttpsTrustManager.allowAllSSL(this);
         JsonArrayRequest MasukReq = new JsonArrayRequest(AppConfig.LIST_PRODUK + idToko,
                 new Response.Listener<JSONArray>() {
 
@@ -398,7 +408,6 @@ public class MainActivity extends AppActivity {
                 break;
         }
     }
-
 
 
     private void logoutUser() {

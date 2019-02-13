@@ -1,7 +1,6 @@
 package com.alpokat.toko.Activity;
 
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
@@ -34,11 +32,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class LoginActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class LoginActivity extends AppActivity {
 
-    private EditText email, password;
-    private TextView back_office;
+    @BindView(R.id.login)
+    Button login;
+    @BindView(R.id.email)
+    EditText email;
+    @BindView(R.id.password)
+    EditText password;
+    @BindView(R.id.back_office)
+    TextView backOffice;
+
+//    Button login = findViewById(R.id.login);
+//    email = findViewById(R.id.email);
+//    password = findViewById(R.id.password);
+//    back_office = findViewById(R.id.BackOffice);
+
+    //    private EditText email, password;
+//    private TextView back_office;
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     private SessionManager session;
@@ -52,25 +66,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        int PERMISSION_ALL = 1;
-        String[] PERMISSIONS = {
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.INTERNET,
-                Manifest.permission.READ_PHONE_STATE
-        };
+        ButterKnife.bind(this);
 
-        if (!hasPermissions(this, PERMISSIONS)) {
-            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
-        }
+        setupPermissionApp(this);
 
-
-        Button login = findViewById(R.id.login);
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        back_office = findViewById(R.id.BackOffice);
-
-        back_office.setOnClickListener(new View.OnClickListener() {
+        backOffice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse(AppConfig.HOST);
@@ -98,82 +98,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void checkDeviceID(final String id_def) {
-        // Tag used to cancel the request
-        String tag_string_req = "req_aktif";
-
-        pDialog.setMessage("Memeriksa Perangkat");
-        showDialog();
-
-//        HttpsTrustManager.allowAllSSL(this);
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.DEVID, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    hideDialog();
-                    JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
-                    cek = error;
-
-                    Intent i;
-                    if (cek) {
-                        i = new Intent(getApplicationContext(), RefActivity.class);
-                        startActivity(i);
-                        finish();
-                    } else {
-
-                        JSONObject aktif = jObj.getJSONObject("aktif");
-                        String devid = aktif.getString("devid");
-                        String no_ref = aktif.getString("no_ref");
-                        String mode = aktif.getString("mode");
-                        String exp = aktif.getString("exp");
-                        db.AddRef(devid, no_ref, mode, exp, "ya");
-                        session.setLogin(true);
-
-                        i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "ERROR 1: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage() + " ERROR 2", Toast.LENGTH_SHORT).show();
-                back_office.setText(error.getMessage());
-                try {
-                    hideDialog();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting parameters to login url
-                Map<String, String> params = new HashMap<>();
-                params.put("dev_id", id_def);
-                return params;
-            }
-
-        };
-
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-    }
-
-
     private void ProsesLogin(final String email, final String password) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
@@ -181,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("Sedang Login ...");
         showDialog();
 
-//        HttpsTrustManager.allowAllSSL(this);
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.LOGIN, new Response.Listener<String>() {
 
@@ -205,7 +128,12 @@ public class LoginActivity extends AppCompatActivity {
                         String footer = kasir.getString("footer");
 
                         db.LoginUser(id_kasir, nama_kasir, id_toko, nama_toko, alamat, hp, header, footer);
-                        checkDeviceID(dev_id);
+//                        checkDeviceID(dev_id);
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra(AppConfig.FROM_LOGIN, true);
+                        startActivity(intent);
+                        finish();
 
                     } else {
                         // Error in login. Get the error message
@@ -221,6 +149,8 @@ public class LoginActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+//                backOffice.setText(error.getMessage());
                 Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                 try {
                     hideDialog();
@@ -272,8 +202,8 @@ public class LoginActivity extends AppCompatActivity {
             tmSerial = "" + tm.getSimSerialNumber();
             androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
-            UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
-            dev_id = deviceUuid.toString();
+//            UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
+//            dev_id = deviceUuid.toString();
         }
         return true;
     }
