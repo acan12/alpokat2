@@ -1,8 +1,5 @@
 <component name="libraryTable">
   <library name="Gradle: com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA@aar">
-    <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/fea5a95daf64e8076bb2b75620e70702/annotations.zip!/" />
-    </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/fea5a95daf64e8076bb2b75620e70702/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MaterialBarcodeScanner-0.0.6-ALPHA.aar/fea5a95daf64e8076bb2b75620e70702/jars/classes.jar!/" />

@@ -102,12 +102,13 @@ public class MainActivity extends AppActivity {
     private ProgressDialog pDialog;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
 
+        db = getDB();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -129,21 +130,28 @@ public class MainActivity extends AppActivity {
         // Session manager
         session = new SessionManager(getApplicationContext());
 
+        boolean fromLogin = getIntent().getBooleanExtra(AppConfig.FROM_LOGIN, false);
+        if (fromLogin) {
+            checkDeviceID(new ScanDeviceCallback() {
+                @Override
+                public void call() {
+                    initDashboard(savedInstanceState);
+                }
+            });
+        } else {
+            initDashboard(savedInstanceState);
+        }
+
+
+    }
+
+    private void initDashboard(Bundle savedInstanceState) {
         setupTokoProfile();
+
 
         setupMenuDrawer(savedInstanceState);
 
         startServiceSyncProduct();
-
-        boolean fromLogin = getIntent().getBooleanExtra(AppConfig.FROM_LOGIN, false);
-        if (fromLogin) {
-            checkDeviceID(new ScanDeviceCallback(){
-                @Override
-                public void call() {
-                    tampilText();
-                }
-            });
-        }
 
     }
 
@@ -447,7 +455,7 @@ public class MainActivity extends AppActivity {
     private void setupTokoProfile() {
 
         // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
+
         HashMap<String, String> p = db.BacaKasir();
         namaKasir = p.get("nama_kasir");
         namaToko = p.get("nama_toko");

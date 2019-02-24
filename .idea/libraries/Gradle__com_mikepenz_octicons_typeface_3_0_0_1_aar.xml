@@ -5,8 +5,6 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/octicons-typeface-3.0.0.1.aar/db14a10cf497948da03e656e9f13b96f/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mikepenz/octicons-typeface/3.0.0.1/2b9e47633cbe2b0cf4e885e79f59379fceaaff99/octicons-typeface-3.0.0.1-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

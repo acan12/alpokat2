@@ -74,86 +74,92 @@ public class AppController extends BaseApp {
 
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
-            mRequestQueue = Volley.newRequestQueue(getApplicationContext(), new HurlStack(null, getSocketFactory()));
+            try {
+                mRequestQueue = Volley.newRequestQueue(getApplicationContext(), new HurlStack(null, new TLSSocketFactory()));
+            } catch (KeyManagementException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
         }
 
         return mRequestQueue;
     }
 
-    private SSLSocketFactory getSocketFactory() {
+//    private SSLSocketFactory getSocketFactory() {
+//
+//        CertificateFactory cf = null;
+//        try {
+//            cf = CertificateFactory.getInstance("X.509");
+//            InputStream caInput = getResources().openRawResource(R.raw.toko_alpokat_com);
+//            Certificate ca;
+//            try {
+//                ca = cf.generateCertificate(caInput);
+//                Log.e("CERT", "ca=" + ((X509Certificate) ca).getSubjectDN());
+//            } finally {
+//                caInput.close();
+//            }
+//
+//
+//            String keyStoreType = KeyStore.getDefaultType();
+//            KeyStore keyStore = KeyStore.getInstance(keyStoreType);
+//            keyStore.load(null, null);
+//            keyStore.setCertificateEntry("ca", ca);
+//
+//
+//            String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
+//            TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
+//            tmf.init(keyStore);
+//
+//
+//            HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+//                @Override
+//                public boolean verify(String hostname, SSLSession session) {
+//
+//                    Log.e("CipherUsed", session.getCipherSuite());
+//                    return hostname.compareTo("toko.alpokat.com")==0; //The Hostname of your server
+//
+//                }
+//            };
+//
+//
+//            HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
+//            SSLContext context = null;
+//            context = SSLContext.getInstance("TLS");
+//
+//            context.init(null, tmf.getTrustManagers(), null);
+//            HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
+//
+//            TLSSocketFactory sf = (TLSSocketFactory) context.getSocketFactory();
+//
+//
+//            return sf;
+//
+//        } catch (CertificateException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        } catch (KeyStoreException e) {
+//            e.printStackTrace();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (KeyManagementException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return  null;
+//    }
 
-        CertificateFactory cf = null;
-        try {
-            cf = CertificateFactory.getInstance("X.509");
-            InputStream caInput = getResources().openRawResource(R.raw.toko_alpokat_com);
-            Certificate ca;
-            try {
-                ca = cf.generateCertificate(caInput);
-                Log.e("CERT", "ca=" + ((X509Certificate) ca).getSubjectDN());
-            } finally {
-                caInput.close();
-            }
-
-
-            String keyStoreType = KeyStore.getDefaultType();
-            KeyStore keyStore = KeyStore.getInstance(keyStoreType);
-            keyStore.load(null, null);
-            keyStore.setCertificateEntry("ca", ca);
-
-
-            String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
-            TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
-            tmf.init(keyStore);
-
-
-            HostnameVerifier hostnameVerifier = new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-
-                    Log.e("CipherUsed", session.getCipherSuite());
-                    return hostname.compareTo("toko.alpokat.com")==0; //The Hostname of your server
-
-                }
-            };
-
-
-            HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
-            SSLContext context = null;
-            context = SSLContext.getInstance("TLS");
-
-            context.init(null, tmf.getTrustManagers(), null);
-            HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
-
-            SSLSocketFactory sf = context.getSocketFactory();
-
-
-            return sf;
-
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        }
-
-        return  null;
-    }
-
-    public ImageLoader getImageLoader() {
-        getRequestQueue();
-        if (mImageLoader == null) {
-            mImageLoader = new ImageLoader(this.mRequestQueue,
-                    new LruBitmapCache());
-        }
-        return this.mImageLoader;
-    }
+//    public ImageLoader getImageLoader() {
+//        getRequestQueue();
+//        if (mImageLoader == null) {
+//            mImageLoader = new ImageLoader(this.mRequestQueue,
+//                    new LruBitmapCache());
+//        }
+//        return this.mImageLoader;
+//    }
 
     public <T> void addToRequestQueue(Request<T> req, String tag) {
         req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
@@ -165,9 +171,9 @@ public class AppController extends BaseApp {
         getRequestQueue().add(req);
     }
 
-    public void cancelPendingRequests(Object tag) {
-        if (mRequestQueue != null) {
-            mRequestQueue.cancelAll(tag);
-        }
-    }
+//    public void cancelPendingRequests(Object tag) {
+//        if (mRequestQueue != null) {
+//            mRequestQueue.cancelAll(tag);
+//        }
+//    }
 }

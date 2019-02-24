@@ -5,8 +5,6 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/iconics-core-3.0.4.aar/12c47ef80648385e142f4ca62e4b4622/res" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mikepenz/iconics-core/3.0.4/8a944689cdd2b71ab5d6589042f6d533c4a32455/iconics-core-3.0.4-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

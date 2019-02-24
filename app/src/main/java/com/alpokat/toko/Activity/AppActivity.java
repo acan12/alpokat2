@@ -44,6 +44,8 @@ import static com.alpokat.toko.support.PermissionUtil.hasPermissions;
 
 public class AppActivity extends BaseActivity {
 
+    private SQLiteHandler db;
+
     protected void setupPermissionApp(Activity activity){
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
@@ -201,6 +203,12 @@ public class AppActivity extends BaseActivity {
 
     }
 
+    protected SQLiteHandler getDB(){
+        if(db == null)
+            db = new SQLiteHandler(getApplicationContext());
+
+        return db;
+    }
 
     public class ScanDeviceCallback {
         public void call(){

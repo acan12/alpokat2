@@ -5,8 +5,6 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fastadapter-3.2.7.aar/f36a8aa6dc77e9bdbb10f1c5e880e622/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mikepenz/fastadapter/3.2.7/486b139e3dff3cafebd67d8c7fe36875cb2e2512/fastadapter-3.2.7-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
