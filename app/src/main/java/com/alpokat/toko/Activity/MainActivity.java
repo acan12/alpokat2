@@ -309,6 +309,7 @@ public class MainActivity extends AppActivity {
         sinkron = ref.get("sinkron");
 
         String teks = "";
+
         if (mode != null && mode.equalsIgnoreCase("trial")) {
             if (selisih < 1) {
                 teks = "Free trial telah habis\nKlik untuk langganan";
@@ -340,7 +341,7 @@ public class MainActivity extends AppActivity {
 
             } else {
                 teks = "Free trial tinggal " + selisih + " hari\nKlik untuk langganan";
-                transaksi();
+                getStatsTransaksi();
             }
 
             trialText.setVisibility(View.VISIBLE);
@@ -374,10 +375,10 @@ public class MainActivity extends AppActivity {
 
             } else if (selisih > 0 && selisih < 4) {
                 teks = "Masa berlangganan\ntinggal " + selisih + " hari lagi\nKlik untuk memperpanjang";
-                transaksi();
+                getStatsTransaksi();
             } else if (selisih > 3) {
                 trialText.setVisibility(View.GONE);
-                transaksi();
+                getStatsTransaksi();
             }
         }
 
@@ -503,7 +504,7 @@ public class MainActivity extends AppActivity {
 
     }
 
-    private void transaksi() {
+    private void getStatsTransaksi() {
         penjualan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

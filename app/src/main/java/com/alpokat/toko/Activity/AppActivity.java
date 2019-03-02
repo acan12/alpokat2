@@ -104,6 +104,7 @@ public class AppActivity extends BaseActivity {
                             }
                         }
 
+                        getFakturTokoToday(models);
 
 
                     }
