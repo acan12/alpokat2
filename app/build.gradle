@@ -1,3 +1,11 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+apply plugin: 'realm-android'
+
+realm {
+    syncEnabled = true
+}
+
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
@@ -7,13 +15,6 @@ buildscript {
         classpath 'io.fabric.tools:gradle:1.+'
     }
 }
-apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
-
 
 android {
     compileSdkVersion 28
@@ -23,6 +24,7 @@ android {
         targetSdkVersion 28
         versionCode 49
         versionName "2.0.1"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -31,6 +33,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         packagingOptions {
+            pickFirst 'lib/armeabi-v7a/libassmidi.so'
+            pickFirst 'lib/x86/libassmidi.so'
+
             exclude 'META-INF/DEPENDENCIES'
             exclude 'META-INF/NOTICE'
             exclude 'META-INF/LICENSE'
@@ -69,6 +74,7 @@ dependencies {
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+    implementation 'com.android.support:multidex:1.0.3'
 
     // additional library
     implementation 'com.jakewharton:butterknife:8.8.1'
@@ -94,6 +100,7 @@ dependencies {
     implementation 'com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA'
 
     implementation 'com.github.acan12:coconut:2.0.7'
+    implementation 'com.github.acan12:coconut-db:1.0.4'
     implementation 'com.google.dagger:dagger:2.4'
     annotationProcessor "com.google.dagger:dagger-compiler:2.4"
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'

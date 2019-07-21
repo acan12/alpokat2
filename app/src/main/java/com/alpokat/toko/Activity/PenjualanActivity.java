@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -31,17 +30,19 @@ import com.alpokat.toko.Adapter.SlidingPenjualanAdapter;
 import com.alpokat.toko.Helper.SQLiteHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.BelanjaModel;
+import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppController;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
+import app.beelabs.com.utilc.MoneyUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmResults;
 
 public class PenjualanActivity extends AppCompatActivity {
 
@@ -203,58 +204,104 @@ public class PenjualanActivity extends AppCompatActivity {
         finish();
     }
 
-    @SuppressLint("SetTextI18n")
     public void LoadTotalBelanja() {
+        RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionRealm(Keranjang.class);
+        int total = 0;
+        int jitem = 0;
+
         try {
-            SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-            SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-            @SuppressLint("Recycle")
-            Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-            int total = 0;
-            int jitem = 0;
-            if (cursor.getCount() > 0) {
-                for (int cc = 0; cc < cursor.getCount(); cc++) {
-                    cursor.moveToPosition(cc);
-                    total = total + Integer.valueOf(cursor.getString(6));
-                    jitem = jitem + Integer.valueOf(cursor.getString(4));
+            if (keranjangList.size() > 0) {
+                for (Keranjang keranjang : keranjangList) {
+                    total += keranjang.getTotal();
+                    jitem += keranjang.getJumlah();
+
                 }
             }
 
-            Locale localeID = new Locale("in", "ID");
-            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-            String x = formatRupiah.format(total);
+//        Locale localeID = new Locale("in", "ID");
+//            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+//            String x = formatRupiah.format(total);
 
-            total_belanja.setText(String.valueOf(x));
+            total_belanja.setText(MoneyUtil.Companion.convertIDRCurrencyFormat((double) total, 0));
             jumlah_item.setText(jitem + "");
+
         } catch (Exception e) {
             resetCart();
             Log.e("Penjualan Barcode:", e.getMessage());
         }
     }
 
+//    @SuppressLint("SetTextI18n")
+//    public void LoadTotalBelanja() {
+//        try {
+//            SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+//            SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//            @SuppressLint("Recycle")
+//            Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//            int total = 0;
+//            int jitem = 0;
+//            if (cursor.getCount() > 0) {
+//                for (int cc = 0; cc < cursor.getCount(); cc++) {
+//                    cursor.moveToPosition(cc);
+//                    total = total + Integer.valueOf(cursor.getString(6));
+//                    jitem = jitem + Integer.valueOf(cursor.getString(4));
+//                }
+//            }
+//
+//            Locale localeID = new Locale("in", "ID");
+//            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+//            String x = formatRupiah.format(total);
+//
+//            total_belanja.setText(String.valueOf(x));
+//            jumlah_item.setText(jitem + "");
+//        } catch (Exception e) {
+//            resetCart();
+//            Log.e("Penjualan Barcode:", e.getMessage());
+//        }
+//    }
 
     public void LoadKeranjang() {
-        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-        cursor.moveToFirst();
         belanja_list.clear();
-        for (int cc = 0; cc < cursor.getCount(); cc++) {
-            cursor.moveToPosition(cc);
+        RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionRealm(Keranjang.class);
+        for (Keranjang keranjang : keranjangList) {
             BelanjaModel daftar = new BelanjaModel();
-            daftar.setId_produk(cursor.getString(2));
-            daftar.setNama_produk(cursor.getString(3));
-            daftar.setJumlah(cursor.getString(4));
-            daftar.setHarga(cursor.getString(5));
-            daftar.setTotal(cursor.getString(6));
+            daftar.setId_produk(keranjang.getId_produk());
+            daftar.setNama_produk(keranjang.getNama_produk());
+            daftar.setJumlah(String.valueOf(keranjang.getJumlah()));
+            daftar.setHarga(String.valueOf(keranjang.getHarga_jual()));
+            daftar.setTotal(String.valueOf(keranjang.getTotal()));
             belanja_list.add(daftar);
+
         }
 
         adapter.notifyDataSetChanged();
-        if (cursor.getCount() > 1) {
-            recyclerView.smoothScrollToPosition(cursor.getCount() - 1);
+        if (keranjangList.size() > 1) {
+            recyclerView.smoothScrollToPosition(keranjangList.size()- 1);
         }
     }
+
+//    public void LoadKeranjang() {
+//        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+//        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//        @SuppressLint("Recycle") Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//        cursor.moveToFirst();
+//        belanja_list.clear();
+//        for (int cc = 0; cc < cursor.getCount(); cc++) {
+//            cursor.moveToPosition(cc);
+//            BelanjaModel daftar = new BelanjaModel();
+//            daftar.setId_produk(cursor.getString(2));
+//            daftar.setNama_produk(cursor.getString(3));
+//            daftar.setJumlah(cursor.getString(4));
+//            daftar.setHarga(cursor.getString(5));
+//            daftar.setTotal(cursor.getString(6));
+//            belanja_list.add(daftar);
+//        }
+//
+//        adapter.notifyDataSetChanged();
+//        if (cursor.getCount() > 1) {
+//            recyclerView.smoothScrollToPosition(cursor.getCount() - 1);
+//        }
+//    }
 
     private int dpToPx() {
         Resources r = getResources();

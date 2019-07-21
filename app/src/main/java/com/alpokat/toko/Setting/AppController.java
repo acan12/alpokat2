@@ -16,6 +16,8 @@ import com.android.volley.toolbox.Volley;
 import app.beelabs.com.codebase.base.BaseApp;
 import app.beelabs.com.codebase.di.component.AppComponent;
 import app.beelabs.com.codebase.di.component.DaggerAppComponent;
+
+import com.beelabs.app.cocodb.CocoDB;
 import com.crashlytics.android.Crashlytics;
 
 import java.io.FileNotFoundException;
@@ -49,6 +51,8 @@ public class AppController extends BaseApp {
 
     private static AppController mInstance;
 
+    private static CocoDB db;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -61,6 +65,8 @@ public class AppController extends BaseApp {
         // optional setup custom font path,
         // make sure put font file under main/assets/fonts/
         setupDefaultFont("fonts/OpenSans-Regular.ttf");
+
+        db = CocoDB.initDatabase(getResources().getString(R.string.database_package_name), getApplicationContext()); // initialize realm db
     }
 
     public static AppComponent getAppComponent() {
@@ -86,81 +92,6 @@ public class AppController extends BaseApp {
         return mRequestQueue;
     }
 
-//    private SSLSocketFactory getSocketFactory() {
-//
-//        CertificateFactory cf = null;
-//        try {
-//            cf = CertificateFactory.getInstance("X.509");
-//            InputStream caInput = getResources().openRawResource(R.raw.toko_alpokat_com);
-//            Certificate ca;
-//            try {
-//                ca = cf.generateCertificate(caInput);
-//                Log.e("CERT", "ca=" + ((X509Certificate) ca).getSubjectDN());
-//            } finally {
-//                caInput.close();
-//            }
-//
-//
-//            String keyStoreType = KeyStore.getDefaultType();
-//            KeyStore keyStore = KeyStore.getInstance(keyStoreType);
-//            keyStore.load(null, null);
-//            keyStore.setCertificateEntry("ca", ca);
-//
-//
-//            String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
-//            TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
-//            tmf.init(keyStore);
-//
-//
-//            HostnameVerifier hostnameVerifier = new HostnameVerifier() {
-//                @Override
-//                public boolean verify(String hostname, SSLSession session) {
-//
-//                    Log.e("CipherUsed", session.getCipherSuite());
-//                    return hostname.compareTo("toko.alpokat.com")==0; //The Hostname of your server
-//
-//                }
-//            };
-//
-//
-//            HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
-//            SSLContext context = null;
-//            context = SSLContext.getInstance("TLS");
-//
-//            context.init(null, tmf.getTrustManagers(), null);
-//            HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
-//
-//            TLSSocketFactory sf = (TLSSocketFactory) context.getSocketFactory();
-//
-//
-//            return sf;
-//
-//        } catch (CertificateException e) {
-//            e.printStackTrace();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        } catch (KeyStoreException e) {
-//            e.printStackTrace();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (KeyManagementException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return  null;
-//    }
-
-//    public ImageLoader getImageLoader() {
-//        getRequestQueue();
-//        if (mImageLoader == null) {
-//            mImageLoader = new ImageLoader(this.mRequestQueue,
-//                    new LruBitmapCache());
-//        }
-//        return this.mImageLoader;
-//    }
-
     public <T> void addToRequestQueue(Request<T> req, String tag) {
         req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
         getRequestQueue().add(req);
@@ -171,9 +102,8 @@ public class AppController extends BaseApp {
         getRequestQueue().add(req);
     }
 
-//    public void cancelPendingRequests(Object tag) {
-//        if (mRequestQueue != null) {
-//            mRequestQueue.cancelAll(tag);
-//        }
-//    }
+
+    public static CocoDB getDb() {
+        return db;
+    }
 }

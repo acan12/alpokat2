@@ -1,15 +1,23 @@
 
 package com.alpokat.toko.Helper;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.icu.util.Calendar;
 import android.util.Log;
+
+import com.alpokat.toko.Model.realm.Keranjang;
+import com.alpokat.toko.Model.realm.Transaksi;
+import com.alpokat.toko.Setting.AppController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import io.realm.RealmResults;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
 
@@ -101,25 +109,48 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
 
+    @SuppressLint("NewApi")
     public void TambahTransaksi(String id_toko,
                                 String id_produk,
                                 String jumlah,
                                 String id_kasir,
                                 String id_pelanggan,
                                 String faktur,
-                                String tanggal) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("id_toko", id_toko);
-        values.put("id_produk", id_produk);
-        values.put("jumlah", jumlah);
-        values.put("id_kasir", id_kasir);
-        values.put("id_pelanggan", id_pelanggan);
-        values.put("faktur", faktur);
-        values.put("tanggal", tanggal);
-        db.insert("transaksi", null, values);
-        db.close(); // Closing database connection
+                                String tanggal){
+
+        Transaksi transaksi = new Transaksi();
+        transaksi.setId(Calendar.getInstance().getTimeInMillis());
+        transaksi.setId_toko(id_toko);
+        transaksi.setId_produk(id_produk);
+        transaksi.setJumlah(jumlah);
+        transaksi.setId_kasir(id_kasir);
+        transaksi.setId_pelanggan(id_pelanggan);
+        transaksi.setFaktur(faktur);
+        transaksi.setTanggal(tanggal);
+
+        AppController.getDb().saveToRealm(transaksi);
     }
+
+
+//    public void TambahTransaksi(String id_toko,
+//                                String id_produk,
+//                                String jumlah,
+//                                String id_kasir,
+//                                String id_pelanggan,
+//                                String faktur,
+//                                String tanggal) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("id_toko", id_toko);
+//        values.put("id_produk", id_produk);
+//        values.put("jumlah", jumlah);
+//        values.put("id_kasir", id_kasir);
+//        values.put("id_pelanggan", id_pelanggan);
+//        values.put("faktur", faktur);
+//        values.put("tanggal", tanggal);
+//        db.insert("transaksi", null, values);
+//        db.close(); // Closing database connection
+//    }
 
     public void TambahProduk(String id_produk,
                              String nama_produk,
@@ -238,43 +269,78 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
+
+    @SuppressLint("NewApi")
     public void IsiKeranjang(String id_produk,
                              String nama_produk,
                              String jumlah,
                              String harga_jual,
                              String total) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("id_produk", id_produk);
-        values.put("nama_produk", nama_produk);
-        values.put("jumlah", jumlah);
-        values.put("harga_jual", harga_jual);
-        values.put("total", total);
-        db.insert("keranjang", null, values);
-        db.close(); // Closing database connection
+
+        Keranjang keranjang = new Keranjang();
+        keranjang.setId(Calendar.getInstance().getTimeInMillis());
+        keranjang.setId_produk(id_produk);
+        keranjang.setNama_produk(nama_produk);
+        keranjang.setJumlah(Integer.parseInt(jumlah));
+        keranjang.setHarga_jual(Long.parseLong(harga_jual));
+        keranjang.setTotal(Long.parseLong(total));
+
+        AppController.getDb().saveToRealm(keranjang);
     }
+
+
+//    public void IsiKeranjang(String id_produk,
+//                              String nama_produk,
+//                              String jumlah,
+//                              String harga_jual,
+//                              String total) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("id_produk", id_produk);
+//        values.put("nama_produk", nama_produk);
+//        values.put("jumlah", jumlah);
+//        values.put("harga_jual", harga_jual);
+//        values.put("total", total);
+//        db.insert("keranjang", null, values);
+//        db.close(); // Closing database connection
+//    }
 
 
     public HashMap<String, Integer> HitungItemBelanja(String id_produk) {
         HashMap<String, Integer> data = new HashMap<>();
 
         try {
-            String selectQuery = "SELECT  * FROM keranjang WHERE id_produk='" + id_produk + "'";
-            SQLiteDatabase db = this.getReadableDatabase();
-            Cursor cursor = db.rawQuery(selectQuery, null);
-            data.put("jumlah", Integer.valueOf(cursor.getCount()));
-            cursor.moveToFirst();
-            if (cursor.getCount() > 0) {
-                data.put("jumlah_produk", cursor.getInt(4));
-                data.put("harga_jual", cursor.getInt(5));
-            }
-            cursor.close();
-            db.close();
-        } catch (Exception e) {
+            RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionByKeyRealm("id_produk", id_produk, Keranjang.class);
+            data.put("jumlah", keranjangList.size());
+            data.put("jumlah_produk", (int) keranjangList.get(0).getJumlah());
+            data.put("harga_jual", (int) keranjangList.get(0).getHarga_jual());
+        }catch (Exception e){
             Log.e("Error", e.getMessage());
         }
+
         return data;
+
     }
+//    public HashMap<String, Integer> HitungItemBelanja(String id_produk) {
+//        HashMap<String, Integer> data = new HashMap<>();
+//
+//        try {
+//            String selectQuery = "SELECT  * FROM keranjang WHERE id_produk='" + id_produk + "'";
+//            SQLiteDatabase db = this.getReadableDatabase();
+//            Cursor cursor = db.rawQuery(selectQuery, null);
+//            data.put("jumlah", Integer.valueOf(cursor.getCount()));
+//            cursor.moveToFirst();
+//            if (cursor.getCount() > 0) {
+//                data.put("jumlah_produk", cursor.getInt(4));
+//                data.put("harga_jual", cursor.getInt(5));
+//            }
+//            cursor.close();
+//            db.close();
+//        } catch (Exception e) {
+//            Log.e("Error", e.getMessage());
+//        }
+//        return data;
+//    }
 
 
     /**

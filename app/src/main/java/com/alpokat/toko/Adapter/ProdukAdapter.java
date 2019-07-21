@@ -24,8 +24,10 @@ import com.alpokat.toko.Fragment.FavoritFragment;
 import com.alpokat.toko.Helper.SQLiteHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.ProdukModel;
+import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppController;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -225,11 +227,17 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
                         ji = hitung.get("jumlah_produk") + 1;
                         int m = hitung.get("harga_jual");
                         int t = m * ji;
-                        dbcenter = new SqlHelper(mContext);
-                        SQLiteDatabase db = dbcenter.getWritableDatabase();
-                        db.execSQL("UPDATE keranjang SET jumlah ='" + ji + "'," +
-                                " total='" + t + "' " +
-                                " WHERE id_produk='" + id_produk.getText().toString() + "'");
+
+                        String produkId = id_produk.getText().toString();
+                        Keranjang keranjang = (Keranjang) AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class).get(0);
+                        keranjang.setJumlah(ji);
+                        keranjang.setTotal(t);
+                        AppController.getDb().saveToRealm(keranjang);
+//                        dbcenter = new SqlHelper(mContext);
+//                        SQLiteDatabase db = dbcenter.getWritableDatabase();
+//                        db.execSQL("UPDATE keranjang SET jumlah ='" + ji + "'," +
+//                                " total='" + t + "' " +
+//                                " WHERE id_produk='" + id_produk.getText().toString() + "'");
                     }
 
 

@@ -26,9 +26,11 @@ import android.widget.Toast;
 
 import com.alpokat.toko.Helper.SQLiteHandler;
 import com.alpokat.toko.Helper.SqlHelper;
+import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.Print.DeviceListActivity;
 import com.alpokat.toko.Print.UnicodeFormatter;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppController;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -43,6 +45,8 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
+
+import io.realm.RealmResults;
 
 public class PembayaranActivity extends AppActivity implements Runnable {
 
@@ -486,23 +490,40 @@ public class PembayaranActivity extends AppActivity implements Runnable {
         }
     }
 
+
     public void LoadTotalBelanja() {
-        dbcenter = new SqlHelper(getApplicationContext());
-        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-        cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-        total = 0;
-        int jitem = 0;
-        if (cursor.getCount() > 0) {
-            for (int cc = 0; cc < cursor.getCount(); cc++) {
-                cursor.moveToPosition(cc);
-                total = total + Integer.valueOf(cursor.getString(6));
-                jitem = jitem + Integer.valueOf(cursor.getString(4));
-            }
+
+        RealmResults<Keranjang> results = AppController.getDb().getCollectionRealm(Keranjang.class);
+
+
+        int itemCount = 0;
+        for(Keranjang keranjang : results){
+            total += (int) keranjang.getTotal();
+            itemCount += (int) keranjang.getJumlah();
         }
 
         total_belanja.setText(String.format("%,.0f", total));
-        jumlah_item.setText(jitem + "");
+        jumlah_item.setText(itemCount + "");
     }
+
+
+//    public void LoadTotalBelanja() {
+//        dbcenter = new SqlHelper(getApplicationContext());
+//        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//        cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//        total = 0;
+//        int jitem = 0;
+//        if (cursor.getCount() > 0) {
+//            for (int cc = 0; cc < cursor.getCount(); cc++) {
+//                cursor.moveToPosition(cc);
+//                total += Integer.valueOf(cursor.getString(6));
+//                jitem += Integer.valueOf(cursor.getString(4));
+//            }
+//        }
+//
+//        total_belanja.setText(String.format("%,.0f", total));
+//        jumlah_item.setText(jitem + "");
+//    }
 
     private void ProsesBayar(final String id_produk,
                              final String jumlah,
