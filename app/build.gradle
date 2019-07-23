@@ -100,7 +100,7 @@ dependencies {
     implementation 'com.edwardvanraak:MaterialBarcodeScanner:0.0.6-ALPHA'
 
     implementation 'com.github.acan12:coconut:2.0.7'
-    implementation 'com.github.acan12:coconut-db:1.0.4'
+    implementation 'com.github.acan12:coconut-db:1.0.9'
     implementation 'com.google.dagger:dagger:2.4'
     annotationProcessor "com.google.dagger:dagger-compiler:2.4"
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'

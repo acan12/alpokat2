@@ -9,14 +9,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.icu.util.Calendar;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.Model.realm.Transaksi;
 import com.alpokat.toko.Setting.AppController;
+import com.beelabs.app.cocodb.CocoDB;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -116,7 +119,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                                 String id_kasir,
                                 String id_pelanggan,
                                 String faktur,
-                                String tanggal){
+                                String tanggal) {
 
         Transaksi transaksi = new Transaksi();
         transaksi.setId(Calendar.getInstance().getTimeInMillis());
@@ -314,7 +317,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             data.put("jumlah", keranjangList.size());
             data.put("jumlah_produk", (int) keranjangList.get(0).getJumlah());
             data.put("harga_jual", (int) keranjangList.get(0).getHarga_jual());
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e("Error", e.getMessage());
         }
 
@@ -457,4 +460,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
 
+    public void updateProduct(final String produkId, final int jumlah, final int total) {
+
+        AppController.getDb().updateRealm(new CocoDB.TransactionCallback(){
+            @Override
+            public RealmObject call() {
+                RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class);
+                Keranjang keranjang = keranjangList.first();
+
+                keranjang.setJumlah(jumlah);
+                keranjang.setTotal(total);
+
+                return keranjang;
+            }
+        });
+    }
 }

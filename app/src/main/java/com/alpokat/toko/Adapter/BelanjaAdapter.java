@@ -16,12 +16,18 @@ import com.alpokat.toko.Activity.PenjualanBarcodeBluetoothActivity;
 import com.alpokat.toko.Helper.SQLiteHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.BelanjaModel;
+import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppController;
+import com.beelabs.app.cocodb.CocoDB;
 
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import io.realm.RealmObject;
+import io.realm.RealmResults;
 
 /**
  * Created by MacBookPro on 27/11/17.
@@ -108,16 +114,20 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                     int m = hitung.get("harga_jual");
 
                     int x = Integer.valueOf(jumlah.getText().toString());
-                    int y = x + 1;
-                    int t = y * m;
+                    final int y = x + 1;
+                    final int t = y * m;
                     jumlah.setText(y + "");
 
 
-                    dbcenter = new SqlHelper(mContext);
-                    SQLiteDatabase db1 = dbcenter.getWritableDatabase();
-                    db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
-                            " total='" + t + "' " +
-                            " WHERE id_produk='" + id_produk.getText().toString() + "'");
+//                    dbcenter = new SqlHelper(mContext);
+//                    SQLiteDatabase db1 = dbcenter.getWritableDatabase();
+//                    db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
+//                            " total='" + t + "' " +
+//                            " WHERE id_produk='" + id_produk.getText().toString() + "'");
+
+                    final String produkId = id_produk.getText().toString();
+
+                    db.updateProduct(produkId, y, t);
 
                     try {
                         PenjualanActivity.PA.LoadTotalBelanja();
@@ -148,11 +158,18 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                             jumlah.setText(y + "");
                             int t = y * m;
 
-                            dbcenter = new SqlHelper(mContext);
-                            SQLiteDatabase db1 = dbcenter.getWritableDatabase();
-                            db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
-                                    " total='" + t + "' " +
-                                    " WHERE id_produk='" + id_produk.getText().toString() + "'");
+//                            dbcenter = new SqlHelper(mContext);
+//                            SQLiteDatabase db1 = dbcenter.getWritableDatabase();
+//                            db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
+//                                    " total='" + t + "' " +
+//                                    " WHERE id_produk='" + id_produk.getText().toString() + "'");
+//                            String produkId = id_produk.getText().toString();
+//                            Keranjang keranjang = (Keranjang) AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class).get(0);
+//                            keranjang.setJumlah(y);
+//                            keranjang.setTotal(t);
+//                            AppController.getDb().saveToRealm(keranjang);
+                            final String produkId = id_produk.getText().toString();
+                            db.updateProduct(produkId, y, t);
 
                             try {
                                 PenjualanActivity.PA.LoadTotalBelanja();
@@ -164,9 +181,12 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                         } else {
 
                             // Do nothing but resetCart the dialog
-                            SqlHelper dbcenter = new SqlHelper(mContext);
-                            SQLiteDatabase db2 = dbcenter.getWritableDatabase();
-                            db2.execSQL("DELETE FROM keranjang WHERE id_produk='" + id_produk.getText().toString() + "'");
+//                            SqlHelper dbcenter = new SqlHelper(mContext);
+//                            SQLiteDatabase db2 = dbcenter.getWritableDatabase();
+//                            db2.execSQL("DELETE FROM keranjang WHERE id_produk='" + id_produk.getText().toString() + "'");
+                            String produkId = id_produk.getText().toString();
+                            RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class);
+                            AppController.getDb().deleteRealmBykey("id_produk",  keranjangList.get(0).getId_produk(), Keranjang.class);
                             try {
                                 PenjualanActivity.PA.LoadTotalBelanja();
                                 PenjualanActivity.PA.LoadKeranjang();

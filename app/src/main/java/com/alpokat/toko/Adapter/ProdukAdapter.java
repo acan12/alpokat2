@@ -25,9 +25,10 @@ import com.alpokat.toko.Helper.SQLiteHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.ProdukModel;
 import com.alpokat.toko.Model.realm.Keranjang;
-import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
+import com.beelabs.app.cocodb.CocoDB;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -40,6 +41,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.List;
+
+import io.realm.RealmObject;
 
 /**
  * Created by MacBookPro on 27/11/17.
@@ -78,10 +81,10 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
 
         String x = obj.getFavorit();
 
-        if(x != null && x.equalsIgnoreCase("no")) {
+        if (x != null && x.equalsIgnoreCase("no")) {
             holder.btn_favorit.setVisibility(View.VISIBLE);
             holder.btn_favorit2.setVisibility(View.GONE);
-        }else{
+        } else {
             holder.btn_favorit.setVisibility(View.GONE);
             holder.btn_favorit2.setVisibility(View.VISIBLE);
         }
@@ -89,8 +92,8 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
 
         String path = Environment.getExternalStorageDirectory() + "/alpokat/" + obj.getFoto();
         File imgFile = new File(path);
-        if(!imgFile.exists()){
-            new DownloadFileFoto().execute(AppConfig.HOST+"foto_produk/"+ obj.getFoto(), obj.getFoto());
+        if (!imgFile.exists()) {
+            new DownloadFileFoto().execute(AppConfig.HOST + "foto_produk/" + obj.getFoto(), obj.getFoto());
 
         }
         Glide.with(mContext)
@@ -100,7 +103,6 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
                         .error(R.drawable.ic_launcher_background).centerCrop()
                 )
                 .into(holder.foto);
-
 
 
     }
@@ -162,7 +164,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
                 harga_indo,
                 id_produk;
 
-        public ImageView foto,btn_favorit,btn_favorit2;
+        public ImageView foto, btn_favorit, btn_favorit2;
         public SQLiteHandler db;
         public RelativeLayout layout_barang;
         public LinearLayout papan;
@@ -183,7 +185,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
             btn_favorit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext,"Jadi Favorit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Jadi Favorit", Toast.LENGTH_SHORT).show();
                     SqlHelper dbcenter = new SqlHelper(mContext);
                     SQLiteDatabase db1 = dbcenter.getWritableDatabase();
                     db1.execSQL("UPDATE produk SET favorit = 'yes' WHERE id_produk='" + id_produk.getText().toString() + "'");
@@ -195,7 +197,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
             btn_favorit2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext,"Tidak Favorit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Tidak Favorit", Toast.LENGTH_SHORT).show();
                     SqlHelper dbcenter = new SqlHelper(mContext);
                     SQLiteDatabase db1 = dbcenter.getWritableDatabase();
                     db1.execSQL("UPDATE produk SET favorit = 'no' WHERE id_produk='" + id_produk.getText().toString() + "'");
@@ -213,7 +215,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
                 public void onClick(View view) {
 
 
-                    int ji;
+                    final int ji;
                     HashMap<String, Integer> hitung = db.HitungItemBelanja(id_produk.getText().toString());
                     if (hitung.get("jumlah") == 0) {
                         db.IsiKeranjang(
@@ -226,13 +228,19 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
                     } else {
                         ji = hitung.get("jumlah_produk") + 1;
                         int m = hitung.get("harga_jual");
-                        int t = m * ji;
+                        final int t = m * ji;
 
-                        String produkId = id_produk.getText().toString();
-                        Keranjang keranjang = (Keranjang) AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class).get(0);
-                        keranjang.setJumlah(ji);
-                        keranjang.setTotal(t);
-                        AppController.getDb().saveToRealm(keranjang);
+
+                        AppController.getDb().updateRealm(new CocoDB.TransactionCallback() {
+                            @Override
+                            public RealmObject call() {
+                                String produkId = id_produk.getText().toString();
+                                Keranjang keranjang = (Keranjang) AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class).get(0);
+                                keranjang.setJumlah(ji);
+                                keranjang.setTotal(t);
+                                return keranjang;
+                            }
+                        });
 //                        dbcenter = new SqlHelper(mContext);
 //                        SQLiteDatabase db = dbcenter.getWritableDatabase();
 //                        db.execSQL("UPDATE keranjang SET jumlah ='" + ji + "'," +
@@ -305,7 +313,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
 
                 if (!mediaStorageDir.exists()) {
                     if (!mediaStorageDir.mkdirs()) {
-                        Toast.makeText(mContext,"tidak bisa membuat folder", Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "tidak bisa membuat folder", Toast.LENGTH_LONG).show();
                         return null;
                     }
                 }
