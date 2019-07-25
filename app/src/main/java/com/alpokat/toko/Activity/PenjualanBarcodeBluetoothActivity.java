@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -38,17 +36,21 @@ import com.alpokat.toko.Adapter.BelanjaAdapter;
 import com.alpokat.toko.Helper.SQLiteHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.BelanjaModel;
+import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppController;
 import com.alpokat.toko.support.ReportUtil;
+import com.beelabs.app.cocodb.CocoDB;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
+import app.beelabs.com.utilc.MoneyUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmObject;
+import io.realm.RealmResults;
 
 public class PenjualanBarcodeBluetoothActivity extends AppActivity {
     @BindView(R.id.ListView)
@@ -161,9 +163,11 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
 
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing but resetCart the dialog
-                        SqlHelper dbcenter = new SqlHelper(PenjualanBarcodeBluetoothActivity.this);
-                        SQLiteDatabase db = dbcenter.getWritableDatabase();
-                        db.execSQL("DELETE FROM keranjang");
+//                        SqlHelper dbcenter = new SqlHelper(PenjualanBarcodeBluetoothActivity.this);
+//                        SQLiteDatabase db = dbcenter.getWritableDatabase();
+//                        db.execSQL("DELETE FROM keranjang");
+                        AppController.getDb().deleteRealm(Keranjang.class);
+
                         PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
                         PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
                         dialog.dismiss();
@@ -187,7 +191,7 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
         selesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), PembayaranBarcodeActivity.class);
+                Intent i = new Intent(getApplicationContext(), PembayaranActivity.class);
                 i.putExtra("id_pelanggan", "0");
                 i.putExtra("nama", "Pilih Pelanggan");
                 startActivity(i);
@@ -279,9 +283,10 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
     }
 
     public void resetCart() {
-        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-        SQLiteDatabase db = dbcenter.getWritableDatabase();
-        db.execSQL("DELETE FROM keranjang");
+//        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+//        SQLiteDatabase db = dbcenter.getWritableDatabase();
+//        db.execSQL("DELETE FROM keranjang");
+        AppController.getDb().deleteRealm(Keranjang.class);
         finish();
     }
 
@@ -290,12 +295,12 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
         listView.setAdapter(mAdapter);
     }
 
-    private void addToChart(String id_produk, String nama_produk, String harga_indo) {
-        int ji;
-        HashMap<String, Integer> hitung = db.HitungItemBelanja(id_produk);
+    private void addToChart(final String produkId, String nama_produk, String harga_indo) {
+        final int ji;
+        HashMap<String, Integer> hitung = db.HitungItemBelanja(produkId);
         if (hitung.get("jumlah") == 0) {
             db.IsiKeranjang(
-                    id_produk,
+                    produkId,
                     nama_produk,
                     "1",
                     harga_indo,
@@ -304,12 +309,23 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
         } else {
             ji = hitung.get("jumlah_produk") + 1;
             int m = hitung.get("harga_jual");
-            int t = m * ji;
-            dbcenter = new SqlHelper(this);
-            SQLiteDatabase db = dbcenter.getWritableDatabase();
-            db.execSQL("UPDATE keranjang SET jumlah ='" + ji + "'," +
-                    " total='" + t + "' " +
-                    " WHERE id_produk='" + id_produk + "'");
+            final int t = m * ji;
+            AppController.getDb().updateRealm(new CocoDB.TransactionCallback() {
+                @Override
+                public RealmObject call() {
+                    Keranjang keranjang = (Keranjang) AppController.getDb()
+                            .getCollectionByKeyRealm("id_produk", produkId, Keranjang.class)
+                            .get(0);
+                    keranjang.setJumlah(ji);
+                    keranjang.setTotal(t);
+                    return keranjang;
+                }
+            });
+//            dbcenter = new SqlHelper(this);
+//            SQLiteDatabase db = dbcenter.getWritableDatabase();
+//            db.execSQL("UPDATE keranjang SET jumlah ='" + ji + "'," +
+//                    " total='" + t + "' " +
+//                    " WHERE id_produk='" + id_produk + "'");
         }
 
 
@@ -320,26 +336,46 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
     @SuppressLint("SetTextI18n")
     public void LoadTotalBelanja() {
         try {
-            SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-            SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-            @SuppressLint("Recycle")
-            Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//            SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+//            SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//            @SuppressLint("Recycle")
+//            Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+            RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionRealm(Keranjang.class);
+
             long total = 0;
             int jitem = 0;
-            if (cursor.getCount() > 0) {
-                for (int cc = 0; cc < cursor.getCount(); cc++) {
-                    cursor.moveToPosition(cc);
-                    total = total + Long.valueOf(cursor.getString(6));
-                    jitem = jitem + Integer.valueOf(cursor.getString(4));
+
+
+            if (keranjangList.size() > 0) {
+                for (Keranjang keranjang : keranjangList) {
+                    total += keranjang.getTotal();
+                    jitem += keranjang.getJumlah();
+
                 }
             }
 
-            Locale localeID = new Locale("in", "ID");
-            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-            String x = formatRupiah.format(total);
+//            Locale localeID = new Locale("in", "ID");
+//            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+//            String x = formatRupiah.format(total);
 
-            total_belanja.setText(String.valueOf(x));
+            total_belanja.setText(MoneyUtil.Companion.convertIDRCurrencyFormat((double) total, 0));
             jumlah_item.setText(jitem + "");
+
+
+//            if (cursor.getCount() > 0) {
+//                for (int cc = 0; cc < cursor.getCount(); cc++) {
+//                    cursor.moveToPosition(cc);
+//                    total = total + Long.valueOf(cursor.getString(6));
+//                    jitem = jitem + Integer.valueOf(cursor.getString(4));
+//                }
+//            }
+//
+//            Locale localeID = new Locale("in", "ID");
+//            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+//            String x = formatRupiah.format(total);
+//
+//            total_belanja.setText(String.valueOf(x));
+//            jumlah_item.setText(jitem + "");
 
         } catch (Exception e) {
             resetCart();
@@ -349,26 +385,41 @@ public class PenjualanBarcodeBluetoothActivity extends AppActivity {
 
 
     public void LoadKeranjang() {
-        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-        cursor.moveToFirst();
+//        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+//        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//        @SuppressLint("Recycle") Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//        cursor.moveToFirst();
         belanja_list.clear();
-        for (int cc = 0; cc < cursor.getCount(); cc++) {
-            cursor.moveToPosition(cc);
+//        for (int cc = 0; cc < cursor.getCount(); cc++) {
+//            cursor.moveToPosition(cc);
+//            BelanjaModel daftar = new BelanjaModel();
+//            daftar.setId_produk(cursor.getString(2));
+//            daftar.setNama_produk(cursor.getString(3));
+//            daftar.setJumlah(cursor.getString(4));
+//            daftar.setHarga(cursor.getString(5));
+//            daftar.setTotal(cursor.getString(6));
+//            belanja_list.add(daftar);
+//        }
+
+        RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionRealm(Keranjang.class);
+        for (Keranjang keranjang : keranjangList) {
             BelanjaModel daftar = new BelanjaModel();
-            daftar.setId_produk(cursor.getString(2));
-            daftar.setNama_produk(cursor.getString(3));
-            daftar.setJumlah(cursor.getString(4));
-            daftar.setHarga(cursor.getString(5));
-            daftar.setTotal(cursor.getString(6));
+            daftar.setId_produk(keranjang.getId_produk());
+            daftar.setNama_produk(keranjang.getNama_produk());
+            daftar.setJumlah(String.valueOf(keranjang.getJumlah()));
+            daftar.setHarga(String.valueOf(keranjang.getHarga_jual()));
+            daftar.setTotal(String.valueOf(keranjang.getTotal()));
             belanja_list.add(daftar);
+
         }
 
         adapter.notifyDataSetChanged();
-        if (cursor.getCount() > 1) {
-            listView.smoothScrollToPosition(cursor.getCount() - 1);
+        if (keranjangList.size() > 1) {
+            listView.smoothScrollToPosition(keranjangList.size() - 1);
         }
+//        if (cursor.getCount() > 1) {
+//            listView.smoothScrollToPosition(cursor.getCount() - 1);
+//        }
     }
 
     private int dpToPx() {

@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -28,7 +27,6 @@ import android.widget.TextView;
 import com.alpokat.toko.Adapter.BelanjaAdapter;
 import com.alpokat.toko.Adapter.SlidingPenjualanAdapter;
 import com.alpokat.toko.Helper.SQLiteHandler;
-import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.BelanjaModel;
 import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.R;
@@ -67,6 +65,7 @@ public class PenjualanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_penjualan_lanscape);
 
         ButterKnife.bind(this);
+
 
         total_belanja = findViewById(R.id.total_belanja);
         jumlah_item = findViewById(R.id.jumlah_item);
@@ -114,9 +113,11 @@ public class PenjualanActivity extends AppCompatActivity {
 
                     public void onClick(DialogInterface dialog, int which) {
                         // Do nothing but resetCart the dialog
-                        SqlHelper dbcenter = new SqlHelper(PenjualanActivity.this);
-                        SQLiteDatabase db = dbcenter.getWritableDatabase();
-                        db.execSQL("DELETE FROM keranjang");
+//                        SqlHelper dbcenter = new SqlHelper(PenjualanActivity.this);
+//                        SQLiteDatabase db = dbcenter.getWritableDatabase();
+//                        db.execSQL("DELETE FROM keranjang");
+                        AppController.getDb().deleteRealm(Keranjang.class);
+
                         PenjualanActivity.PA.LoadTotalBelanja();
                         PenjualanActivity.PA.LoadKeranjang();
                         dialog.dismiss();
@@ -198,9 +199,10 @@ public class PenjualanActivity extends AppCompatActivity {
 
 
     public void resetCart() {
-        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-        SQLiteDatabase db = dbcenter.getWritableDatabase();
-        db.execSQL("DELETE FROM keranjang");
+//        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+//        SQLiteDatabase db = dbcenter.getWritableDatabase();
+//        db.execSQL("DELETE FROM keranjang");
+        AppController.getDb().deleteRealm(Keranjang.class);
         finish();
     }
 
@@ -276,7 +278,7 @@ public class PenjualanActivity extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
         if (keranjangList.size() > 1) {
-            recyclerView.smoothScrollToPosition(keranjangList.size()- 1);
+            recyclerView.smoothScrollToPosition(keranjangList.size() - 1);
         }
     }
 
