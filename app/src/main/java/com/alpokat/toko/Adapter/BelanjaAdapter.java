@@ -2,14 +2,12 @@ package com.alpokat.toko.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 
 import com.alpokat.toko.Activity.PenjualanActivity;
 import com.alpokat.toko.Activity.PenjualanBarcodeBluetoothActivity;
@@ -19,14 +17,12 @@ import com.alpokat.toko.Model.BelanjaModel;
 import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppController;
-import com.beelabs.app.cocodb.CocoDB;
 
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 /**
@@ -117,6 +113,7 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                     final int y = x + 1;
                     final int t = y * m;
                     jumlah.setText(y + "");
+                    total.setText(t + "");
 
 
 //                    dbcenter = new SqlHelper(mContext);
@@ -132,7 +129,7 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                     try {
                         PenjualanActivity.PA.LoadTotalBelanja();
                         PenjualanActivity.PA.LoadKeranjang();
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         PenjualanBarcodeBluetoothActivity.PA.LoadTotalBelanja();
                         PenjualanBarcodeBluetoothActivity.PA.LoadKeranjang();
                     }
@@ -155,8 +152,9 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                         int x = Integer.valueOf(jumlah.getText().toString());
                         if (x > 1) {
                             int y = x - 1;
-                            jumlah.setText(y + "");
                             int t = y * m;
+                            jumlah.setText(y + "");
+                            total.setText(t + "");
 
 //                            dbcenter = new SqlHelper(mContext);
 //                            SQLiteDatabase db1 = dbcenter.getWritableDatabase();
@@ -186,7 +184,7 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
 //                            db2.execSQL("DELETE FROM keranjang WHERE id_produk='" + id_produk.getText().toString() + "'");
                             String produkId = id_produk.getText().toString();
                             RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class);
-                            AppController.getDb().deleteRealmBykey("id_produk",  keranjangList.get(0).getId_produk(), Keranjang.class);
+                            AppController.getDb().deleteRealmBykey("id_produk", keranjangList.get(0).getId_produk(), Keranjang.class);
                             try {
                                 PenjualanActivity.PA.LoadTotalBelanja();
                                 PenjualanActivity.PA.LoadKeranjang();
@@ -196,7 +194,7 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                             }
 
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Log.e("ERROR", "error");
                     }
 

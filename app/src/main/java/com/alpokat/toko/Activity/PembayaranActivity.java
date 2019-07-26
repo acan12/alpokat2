@@ -32,6 +32,7 @@ import com.alpokat.toko.Print.UnicodeFormatter;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppController;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -433,7 +434,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
     private void autoConnect() {
 
         try {
-            mBluetoothSocket = null;
+//            mBluetoothSocket = null;
             mBluetoothSocket.close();
         } catch (Exception e) {
             Log.e("Tag", "Exe ", e);
@@ -535,7 +536,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
         SQLiteHandler db = new SQLiteHandler(getApplicationContext());
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
         finish();
-        Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_LONG).show();
 
         boolean s = isMyServiceRunning(DataService.class);
         if(!s){
@@ -643,8 +644,9 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
 
     private void print() {
-        Thread t = new Thread() {
-            public void run() {
+        RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionRealm(Keranjang.class);
+//        Thread t = new Thread() {
+//            public void run() {
                 try {
                     OutputStream os = mBluetoothSocket.getOutputStream();
                     String BILL;
@@ -673,16 +675,16 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
                     BILL += "\n-------------------------------";
 
-                    dbcenter = new SqlHelper(getApplicationContext());
-                    SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-                    cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-                    cursor.moveToFirst();
-                    for (int cc = 0; cc < cursor.getCount(); cc++) {
-                        cursor.moveToPosition(cc);
-                        String nama = cursor.getString(3);
-                        String jumlah = cursor.getString(4);
-                        String harga = cursor.getString(5);
-                        String total = cursor.getString(6);
+//                    dbcenter = new SqlHelper(getApplicationContext());
+//                    SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//                    cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//                    cursor.moveToFirst();
+
+                    for(Keranjang keranjang : keranjangList){
+                        String nama = keranjang.getNama_produk();
+                        String jumlah = String.valueOf(keranjang.getJumlah());
+                        String harga = String.valueOf(keranjang.getHarga_jual());
+                        String total = String.valueOf(keranjang.getTotal());
 
                         double hrg = Integer.valueOf(harga);
                         harga = String.format("%,.0f", hrg);
@@ -692,8 +694,8 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
                         BILL += "\n- " + nama + "\n";
                         BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
-
                     }
+
                     BILL += "\n-------------------------------";
                     BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Total Belanja", ": Rp.", total_belanja.getText());
                     BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Jumlah Bayar", ": Rp.", jumlah_bayar.getText());
@@ -728,13 +730,13 @@ public class PembayaranActivity extends AppActivity implements Runnable {
                 } catch (Exception e) {
                     Log.e("MainActivity2", "Exe ", e);
                 }
-            }
-        };
-        t.start();
+//            }
+//        };
+//        t.start();
 
         if (copy_struk.isChecked()) {
-            Thread t2 = new Thread() {
-                public void run() {
+//            Thread t2 = new Thread() {
+//                public void run() {
                     try {
                         OutputStream os = mBluetoothSocket.getOutputStream();
                         String BILL;
@@ -762,17 +764,11 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
 
                         BILL += "\n-------------------------------";
-
-                        dbcenter = new SqlHelper(getApplicationContext());
-                        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-                        cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-                        cursor.moveToFirst();
-                        for (int cc = 0; cc < cursor.getCount(); cc++) {
-                            cursor.moveToPosition(cc);
-                            String nama = cursor.getString(3);
-                            String jumlah = cursor.getString(4);
-                            String harga = cursor.getString(5);
-                            String total = cursor.getString(6);
+                        for(Keranjang keranjang : keranjangList){
+                            String nama = keranjang.getNama_produk();
+                            String jumlah = String.valueOf(keranjang.getJumlah());
+                            String harga = String.valueOf(keranjang.getHarga_jual());
+                            String total = String.valueOf(keranjang.getTotal());
 
                             double hrg = Integer.valueOf(harga);
                             harga = String.format("%,.0f", hrg);
@@ -782,8 +778,28 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
                             BILL += "\n- " + nama + "\n";
                             BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
-
                         }
+//                        dbcenter = new SqlHelper(getApplicationContext());
+//                        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//                        cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//                        cursor.moveToFirst();
+//                        for (int cc = 0; cc < cursor.getCount(); cc++) {
+//                            cursor.moveToPosition(cc);
+//                            String nama = cursor.getString(3);
+//                            String jumlah = cursor.getString(4);
+//                            String harga = cursor.getString(5);
+//                            String total = cursor.getString(6);
+//
+//                            double hrg = Integer.valueOf(harga);
+//                            harga = String.format("%,.0f", hrg);
+//
+//                            double ttl = Integer.valueOf(total);
+//                            total = String.format("%,.0f", ttl);
+//
+//                            BILL += "\n- " + nama + "\n";
+//                            BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
+//
+//                        }
                         BILL += "\n-------------------------------";
                         BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Total Belanja", ": Rp.", total_belanja.getText());
                         BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Jumlah Bayar", ": Rp.", jumlah_bayar.getText());
@@ -818,9 +834,9 @@ public class PembayaranActivity extends AppActivity implements Runnable {
                     } catch (Exception e) {
                         Log.e("MainActivity2", "Exe ", e);
                     }
-                }
-            };
-            t2.start();
+//                }
+//            };
+//            t2.start();
         }
 
     }

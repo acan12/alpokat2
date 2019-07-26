@@ -1,9 +1,11 @@
 package com.alpokat.toko.Model.realm;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Transaksi extends RealmObject {
 
+    @PrimaryKey
     private long id;
     private String id_toko;
     private String id_produk;
