@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.realm.Keranjang;
+import com.alpokat.toko.Model.realm.Transaksi;
 import com.alpokat.toko.Print.DeviceListActivity;
 import com.alpokat.toko.Print.UnicodeFormatter;
 import com.alpokat.toko.R;
@@ -154,19 +155,27 @@ public class PembayaranActivity extends AppActivity implements Runnable {
             public void onClick(View view) {
 
 
-                dbcenter = new SqlHelper(getApplicationContext());
-                SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-                cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-                cursor.moveToFirst();
+//                dbcenter = new SqlHelper(getApplicationContext());
+//                SQLiteDatabase dbp = dbcenter.getReadableDatabase();
+//                cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
+//                cursor.moveToFirst();
+                RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionRealm(Keranjang.class);
+//                Keranjang keranjang = keranjangList.first();
 
-                id_produk = new String[cursor.getCount()];
-                jumlah = new String[cursor.getCount()];
+                id_produk = new String[keranjangList.size()];
+                jumlah = new String[keranjangList.size()];
 
-                for (int cc = 0; cc < cursor.getCount(); cc++) {
-                    cursor.moveToPosition(cc);
-                    id_produk[cc] = cursor.getString(2);
-                    jumlah[cc] = cursor.getString(4);
+                int index = 0;
+                for(Keranjang keranjang : keranjangList){
+                    id_produk[index] = keranjang.getId_produk();
+                    jumlah[index] = String.valueOf(keranjang.getJumlah());
+                    index++;
                 }
+//                for (int cc = 0; cc < cursor.getCount(); cc++) {
+//                    cursor.moveToPosition(cc);
+//                    id_produk[cc] = cursor.getString(2);
+//                    jumlah[cc] = cursor.getString(4);
+//                }
 
                 char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
                 StringBuilder sb1 = new StringBuilder();
@@ -514,12 +523,13 @@ public class PembayaranActivity extends AppActivity implements Runnable {
         // Tag used to cancel the request
         DataHandler db = new DataHandler(getApplicationContext());
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
+
         finish();
         Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_LONG).show();
 
         boolean s = isMyServiceRunning(DataService.class);
         if (!s) {
-            Intent intent = new Intent(getApplicationContext(), DataService.class);
+            Intent intent = new Intent(this, DataService.class);
             startService(intent);
         }
 

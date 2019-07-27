@@ -7,7 +7,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.icu.util.Calendar;
 import android.util.Log;
 
 import com.alpokat.toko.Model.realm.Keranjang;
@@ -16,13 +15,11 @@ import com.alpokat.toko.Setting.AppController;
 import com.beelabs.app.cocodb.CocoDB;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.Random;
 
-import app.beelabs.com.codebase.support.util.DateUtil;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
-import java.util.Random;
 
 public class DataHandler extends SQLiteOpenHelper {
 
@@ -126,17 +123,17 @@ public class DataHandler extends SQLiteOpenHelper {
                                 String faktur,
                                 String tanggal) {
 
-        Transaksi transaksi = new Transaksi();
-        transaksi.setId(rand.nextInt(1000));
-        transaksi.setId_toko(id_toko);
-        transaksi.setId_produk(id_produk);
-        transaksi.setJumlah(jumlah);
-        transaksi.setId_kasir(id_kasir);
-        transaksi.setId_pelanggan(id_pelanggan);
-        transaksi.setFaktur(faktur);
-        transaksi.setTanggal(tanggal);
-
-        AppController.getDb().saveToRealm(transaksi);
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_toko", id_toko);
+        values.put("id_produk", id_produk);
+        values.put("jumlah", jumlah);
+        values.put("id_kasir", id_kasir);
+        values.put("id_pelanggan", id_pelanggan);
+        values.put("faktur", faktur);
+        values.put("tanggal", tanggal);
+        db.insert("transaksi", null, values);
+        db.close(); // Closing database connection
     }
 
     public void TambahProduk(String id_produk,

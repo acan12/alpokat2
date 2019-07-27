@@ -27,6 +27,7 @@ import com.alpokat.toko.Adapter.PenjualanAdapter;
 import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.PenjualanModel;
+import com.alpokat.toko.Model.realm.Transaksi;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
@@ -44,6 +45,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import io.realm.RealmResults;
 
 public class DataPenjualan extends AppCompatActivity {
 
@@ -227,17 +230,16 @@ public class DataPenjualan extends AppCompatActivity {
 
     public void TampilPenjualan() {
 
-        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-        SQLiteDatabase db = dbcenter.getReadableDatabase();
+//        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
+//        SQLiteDatabase db = dbcenter.getReadableDatabase();
         penjualan_list.clear();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM transaksi", null);
-        cursor.moveToFirst();
+//        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM transaksi", null);
+//        cursor.moveToFirst();
 
-
-        for (int cc = 0; cc < cursor.getCount(); cc++) {
-            cursor.moveToPosition(cc);
+        RealmResults<Transaksi> transaksiList = AppController.getDb().getCollectionRealm(Transaksi.class);
+        for (int cc = 0; cc < transaksiList.size(); cc++) {
             PenjualanModel daftar = new PenjualanModel();
-            daftar.setNo_faktur(cursor.getString(6));
+            daftar.setNo_faktur(transaksiList.get(cc).getFaktur());
         }
 
         adapter.notifyDataSetChanged();

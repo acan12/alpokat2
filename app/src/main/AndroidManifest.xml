@@ -47,7 +47,7 @@
         <activity android:name="com.alpokat.toko.Activity.Midtrans" />
         <activity android:name="com.alpokat.toko.Activity.InputProdukActivity" android:label="Input Produk" android:parentActivityName="com.alpokat.toko.Activity.MainActivity" />
         <activity android:name="com.alpokat.toko.Activity.PenjualanBarcodeBluetoothActivity" android:windowSoftInputMode="adjustNothing" android:isScrollContainer="false" />
-        <activity android:name="com.alpokat.toko.Activity.PembayaranBarcodeActivity" />
+        <!--<activity android:name="com.alpokat.toko.Activity.PembayaranBarcodeActivity" />-->
 
 
         <service android:name="com.alpokat.toko.Activity.DataService" android:enabled="true" android:exported="true" />
