@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import com.alpokat.toko.Adapter.BelanjaAdapter;
 import com.alpokat.toko.Adapter.SlidingPenjualanAdapter;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Model.BelanjaModel;
 import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.R;
@@ -50,7 +50,7 @@ public class PenjualanActivity extends AppCompatActivity {
     public static PenjualanActivity PA;
     private TextView total_belanja, jumlah_item;
     private ProgressDialog pDialog;
-    private SQLiteHandler db;
+    private DataHandler db;
     private String id_toko;
     private LinearLayout daftar_belanja, daftar_barang;
 
@@ -112,10 +112,6 @@ public class PenjualanActivity extends AppCompatActivity {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but resetCart the dialog
-//                        SqlHelper dbcenter = new SqlHelper(PenjualanActivity.this);
-//                        SQLiteDatabase db = dbcenter.getWritableDatabase();
-//                        db.execSQL("DELETE FROM keranjang");
                         AppController.getDb().deleteRealm(Keranjang.class);
 
                         PenjualanActivity.PA.LoadTotalBelanja();
@@ -153,7 +149,7 @@ public class PenjualanActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
 
         // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
+        db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         id_toko = p.get("id_toko");
 
@@ -199,9 +195,6 @@ public class PenjualanActivity extends AppCompatActivity {
 
 
     public void resetCart() {
-//        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-//        SQLiteDatabase db = dbcenter.getWritableDatabase();
-//        db.execSQL("DELETE FROM keranjang");
         AppController.getDb().deleteRealm(Keranjang.class);
         finish();
     }
@@ -220,10 +213,6 @@ public class PenjualanActivity extends AppCompatActivity {
                 }
             }
 
-//        Locale localeID = new Locale("in", "ID");
-//            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-//            String x = formatRupiah.format(total);
-
             total_belanja.setText(MoneyUtil.Companion.convertIDRCurrencyFormat((double) total, 0));
             jumlah_item.setText(jitem + "");
 
@@ -232,35 +221,6 @@ public class PenjualanActivity extends AppCompatActivity {
             Log.e("Penjualan Barcode:", e.getMessage());
         }
     }
-
-//    @SuppressLint("SetTextI18n")
-//    public void LoadTotalBelanja() {
-//        try {
-//            SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-//            SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-//            @SuppressLint("Recycle")
-//            Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-//            int total = 0;
-//            int jitem = 0;
-//            if (cursor.getCount() > 0) {
-//                for (int cc = 0; cc < cursor.getCount(); cc++) {
-//                    cursor.moveToPosition(cc);
-//                    total = total + Integer.valueOf(cursor.getString(6));
-//                    jitem = jitem + Integer.valueOf(cursor.getString(4));
-//                }
-//            }
-//
-//            Locale localeID = new Locale("in", "ID");
-//            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-//            String x = formatRupiah.format(total);
-//
-//            total_belanja.setText(String.valueOf(x));
-//            jumlah_item.setText(jitem + "");
-//        } catch (Exception e) {
-//            resetCart();
-//            Log.e("Penjualan Barcode:", e.getMessage());
-//        }
-//    }
 
     public void LoadKeranjang() {
         belanja_list.clear();
@@ -281,29 +241,6 @@ public class PenjualanActivity extends AppCompatActivity {
             recyclerView.smoothScrollToPosition(keranjangList.size() - 1);
         }
     }
-
-//    public void LoadKeranjang() {
-//        SqlHelper dbcenter = new SqlHelper(getApplicationContext());
-//        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-//        @SuppressLint("Recycle") Cursor cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-//        cursor.moveToFirst();
-//        belanja_list.clear();
-//        for (int cc = 0; cc < cursor.getCount(); cc++) {
-//            cursor.moveToPosition(cc);
-//            BelanjaModel daftar = new BelanjaModel();
-//            daftar.setId_produk(cursor.getString(2));
-//            daftar.setNama_produk(cursor.getString(3));
-//            daftar.setJumlah(cursor.getString(4));
-//            daftar.setHarga(cursor.getString(5));
-//            daftar.setTotal(cursor.getString(6));
-//            belanja_list.add(daftar);
-//        }
-//
-//        adapter.notifyDataSetChanged();
-//        if (cursor.getCount() > 1) {
-//            recyclerView.smoothScrollToPosition(cursor.getCount() - 1);
-//        }
-//    }
 
     private int dpToPx() {
         Resources r = getResources();

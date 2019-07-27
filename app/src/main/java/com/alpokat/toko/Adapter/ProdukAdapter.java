@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.alpokat.toko.Activity.PenjualanActivity;
 import com.alpokat.toko.Fragment.BarangFragment;
 import com.alpokat.toko.Fragment.FavoritFragment;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.ProdukModel;
 import com.alpokat.toko.Model.realm.Keranjang;
@@ -165,7 +165,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
                 id_produk;
 
         public ImageView foto, btn_favorit, btn_favorit2;
-        public SQLiteHandler db;
+        public DataHandler db;
         public RelativeLayout layout_barang;
         public LinearLayout papan;
 
@@ -207,7 +207,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
             });
 
 
-            db = new SQLiteHandler(mContext);
+            db = new DataHandler(mContext);
             foto.setOnClickListener(new View.OnClickListener() {
                 public SqlHelper dbcenter;
 

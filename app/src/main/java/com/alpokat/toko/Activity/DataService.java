@@ -11,10 +11,9 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.widget.Toast;
 
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.PenjualanModel;
-import com.alpokat.toko.Model.api.HttpsTrustManager;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
 import com.android.volley.Request;
@@ -30,7 +29,7 @@ import java.util.Map;
 
 public class DataService extends Service {
 
-    private SQLiteHandler db;
+    private DataHandler db;
     private String exp,mode,devid,sinkron;
     private Handler m_handler;
     private Runnable m_handlerTask;
@@ -51,7 +50,7 @@ public class DataService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        db = new SQLiteHandler(getApplicationContext());
+        db = new DataHandler(getApplicationContext());
 
     }
 
@@ -240,7 +239,7 @@ public class DataService extends Service {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        SQLiteHandler db1 = new SQLiteHandler(getApplicationContext());
+                        DataHandler db1 = new DataHandler(getApplicationContext());
                         db1.HapusTransaksi();
                     }
                 } catch (JSONException e) {

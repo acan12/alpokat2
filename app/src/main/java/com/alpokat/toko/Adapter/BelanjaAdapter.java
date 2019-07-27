@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.alpokat.toko.Activity.PenjualanActivity;
 import com.alpokat.toko.Activity.PenjualanBarcodeBluetoothActivity;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.BelanjaModel;
 import com.alpokat.toko.Model.realm.Keranjang;
@@ -31,7 +31,6 @@ import io.realm.RealmResults;
 
 
 public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHolder> {
-
 
     public Context mContext;
     public List<BelanjaModel> belanja_list;
@@ -105,7 +104,7 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                 @Override
                 public void onClick(View view) {
 
-                    SQLiteHandler db = new SQLiteHandler(mContext);
+                    DataHandler db = new DataHandler(mContext);
                     HashMap<String, Integer> hitung = db.HitungItemBelanja(id_produk.getText().toString());
                     int m = hitung.get("harga_jual");
 
@@ -114,13 +113,6 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                     final int t = y * m;
                     jumlah.setText(y + "");
                     total.setText(t + "");
-
-
-//                    dbcenter = new SqlHelper(mContext);
-//                    SQLiteDatabase db1 = dbcenter.getWritableDatabase();
-//                    db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
-//                            " total='" + t + "' " +
-//                            " WHERE id_produk='" + id_produk.getText().toString() + "'");
 
                     final String produkId = id_produk.getText().toString();
 
@@ -144,7 +136,7 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                 public void onClick(View view) {
 
                     try {
-                        SQLiteHandler db = new SQLiteHandler(mContext);
+                        DataHandler db = new DataHandler(mContext);
                         HashMap<String, Integer> hitung = db.HitungItemBelanja(id_produk.getText().toString());
                         int m = hitung.get("harga_jual");
 
@@ -156,16 +148,6 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                             jumlah.setText(y + "");
                             total.setText(t + "");
 
-//                            dbcenter = new SqlHelper(mContext);
-//                            SQLiteDatabase db1 = dbcenter.getWritableDatabase();
-//                            db1.execSQL("UPDATE keranjang SET jumlah ='" + y + "'," +
-//                                    " total='" + t + "' " +
-//                                    " WHERE id_produk='" + id_produk.getText().toString() + "'");
-//                            String produkId = id_produk.getText().toString();
-//                            Keranjang keranjang = (Keranjang) AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class).get(0);
-//                            keranjang.setJumlah(y);
-//                            keranjang.setTotal(t);
-//                            AppController.getDb().saveToRealm(keranjang);
                             final String produkId = id_produk.getText().toString();
                             db.updateProduct(produkId, y, t);
 
@@ -179,9 +161,6 @@ public class BelanjaAdapter extends RecyclerView.Adapter<BelanjaAdapter.MyViewHo
                         } else {
 
                             // Do nothing but resetCart the dialog
-//                            SqlHelper dbcenter = new SqlHelper(mContext);
-//                            SQLiteDatabase db2 = dbcenter.getWritableDatabase();
-//                            db2.execSQL("DELETE FROM keranjang WHERE id_produk='" + id_produk.getText().toString() + "'");
                             String produkId = id_produk.getText().toString();
                             RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class);
                             AppController.getDb().deleteRealmBykey("id_produk", keranjangList.get(0).getId_produk(), Keranjang.class);

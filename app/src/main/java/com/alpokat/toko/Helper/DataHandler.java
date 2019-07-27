@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.icu.util.Calendar;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.Model.realm.Transaksi;
@@ -17,17 +16,23 @@ import com.alpokat.toko.Setting.AppController;
 import com.beelabs.app.cocodb.CocoDB;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
+import app.beelabs.com.codebase.support.util.DateUtil;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
+import java.util.Random;
 
-public class SQLiteHandler extends SQLiteOpenHelper {
+public class DataHandler extends SQLiteOpenHelper {
 
+    private Random rand;
 
-    public SQLiteHandler(Context context) {
+    @SuppressLint("NewApi")
+    public DataHandler(Context context) {
         super(context, "data.db", null, 7);
-        SQLiteDatabase db = this.getWritableDatabase();
+//        SQLiteDatabase db = this.getWritableDatabase();
+        rand = new Random();
     }
 
     // Creating Tables
@@ -122,7 +127,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                                 String tanggal) {
 
         Transaksi transaksi = new Transaksi();
-        transaksi.setId(Calendar.getInstance().getTimeInMillis());
+        transaksi.setId(rand.nextInt(1000));
         transaksi.setId_toko(id_toko);
         transaksi.setId_produk(id_produk);
         transaksi.setJumlah(jumlah);
@@ -133,27 +138,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         AppController.getDb().saveToRealm(transaksi);
     }
-
-
-//    public void TambahTransaksi(String id_toko,
-//                                String id_produk,
-//                                String jumlah,
-//                                String id_kasir,
-//                                String id_pelanggan,
-//                                String faktur,
-//                                String tanggal) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put("id_toko", id_toko);
-//        values.put("id_produk", id_produk);
-//        values.put("jumlah", jumlah);
-//        values.put("id_kasir", id_kasir);
-//        values.put("id_pelanggan", id_pelanggan);
-//        values.put("faktur", faktur);
-//        values.put("tanggal", tanggal);
-//        db.insert("transaksi", null, values);
-//        db.close(); // Closing database connection
-//    }
 
     public void TambahProduk(String id_produk,
                              String nama_produk,
@@ -281,7 +265,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                              String total) {
 
         Keranjang keranjang = new Keranjang();
-        keranjang.setId(Calendar.getInstance().getTimeInMillis());
+        keranjang.setId(rand.nextInt(1000));
         keranjang.setId_produk(id_produk);
         keranjang.setNama_produk(nama_produk);
         keranjang.setJumlah(Integer.parseInt(jumlah));
@@ -290,24 +274,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         AppController.getDb().saveToRealm(keranjang);
     }
-
-
-//    public void IsiKeranjang(String id_produk,
-//                              String nama_produk,
-//                              String jumlah,
-//                              String harga_jual,
-//                              String total) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put("id_produk", id_produk);
-//        values.put("nama_produk", nama_produk);
-//        values.put("jumlah", jumlah);
-//        values.put("harga_jual", harga_jual);
-//        values.put("total", total);
-//        db.insert("keranjang", null, values);
-//        db.close(); // Closing database connection
-//    }
-
 
     public HashMap<String, Integer> HitungItemBelanja(String id_produk) {
         HashMap<String, Integer> data = new HashMap<>();
@@ -324,27 +290,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return data;
 
     }
-//    public HashMap<String, Integer> HitungItemBelanja(String id_produk) {
-//        HashMap<String, Integer> data = new HashMap<>();
-//
-//        try {
-//            String selectQuery = "SELECT  * FROM keranjang WHERE id_produk='" + id_produk + "'";
-//            SQLiteDatabase db = this.getReadableDatabase();
-//            Cursor cursor = db.rawQuery(selectQuery, null);
-//            data.put("jumlah", Integer.valueOf(cursor.getCount()));
-//            cursor.moveToFirst();
-//            if (cursor.getCount() > 0) {
-//                data.put("jumlah_produk", cursor.getInt(4));
-//                data.put("harga_jual", cursor.getInt(5));
-//            }
-//            cursor.close();
-//            db.close();
-//        } catch (Exception e) {
-//            Log.e("Error", e.getMessage());
-//        }
-//        return data;
-//    }
-
 
     /**
      * Getting user data from database
@@ -462,7 +407,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void updateProduct(final String produkId, final int jumlah, final int total) {
 
-        AppController.getDb().updateRealm(new CocoDB.TransactionCallback(){
+        AppController.getDb().updateRealm(new CocoDB.TransactionCallback() {
             @Override
             public RealmObject call() {
                 RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionByKeyRealm("id_produk", produkId, Keranjang.class);

@@ -25,7 +25,7 @@ import com.alpokat.toko.Activity.PenjualanActivity;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.BelanjaModel;
 import com.alpokat.toko.Adapter.BelanjaAdapter;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.R;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class BelanjaFragment extends Fragment {
     private RecyclerView recyclerView;
     private BelanjaAdapter adapter;
     private List<BelanjaModel> belanja_list;
-    private SQLiteHandler db;
+    private DataHandler db;
     private SqlHelper dbcenter;
     private Cursor cursor;
     private String[] daftar;

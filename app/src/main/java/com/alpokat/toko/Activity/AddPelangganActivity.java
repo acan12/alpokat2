@@ -9,9 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.alpokat.toko.Model.api.HttpsTrustManager;
 import com.alpokat.toko.Setting.AppConfig;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppController;
 import com.android.volley.Request;
@@ -46,7 +45,7 @@ public class AddPelangganActivity extends AppCompatActivity {
 
 
         // SQLite database handler
-        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+        DataHandler db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         id_toko = p.get("id_toko");
 

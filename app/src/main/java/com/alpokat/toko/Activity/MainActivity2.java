@@ -24,7 +24,7 @@
 //import android.widget.Toast;
 //
 //import com.alpokat.toko.Dialog.TransactionReportTodayDialog;
-//import com.alpokat.toko.Helper.SQLiteHandler;
+//import com.alpokat.toko.Helper.DataHandler;
 //import com.alpokat.toko.Helper.SessionManager;
 //import com.alpokat.toko.Helper.SqlHelper;
 //import com.alpokat.toko.Model.api.HttpsTrustManager;
@@ -81,7 +81,7 @@
 //    RelativeLayout penjualan;
 //
 //    private SessionManager session;
-//    private SQLiteHandler db;
+//    private DataHandler db;
 //    private ProgressDialog pDialog;
 //    private String id_toko, nama_t, nama_k;
 //    private TextView trial;
@@ -144,7 +144,7 @@
 //        session = new SessionManager(getApplicationContext());
 //
 //        // SQLite database handler
-//        db = new SQLiteHandler(getApplicationContext());
+//        db = new DataHandler(getApplicationContext());
 //        HashMap<String, String> p = db.BacaKasir();
 //        nama_k = p.get("nama_kasir");
 //        nama_t = p.get("nama_toko");

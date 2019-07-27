@@ -22,7 +22,7 @@ import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import com.alpokat.toko.Adapter.CariAdapter;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.PelangganModel;
 import com.alpokat.toko.Setting.AppConfig;
@@ -46,14 +46,14 @@ public class CariPelanggan extends AppCompatActivity {
     private CariAdapter adapter;
     private List<PelangganModel> pelanggan_list;
     private String id_toko;
-    private SQLiteHandler db;
+    private DataHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_pelanggan);
 
-        db = new SQLiteHandler(getApplicationContext());
+        db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         id_toko = p.get("id_toko");
 

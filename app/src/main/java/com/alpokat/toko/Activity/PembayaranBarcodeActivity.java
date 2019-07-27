@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Print.DeviceListActivity;
 import com.alpokat.toko.Print.UnicodeFormatter;
@@ -135,7 +135,7 @@ public class PembayaranBarcodeActivity extends AppActivity implements Runnable {
 
 
         // SQLite database handler
-        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+        DataHandler db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         id_kasir = p.get("id_kasir");
         nama_kasir = p.get("nama_kasir");
@@ -521,7 +521,7 @@ public class PembayaranBarcodeActivity extends AppActivity implements Runnable {
 
 
         // Tag used to cancel the request
-        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+        DataHandler db = new DataHandler(getApplicationContext());
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
         finish();
         Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_SHORT).show();

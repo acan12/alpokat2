@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.Print.DeviceListActivity;
@@ -32,7 +32,6 @@ import com.alpokat.toko.Print.UnicodeFormatter;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppController;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -132,7 +131,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
 
         // SQLite database handler
-        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+        DataHandler db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         id_kasir = p.get("id_kasir");
         nama_kasir = p.get("nama_kasir");
@@ -498,7 +497,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
 
         int itemCount = 0;
-        for(Keranjang keranjang : results){
+        for (Keranjang keranjang : results) {
             total += (int) keranjang.getTotal();
             itemCount += (int) keranjang.getJumlah();
         }
@@ -507,39 +506,19 @@ public class PembayaranActivity extends AppActivity implements Runnable {
         jumlah_item.setText(itemCount + "");
     }
 
-
-//    public void LoadTotalBelanja() {
-//        dbcenter = new SqlHelper(getApplicationContext());
-//        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-//        cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-//        total = 0;
-//        int jitem = 0;
-//        if (cursor.getCount() > 0) {
-//            for (int cc = 0; cc < cursor.getCount(); cc++) {
-//                cursor.moveToPosition(cc);
-//                total += Integer.valueOf(cursor.getString(6));
-//                jitem += Integer.valueOf(cursor.getString(4));
-//            }
-//        }
-//
-//        total_belanja.setText(String.format("%,.0f", total));
-//        jumlah_item.setText(jitem + "");
-//    }
-
     private void ProsesBayar(final String id_produk,
                              final String jumlah,
                              final String faktur,
                              final String tanggal) {
 
-
         // Tag used to cancel the request
-        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+        DataHandler db = new DataHandler(getApplicationContext());
         db.TambahTransaksi(id_toko, id_produk, jumlah, id_kasir, id_pelanggan, faktur, tanggal);
         finish();
         Toast.makeText(getApplicationContext(), "Terimakasih, Transaksi telah Selesai !", Toast.LENGTH_LONG).show();
 
         boolean s = isMyServiceRunning(DataService.class);
-        if(!s){
+        if (!s) {
             Intent intent = new Intent(getApplicationContext(), DataService.class);
             startService(intent);
         }
@@ -645,198 +624,165 @@ public class PembayaranActivity extends AppActivity implements Runnable {
 
     private void print() {
         RealmResults<Keranjang> keranjangList = AppController.getDb().getCollectionRealm(Keranjang.class);
-//        Thread t = new Thread() {
-//            public void run() {
-                try {
-                    OutputStream os = mBluetoothSocket.getOutputStream();
-                    String BILL;
-                    BILL = "";
-                    for (int i = 0; i < header.length; i++) {
-                        BILL += "\n" + StringUtils.center(header[i], 31);
-                    }
-                    BILL += "\n===============================";
+        try {
+            OutputStream os = mBluetoothSocket.getOutputStream();
+            String BILL;
+            BILL = "";
+            for (int i = 0; i < header.length; i++) {
+                BILL += "\n" + StringUtils.center(header[i], 31);
+            }
+            BILL += "\n===============================";
 
-                    Date c = Calendar.getInstance().getTime();
-                    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                    String tanggal = df.format(c);
+            Date c = Calendar.getInstance().getTime();
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            String tanggal = df.format(c);
 
-                    SimpleDateFormat jf = new SimpleDateFormat("HH:mm:ss");
-                    String jam = jf.format(c);
+            SimpleDateFormat jf = new SimpleDateFormat("HH:mm:ss");
+            String jam = jf.format(c);
 
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "No Faktur", ":", faktur);
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Tanggal", ":", tanggal);
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pukul", ":", jam);
-                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Kasir", ":", nama_kasir);
+            BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "No Faktur", ":", faktur);
+            BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Tanggal", ":", tanggal);
+            BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pukul", ":", jam);
+            BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Kasir", ":", nama_kasir);
 
-                    if (!id_pelanggan.equalsIgnoreCase("0")) {
-                        BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pelanggan", ":", nama_pelanggan.getText().toString());
-                    }
+            if (!id_pelanggan.equalsIgnoreCase("0")) {
+                BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pelanggan", ":", nama_pelanggan.getText().toString());
+            }
 
 
-                    BILL += "\n-------------------------------";
+            BILL += "\n-------------------------------";
 
-//                    dbcenter = new SqlHelper(getApplicationContext());
-//                    SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-//                    cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-//                    cursor.moveToFirst();
+            for (Keranjang keranjang : keranjangList) {
+                String nama = keranjang.getNama_produk();
+                String jumlah = String.valueOf(keranjang.getJumlah());
+                String harga = String.valueOf(keranjang.getHarga_jual());
+                String total = String.valueOf(keranjang.getTotal());
 
-                    for(Keranjang keranjang : keranjangList){
-                        String nama = keranjang.getNama_produk();
-                        String jumlah = String.valueOf(keranjang.getJumlah());
-                        String harga = String.valueOf(keranjang.getHarga_jual());
-                        String total = String.valueOf(keranjang.getTotal());
+                double hrg = Integer.valueOf(harga);
+                harga = String.format("%,.0f", hrg);
 
-                        double hrg = Integer.valueOf(harga);
-                        harga = String.format("%,.0f", hrg);
+                double ttl = Integer.valueOf(total);
+                total = String.format("%,.0f", ttl);
 
-                        double ttl = Integer.valueOf(total);
-                        total = String.format("%,.0f", ttl);
+                BILL += "\n- " + nama + "\n";
+                BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
+            }
 
-                        BILL += "\n- " + nama + "\n";
-                        BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
-                    }
+            BILL += "\n-------------------------------";
+            BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Total Belanja", ": Rp.", total_belanja.getText());
+            BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Jumlah Bayar", ": Rp.", jumlah_bayar.getText());
+            BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Uang Kembali", ": Rp.", uang_kembali.getText());
+            BILL += "\n\n";
 
-                    BILL += "\n-------------------------------";
-                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Total Belanja", ": Rp.", total_belanja.getText());
-                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Jumlah Bayar", ": Rp.", jumlah_bayar.getText());
-                    BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Uang Kembali", ": Rp.", uang_kembali.getText());
-                    BILL += "\n\n";
+            for (int i = 0; i < footer.length; i++) {
+                BILL += "\n" + StringUtils.center(footer[i], 31);
+            }
 
-                    for (int i = 0; i < footer.length; i++) {
-                        BILL += "\n" + StringUtils.center(footer[i], 31);
-                    }
+            BILL += "\n\n\n\n";
+            os.write(BILL.getBytes());
+            //This is printer specific code you can comment ==== > Start
 
-                    BILL += "\n\n\n\n";
-                    os.write(BILL.getBytes());
-                    //This is printer specific code you can comment ==== > Start
+            // Setting height
+            int gs = 29;
+            os.write(intToByteArray(gs));
+            int h = 104;
+            os.write(intToByteArray(h));
+            int n = 162;
+            os.write(intToByteArray(n));
 
-                    // Setting height
-                    int gs = 29;
-                    os.write(intToByteArray(gs));
-                    int h = 104;
-                    os.write(intToByteArray(h));
-                    int n = 162;
-                    os.write(intToByteArray(n));
-
-                    // Setting Width
-                    int gs_width = 29;
-                    os.write(intToByteArray(gs_width));
-                    int w = 119;
-                    os.write(intToByteArray(w));
-                    int n_width = 2;
-                    os.write(intToByteArray(n_width));
+            // Setting Width
+            int gs_width = 29;
+            os.write(intToByteArray(gs_width));
+            int w = 119;
+            os.write(intToByteArray(w));
+            int n_width = 2;
+            os.write(intToByteArray(n_width));
 
 
-                } catch (Exception e) {
-                    Log.e("MainActivity2", "Exe ", e);
-                }
-//            }
-//        };
-//        t.start();
+        } catch (Exception e) {
+            Log.e("MainActivity2", "Exe ", e);
+        }
 
         if (copy_struk.isChecked()) {
-//            Thread t2 = new Thread() {
-//                public void run() {
-                    try {
-                        OutputStream os = mBluetoothSocket.getOutputStream();
-                        String BILL;
-                        BILL = "";
-                        for (int i = 0; i < header.length; i++) {
-                            BILL += "\n" + StringUtils.center(header[i], 31);
-                        }
-                        BILL += "\n===============================";
 
-                        Date c = Calendar.getInstance().getTime();
-                        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                        String tanggal = df.format(c);
+            try {
+                OutputStream os = mBluetoothSocket.getOutputStream();
+                String BILL;
+                BILL = "";
+                for (int i = 0; i < header.length; i++) {
+                    BILL += "\n" + StringUtils.center(header[i], 31);
+                }
+                BILL += "\n===============================";
 
-                        SimpleDateFormat jf = new SimpleDateFormat("HH:mm:ss");
-                        String jam = jf.format(c);
+                Date c = Calendar.getInstance().getTime();
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                String tanggal = df.format(c);
 
-                        BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "No Faktur", ":", faktur);
-                        BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Tanggal", ":", tanggal);
-                        BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pukul", ":", jam);
-                        BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Kasir", ":", nama_kasir);
+                SimpleDateFormat jf = new SimpleDateFormat("HH:mm:ss");
+                String jam = jf.format(c);
 
-                        if (!id_pelanggan.equalsIgnoreCase("0")) {
-                            BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pelanggan", ":", nama_pelanggan.getText().toString());
-                        }
+                BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "No Faktur", ":", faktur);
+                BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Tanggal", ":", tanggal);
+                BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pukul", ":", jam);
+                BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Kasir", ":", nama_kasir);
 
-
-                        BILL += "\n-------------------------------";
-                        for(Keranjang keranjang : keranjangList){
-                            String nama = keranjang.getNama_produk();
-                            String jumlah = String.valueOf(keranjang.getJumlah());
-                            String harga = String.valueOf(keranjang.getHarga_jual());
-                            String total = String.valueOf(keranjang.getTotal());
-
-                            double hrg = Integer.valueOf(harga);
-                            harga = String.format("%,.0f", hrg);
-
-                            double ttl = Integer.valueOf(total);
-                            total = String.format("%,.0f", ttl);
-
-                            BILL += "\n- " + nama + "\n";
-                            BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
-                        }
-//                        dbcenter = new SqlHelper(getApplicationContext());
-//                        SQLiteDatabase dbp = dbcenter.getReadableDatabase();
-//                        cursor = dbp.rawQuery("SELECT * FROM keranjang", null);
-//                        cursor.moveToFirst();
-//                        for (int cc = 0; cc < cursor.getCount(); cc++) {
-//                            cursor.moveToPosition(cc);
-//                            String nama = cursor.getString(3);
-//                            String jumlah = cursor.getString(4);
-//                            String harga = cursor.getString(5);
-//                            String total = cursor.getString(6);
-//
-//                            double hrg = Integer.valueOf(harga);
-//                            harga = String.format("%,.0f", hrg);
-//
-//                            double ttl = Integer.valueOf(total);
-//                            total = String.format("%,.0f", ttl);
-//
-//                            BILL += "\n- " + nama + "\n";
-//                            BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
-//
-//                        }
-                        BILL += "\n-------------------------------";
-                        BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Total Belanja", ": Rp.", total_belanja.getText());
-                        BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Jumlah Bayar", ": Rp.", jumlah_bayar.getText());
-                        BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Uang Kembali", ": Rp.", uang_kembali.getText());
-                        BILL += "\n\n";
-
-                        for (int i = 0; i < footer.length; i++) {
-                            BILL += "\n" + StringUtils.center(footer[i], 31);
-                        }
-
-                        BILL += "\n\n\n\n";
-                        os.write(BILL.getBytes());
-                        //This is printer specific code you can comment ==== > Start
-
-                        // Setting height
-                        int gs = 29;
-                        os.write(intToByteArray(gs));
-                        int h = 104;
-                        os.write(intToByteArray(h));
-                        int n = 162;
-                        os.write(intToByteArray(n));
-
-                        // Setting Width
-                        int gs_width = 29;
-                        os.write(intToByteArray(gs_width));
-                        int w = 119;
-                        os.write(intToByteArray(w));
-                        int n_width = 2;
-                        os.write(intToByteArray(n_width));
+                if (!id_pelanggan.equalsIgnoreCase("0")) {
+                    BILL += "\n" + String.format("%1$-9s %2$-1s %3$-11s", "Pelanggan", ":", nama_pelanggan.getText().toString());
+                }
 
 
-                    } catch (Exception e) {
-                        Log.e("MainActivity2", "Exe ", e);
-                    }
-//                }
-//            };
-//            t2.start();
+                BILL += "\n-------------------------------";
+                for (Keranjang keranjang : keranjangList) {
+                    String nama = keranjang.getNama_produk();
+                    String jumlah = String.valueOf(keranjang.getJumlah());
+                    String harga = String.valueOf(keranjang.getHarga_jual());
+                    String total = String.valueOf(keranjang.getTotal());
+
+                    double hrg = Integer.valueOf(harga);
+                    harga = String.format("%,.0f", hrg);
+
+                    double ttl = Integer.valueOf(total);
+                    total = String.format("%,.0f", ttl);
+
+                    BILL += "\n- " + nama + "\n";
+                    BILL += String.format("%1$-1s %2$-15s %3$13s", "", jumlah + " x " + harga, total);
+                }
+
+                BILL += "\n-------------------------------";
+                BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Total Belanja", ": Rp.", total_belanja.getText());
+                BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Jumlah Bayar", ": Rp.", jumlah_bayar.getText());
+                BILL += "\n" + String.format("%1$-13s %2$4s %3$11s", "Uang Kembali", ": Rp.", uang_kembali.getText());
+                BILL += "\n\n";
+
+                for (int i = 0; i < footer.length; i++) {
+                    BILL += "\n" + StringUtils.center(footer[i], 31);
+                }
+
+                BILL += "\n\n\n\n";
+                os.write(BILL.getBytes());
+                //This is printer specific code you can comment ==== > Start
+
+                // Setting height
+                int gs = 29;
+                os.write(intToByteArray(gs));
+                int h = 104;
+                os.write(intToByteArray(h));
+                int n = 162;
+                os.write(intToByteArray(n));
+
+                // Setting Width
+                int gs_width = 29;
+                os.write(intToByteArray(gs_width));
+                int w = 119;
+                os.write(intToByteArray(w));
+                int n_width = 2;
+                os.write(intToByteArray(n_width));
+
+
+            } catch (Exception e) {
+                Log.e("MainActivity2", "Exe ", e);
+            }
+
         }
 
     }

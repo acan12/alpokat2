@@ -24,10 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alpokat.toko.Adapter.PenjualanAdapter;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SqlHelper;
 import com.alpokat.toko.Model.PenjualanModel;
-import com.alpokat.toko.Model.api.HttpsTrustManager;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
@@ -51,7 +50,7 @@ public class DataPenjualan extends AppCompatActivity {
     public static DataPenjualan DJ;
     private PenjualanAdapter adapter;
     private List<PenjualanModel> penjualan_list;
-    private SQLiteHandler db;
+    private DataHandler db;
     private ProgressDialog pDialog;
     private FrameLayout dialog_retur;
 
@@ -82,7 +81,7 @@ public class DataPenjualan extends AppCompatActivity {
         });
 
         // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
+        db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         xidtoko = p.get("id_toko");
 
@@ -151,7 +150,7 @@ public class DataPenjualan extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+                        DataHandler db = new DataHandler(getApplicationContext());
                         db.ReturTransaksi(xfaktur);
                         dialog_retur.setVisibility(View.GONE);
                         TampilPenjualan();

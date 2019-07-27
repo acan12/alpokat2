@@ -16,9 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SessionManager;
-import com.alpokat.toko.Model.api.HttpsTrustManager;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
@@ -43,7 +42,7 @@ public class RefActivity extends AppCompatActivity {
 
     private EditText no_ref;
     private ProgressDialog pDialog;
-    private SQLiteHandler db;
+    private DataHandler db;
     private SessionManager session;
     private String id_toko;
     private String dev_id, tanggal, exp;
@@ -76,10 +75,10 @@ public class RefActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
 
         // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
+        db = new DataHandler(getApplicationContext());
         session = new SessionManager(getApplicationContext());
 
-        db = new SQLiteHandler(getApplicationContext());
+        db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         id_toko = p.get("id_toko");
 

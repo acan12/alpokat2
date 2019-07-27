@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alpokat.toko.Dialog.TransactionReportTodayDialog;
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SessionManager;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppConfig;
@@ -82,7 +82,7 @@ public class MainActivity extends AppActivity {
 
 
     private SessionManager session;
-    private SQLiteHandler db;
+    private DataHandler db;
     private String idToko, namaToko, namaKasir;
     AlertDialog alertDialog1;
     CharSequence[] values = {" 1 Bulan ", " 3 Bulan ", " 6 Bulan ", " 12 Bulan "};

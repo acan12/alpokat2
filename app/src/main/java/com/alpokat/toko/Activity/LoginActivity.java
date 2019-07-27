@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SessionManager;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppConfig;
@@ -30,7 +30,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,7 +53,7 @@ public class LoginActivity extends AppActivity {
     //    private EditText email, password;
 //    private TextView back_office;
     private ProgressDialog pDialog;
-    private SQLiteHandler db;
+    private DataHandler db;
     private SessionManager session;
     private String dev_id;
     private Boolean cek;
@@ -84,7 +83,7 @@ public class LoginActivity extends AppActivity {
         pDialog.setCancelable(false);
 
         // SQLite database handler
-        db = new SQLiteHandler(getApplicationContext());
+        db = new DataHandler(getApplicationContext());
         session = new SessionManager(getApplicationContext());
 
 

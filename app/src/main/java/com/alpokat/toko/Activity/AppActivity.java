@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
@@ -12,10 +11,9 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.alpokat.toko.Helper.SQLiteHandler;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Helper.SessionManager;
 import com.alpokat.toko.Model.StatsModel;
-import com.alpokat.toko.Model.api.HttpsTrustManager;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
 import com.android.volley.Request;
@@ -38,13 +36,12 @@ import java.util.Map;
 import java.util.UUID;
 
 import app.beelabs.com.codebase.base.BaseActivity;
-import app.beelabs.com.codebase.component.ProgressDialogComponent;
 
 import static com.alpokat.toko.support.PermissionUtil.hasPermissions;
 
 public class AppActivity extends BaseActivity {
 
-    private SQLiteHandler db;
+    private DataHandler db;
 
     protected void setupPermissionApp(Activity activity){
         int PERMISSION_ALL = 1;
@@ -129,7 +126,7 @@ public class AppActivity extends BaseActivity {
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         final String devId = deviceUuid.toString();
-        final SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+        final DataHandler db = new DataHandler(getApplicationContext());
         final SessionManager session = new SessionManager(getApplicationContext());
         // Tag used to cancel the request
         String tag_string_req = "req_aktif";
@@ -204,9 +201,9 @@ public class AppActivity extends BaseActivity {
 
     }
 
-    protected SQLiteHandler getDB(){
+    protected DataHandler getDB(){
         if(db == null)
-            db = new SQLiteHandler(getApplicationContext());
+            db = new DataHandler(getApplicationContext());
 
         return db;
     }

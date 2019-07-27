@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.alpokat.toko.Helper.SQLiteHandler;
-import com.alpokat.toko.Model.api.HttpsTrustManager;
+import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.R;
 import com.alpokat.toko.Setting.AppController;
@@ -57,7 +56,7 @@ public class SettingActivity extends AppCompatActivity {
         Button update_password = findViewById(R.id.update_password);
 
         // SQLite database handler
-        SQLiteHandler db = new SQLiteHandler(getApplicationContext());
+        DataHandler db = new DataHandler(getApplicationContext());
         HashMap<String, String> p = db.BacaKasir();
         id_kasir = p.get("id_kasir");
         LoadKasir(id_kasir);

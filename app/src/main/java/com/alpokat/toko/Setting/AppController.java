@@ -1,6 +1,7 @@
 package com.alpokat.toko.Setting;
 
 import android.content.Context;
+import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -68,6 +69,17 @@ public class AppController extends BaseApp {
 
         db = CocoDB.initDatabase(getResources().getString(R.string.database_package_name), getApplicationContext()); // initialize realm db
     }
+
+    @Override
+    public void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        try {
+            MultiDex.install(this);
+        } catch (RuntimeException multiDexException) {
+            multiDexException.printStackTrace();
+        }
+    }
+
 
     public static AppComponent getAppComponent() {
         if (context == null) return null;
