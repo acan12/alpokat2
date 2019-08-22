@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -55,6 +56,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import app.beelabs.com.codebase.component.LoadingDialogComponent;
+import app.beelabs.com.utilc.IConfig;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -196,6 +198,7 @@ public class MainActivity extends AppActivity {
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName("Data Pelanggan").withIcon(FontAwesome.Icon.faw_users).withIdentifier(5).withSelectable(false),
                         new PrimaryDrawerItem().withName("Setting").withIcon(FontAwesome.Icon.faw_cogs).withIdentifier(6).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Term & Conditions").withIcon(FontAwesome.Icon.faw_align_left).withIdentifier(8).withSelectable(false),
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName("Logout").withIcon(FontAwesome.Icon.faw_times_circle).withIdentifier(99).withSelectable(false)
 
@@ -248,6 +251,10 @@ public class MainActivity extends AppActivity {
 
                                 case 7:
                                     intent = new Intent(MainActivity.this, InputProdukActivity.class);
+                                    startActivity(intent);
+
+                                case 8:
+                                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(AppConfig.TNC_LINK_URL));
                                     startActivity(intent);
                             }
                         }

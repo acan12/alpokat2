@@ -26,4 +26,6 @@ public class AppConfig {
     public static String SIMPAN_PRODUK          = SERVER + "add_produk.php";
 
     public static String FROM_LOGIN = "FROM_LOGIN";
+
+    public static String TNC_LINK_URL = "https://drive.google.com/file/d/0B11oVkoC3bIJUzNuMVMydGhfMmZ6TlI3NFE0TVZwVDhaYWMw/view?usp=drivesdk";
 }
