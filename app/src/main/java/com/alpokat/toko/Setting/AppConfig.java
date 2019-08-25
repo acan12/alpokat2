@@ -3,6 +3,9 @@ package com.alpokat.toko.Setting;
 
 public class AppConfig {
 
+    public static final int PENJUALAN_ACTIVITY = 1;
+    public static final int PENJUALAN_BARCODE_ACTIVITY = 2;
+    public static final String FROM_PAGE = "from_page";
     public static String HOST = "https://toko.alpokat.com/";
 //    public static String HOST = "http://192.168.1.9:8086/toko/";
     public static String SERVER                 = HOST + "android/";

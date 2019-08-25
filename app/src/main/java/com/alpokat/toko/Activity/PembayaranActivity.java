@@ -31,6 +31,7 @@ import com.alpokat.toko.Model.realm.Transaksi;
 import com.alpokat.toko.Print.DeviceListActivity;
 import com.alpokat.toko.Print.UnicodeFormatter;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
 
 import org.apache.commons.lang3.StringUtils;
@@ -84,6 +85,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
     private String faktur;
 
     private String jbayar = "0";
+    private int fromPageID;
 
 
     @Override
@@ -126,6 +128,7 @@ public class PembayaranActivity extends AppActivity implements Runnable {
         Intent intent = getIntent();
         id_pelanggan = (intent.getStringExtra("id_pelanggan"));
         String nama = (intent.getStringExtra("nama"));
+        fromPageID =  (intent.getIntExtra(AppConfig.FROM_PAGE, 0));
 
         nama_pelanggan.setText(nama);
         idpelanggan.setText(id_pelanggan);
@@ -533,15 +536,21 @@ public class PembayaranActivity extends AppActivity implements Runnable {
             startService(intent);
         }
 
-        try {
-            PenjualanActivity.PA.resetCart();
-            Intent i = new Intent(getApplicationContext(), PenjualanActivity.class);
-            startActivity(i);
-        } catch (Exception e) {
-            PenjualanBarcodeBluetoothActivity.PA.resetCart();
-            Intent i = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
-            startActivity(i);
+        Intent intent;
+        switch (fromPageID){
+            case AppConfig.PENJUALAN_ACTIVITY:
+                PenjualanActivity.PA.resetCart();
+                intent = new Intent(getApplicationContext(), PenjualanActivity.class);
+                startActivity(intent);
+                break;
+
+            case AppConfig.PENJUALAN_BARCODE_ACTIVITY:
+                PenjualanBarcodeBluetoothActivity.PA.resetCart();
+                intent = new Intent(getApplicationContext(), PenjualanBarcodeBluetoothActivity.class);
+                startActivity(intent);
+                break;
         }
+
     }
 
 

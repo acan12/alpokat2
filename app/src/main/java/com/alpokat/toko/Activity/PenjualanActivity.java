@@ -30,6 +30,7 @@ import com.alpokat.toko.Helper.DataHandler;
 import com.alpokat.toko.Model.BelanjaModel;
 import com.alpokat.toko.Model.realm.Keranjang;
 import com.alpokat.toko.R;
+import com.alpokat.toko.Setting.AppConfig;
 import com.alpokat.toko.Setting.AppController;
 
 import java.util.ArrayList;
@@ -138,6 +139,7 @@ public class PenjualanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PembayaranActivity.class);
+                i.putExtra(AppConfig.FROM_PAGE, AppConfig.PENJUALAN_ACTIVITY );
                 i.putExtra("id_pelanggan", "0");
                 i.putExtra("nama", "Pilih Pelanggan");
                 startActivity(i);
