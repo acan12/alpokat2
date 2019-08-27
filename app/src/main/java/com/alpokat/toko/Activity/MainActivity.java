@@ -252,10 +252,12 @@ public class MainActivity extends AppActivity {
                                 case 7:
                                     intent = new Intent(MainActivity.this, InputProdukActivity.class);
                                     startActivity(intent);
+                                    break;
 
                                 case 8:
                                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse(AppConfig.TNC_LINK_URL));
                                     startActivity(intent);
+                                    break;
                             }
                         }
 
